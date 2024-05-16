@@ -12,15 +12,15 @@ const AboutUs = () => {
                 <div className="">
                     <div className="block flex gap-3 w-full font-bold items-center text-5xl text-[#717172]">
                         <img src="/images/cropped-LOGO.png" alt="" className="rounded-lg overflow-hidden" width={100}/>
-                        關於我們
+                        協會章程
                     </div>
-                    <Text title className='mb-5 mt-10 dark:text-sky-400 text-sky-600'>
-                        {PRIMARY_NAV.logo.text}
-                    </Text>
                     
-                    <div className="flex gap-2">
-                        <img src="/images/about1.jpeg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
-                        <img src="/images/about2.jpeg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
+                    <div className="flex flex-col gap-2 mt-4">
+                        <img src="/images/a1.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
+                        <img src="/images/a2.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
+                        <img src="/images/a3.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
+                        <img src="/images/a4.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
+                        <img src="/images/a5.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
                     </div>
                 </div>
             </section>

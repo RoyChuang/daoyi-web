@@ -29,7 +29,13 @@ const SimpleNavbar = ({ openSearch, changeTheme, toggleSideMenu, openSidebar = f
           {
             logo ?
               logo.type === LogoType.IMAGE ?
-                <div className="flex gap-1 items-center cursor-pointer"><img src={theme === THEMES.DARK ? transformImagePaths(logo.logoLight) : transformImagePaths(logo.logo)} alt="" className="cursor-pointer" width="30px" />{logo.text}</div> :
+                <div className="flex gap-2 items-center cursor-pointer font-bold">
+                  <img src={theme === THEMES.DARK ? transformImagePaths(logo.logoLight) : transformImagePaths(logo.logo)} alt="" className="cursor-pointer" width="40px" />
+                  <div>
+                    <div>{logo.text}</div>
+                    <div className="text-[12px] pl-[2px]">DAOYI Care Association</div>
+                  </div>
+                </div> :
                 <a className='text-[22px] font-semibold'>{logo.logo}</a>
               : <a className='text-[22px] font-semibold'>Logo</a>
           }
@@ -64,24 +70,24 @@ const SimpleNavbar = ({ openSearch, changeTheme, toggleSideMenu, openSidebar = f
         </div>
 
 
-        <div className={combineClasses(classes.search_icon_wrapper, 'ml-5 dark:text-white')} onClick={() => openSearch()}>
+        {/* <div className={combineClasses(classes.search_icon_wrapper, 'ml-5 dark:text-white')} onClick={() => openSearch()}>
           <button name="search-button" aria-label="search button">
             <AiOutlineSearch className="dark:text-white text-black text-[22px]" />
           </button>
-        </div>
+        </div> */}
 
-        <div className="" onClick={() => onShareClick()}>
+        {/* <div className="" onClick={() => onShareClick()}>
           <button name="share" aria-label="share page">
             <BsFillShareFill className="dark:text-white text-black text-[16px] mt-[7px] ml-2 mr-1" />
           </button>
-        </div>
+        </div> */}
 
 
-        <button name="theme-switch" aria-label="theme button" className={combineClasses(classes.theme_switch, "pl-3 dark:text-white text-black")} onClick={changeTheme}>
+        {/* <button name="theme-switch" aria-label="theme button" className={combineClasses(classes.theme_switch, "pl-3 dark:text-white text-black")} onClick={changeTheme}>
           {
             theme && theme === 'dark' ? <BsFillSunFill className="text-2xl" /> : <BsFillMoonFill className="text-md " />
           }
-        </button>
+        </button> */}
       </div>
     </div>
   );

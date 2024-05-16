@@ -5,43 +5,41 @@ import { iSEO } from "../src/shared/interfaces";
 
 const ContactUs = () => {
     const PAGE_SEO: iSEO = {
-        title: 'Contact Us',
-        description: 'For any any queries related to this project / template feel free to connect with us on webexpe13@gmail.com',
-        keywords: 'webexpx, contact us, webexpe13@gmail.com, next js blog template',
-        author: 'Mayur Nalwala, Rupali Yadav'
+        title: '贊助本會',
+        description: '社團法人新北市道一關懷協會',
+        keywords: '社團法人新北市道一關懷協會',
     } 
     return (
         <PageLayout PAGE_SEO={PAGE_SEO} home>
-            <section className='container px-3 pb-10 md:pt-20 pt-[80px]'>
-                <Text title className="!text-5xl !font-light">
-                    Contact Us
+            <section className='container px-3 pb-10 md:pt-20 pt-[80px] flex items-center gap-3'>
+                <img src="/images/cropped-LOGO.png" alt="" className="rounded-lg overflow-hidden" width={100}/>
+                <Text title className="!text-5xl text-[#717172]">
+                    贊助本會
                 </Text>
-
-                <div className="flex flex-wrap mt-8 justify-between">
-                    <div className="md:w-1/2 w-full md:pl-2">
-                        <Text p className="!text-lg leading-relaxed">
-                            For any any queries related to this project / template feel free to connect with us at the given email.
-                            You can also post any comments on our <a href="https://github.com/webexpe13/blog-template-using-nextjs-typescript-tailwindcss/discussions" target="_blank" rel="noopener noreferrer"><u><i>github discussions</i></u></a>.
-                        </Text>
-                    </div>
-                    <div className="md:w-1/3 w-full">
-                        <Text p>
-                            write to us at
-                        </Text>
-                        <Text subtitle className="!font-light md:!text-3xl">
-                            webexpe13@gmail.com
-                        </Text>
-                    </div>
-                </div>
             </section>
-
-
-            <section className={"dark:bg-slate-800 bg-blue-100 mt-10 container py-10 md:px-20 px-5"}>
-                <Text subtitle className="md:!text-5xl text-4xl !font-light">
-                    Work with us . . .
+            <section className={"dark:bg-slate-800 bg-blue-100 container py-3 md:px-20 px-5 rounded"}>
+                <Text p className="!text-lg leading-relaxed mt-5 px-1">
+                新北市政府立案成立的協會，日後若要"繳會員年費"或"小額捐款"，請使用銀行轉帳，以便日後報稅用。
                 </Text>
                 <Text p className="!text-lg leading-relaxed mt-5 px-1">
-                    We are a group of developers and designers with more than 5 years of industry experience. If you have any requirements like Website Development, Website / App Design feel free to contact us on the given email.
+                戶名: 社團法人新北市道一關懷協會
+                </Text>
+                <Text p className="!text-lg leading-relaxed mt-5 px-1">
+                帳號: 第一銀行 樹林分行帳號: 20310056081
+                </Text>
+            </section>
+            <section className={"dark:bg-slate-800 bg-blue-100 container py-3 md:px-20 px-5 rounded mt-4"}>
+                <Text p className="!text-lg leading-relaxed mt-5 px-1">
+                在道務上的費用支出或協會工作上的費用支出，請開立收據或統一發票。
+                </Text>
+                <Text p className="!text-lg leading-relaxed mt-5 px-1">
+                署名: 社團法人新北市道一關懷協會
+                </Text>
+                <Text p className="!text-lg leading-relaxed mt-5 px-1">
+                統一編號: 91177786
+                </Text>
+                <Text p className="!text-lg leading-relaxed mt-5 px-1">
+                以便日後會計報帳用，感謝慈悲!
                 </Text>
             </section>
         </PageLayout>

@@ -65,7 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
           : null
       }
-      <ThemeProvider enableSystem={true} attribute="class">
+      <ThemeProvider enableSystem={false} attribute="class">
         <Component {...pageProps} />
         <Footer />
       </ThemeProvider>

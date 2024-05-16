@@ -96,6 +96,15 @@ export const PRIMARY_NAV: iNavSetup = {
             label: '關於我們',
             path: '/about-us'
         },
+        {
+            label: '協會章程',
+            path: '/association-aticles'
+        },
+        {
+            label: '組織架構',
+            path: '/structure'
+        },
+        
         // {
         //     // to open a link in new tab pass newTab: true
         //     label: 'Support Us',
@@ -108,7 +117,7 @@ export const PRIMARY_NAV: iNavSetup = {
         //     newTab: true
         // },
         {
-            label: '聯絡我們',
+            label: '贊助本會',
             path: '/contact-us'
         }
     ],
@@ -128,6 +137,14 @@ export const PRIMARY_NAV: iNavSetup = {
             label: '關於我們',
             path: '/about-us'
         },
+        {
+            label: '協會章程',
+            path: '/association-aticles'
+        },
+        {
+            label: '組織架構',
+            path: '/structure'
+        },
         // {
         //     label: 'Support Us',
         //     path: 'https://www.buymeacoffee.com/webexpe13z',
@@ -139,7 +156,7 @@ export const PRIMARY_NAV: iNavSetup = {
         //     newTab: true
         // },
         {
-            label: '聯絡我們',
+            label: '贊助本會',
             path: '/contact-us'
         }
     ],
