@@ -26,7 +26,7 @@ const HomeNonFeatureArticles = () => {
                                     text-center dark:bg-slate-800 
                                     bg-blue-500 rounded-full mx-auto text-white font-bold 
                                     hover:!text-blue-900 dark:hover:!text-slate-400 transition-all">
-                                View All Articles
+                                所有文章
                             </LinkTo>
                         </div>
                     ) : null

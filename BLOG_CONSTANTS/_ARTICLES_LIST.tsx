@@ -89,6 +89,63 @@ const ARTICLES_LIST: iArticle[] = [
       ogImage: "/public/images/blog/3/1.jpg",
     },
   },
+  {
+    id: '4',
+    path: "/blog/4",
+    preview: {
+      author: RUPALI,
+      date: "4-25-2024",
+      articleTitle: "4/25(四)玄懋公司心靈成長班會",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/4/1.jpg",
+      shortIntro:
+        "4/25(四)玄懋公司心靈成長班會，邀請「黃啟山」講師慈悲成全，題目:「 智者樂水、仁者樂山」，內容：孔子曰:「智者若何?仁者若何?」子路對曰:「智者使人知己，仁者使人愛己。」子貢對曰:「智者知人，仁者愛人。」顏回對曰:「智者自知，仁者自愛。」知者樂水、仁者樂山。也知者動、仁者靜。知者樂、仁者壽。《論語離雍》。有山有水有遠景、能動能靜方為道、既樂且壽活神仙、智者仁者兩相兼。感謝陳點傳師慈悲蒞臨指導，感謝何點傳師慈悲結語：「天長地久」。感謝諸位道親同仁護持班會，感謝慈悲！",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/4/1.jpg",
+    },
+  },
+  {
+    id: '5',
+    path: "/blog/5",
+    preview: {
+      author: RUPALI,
+      date: "4-25-2024",
+      articleTitle: "第四次「社團法人新北市道一關懷協會」會員大會",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/5/1.jpg",
+      shortIntro:
+        "今早10:30召開第一屆第四次「社團法人新北市道一關懷協會」會員大會，出席踴躍，會中討論並順利通過各項提案。稍後繼續開「道一道務會議」大家踴躍發言討論做了決議並確定多項道(事)務工作。感謝慈悲!",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/5/1.jpg",
+    },
+  },
+  {
+    id: '6',
+    path: "/blog/6",
+    preview: {
+      author: RUPALI,
+      date: "2-25-2024",
+      articleTitle: "第一屆第十三次理監事聯席會議",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/6/1.jpg",
+      shortIntro:
+        "今早10:30本協會召開「第一屆第十三次理監事聯席會議」。出席、列席非常踴躍、經提案討論後做出最好決議案。之後開「道一道務會議」，道親提出很多、多項建設性的建議.感謝道一協會會員以及道親同修們參與會議。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/6/1.jpg",
+    },
+  }, 
 ];
 
 export const SORTED_ARTICLES_BY_DATE = ARTICLES_LIST.sort((a, b) =>

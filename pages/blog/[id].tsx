@@ -9,6 +9,7 @@ import { getArticleDetailById } from '../../src/utils/utils';
 
 function Activities(props: { detail: any; images: any }) {
   const details = JSON.parse(props.detail);
+  const images = props.images;
 
   return (
     <PageLayout blogcentered>
@@ -16,7 +17,7 @@ function Activities(props: { detail: any; images: any }) {
           {details.shortIntro}
       </Text>
       <div className="flex flex-wrap">
-        {_.map(props.images, (image: any, index: number) => {
+        {_.map(images, (image: any, index: number) => {
           return (
             <Image className="mt-3 ml-0 rounded-lg overflow-hidden shadow" src={image} alt="nextjs-simple-blog-template" size={ImageSize.MEDIUM} />
           )

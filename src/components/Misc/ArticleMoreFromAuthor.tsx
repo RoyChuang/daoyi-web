@@ -101,7 +101,7 @@ const ArticleMoreFromAuthor = ({
                 passHref
                 className="block text-sm py-3 px-2 text-center dark:bg-slate-900 bg-blue-500 rounded text-white font-bold hover:!text-blue-900 dark:hover:!text-slate-400 transition-all"
               >
-                <p>All articles from {author.name}</p>
+                <p>所有文章</p>
               </LinkTo>
             ) : null}
           </div>
