@@ -31,7 +31,7 @@ export const MAYUR: IAuthor = {
     social: [
         {
             icon: <AiFillGithub />,
-            link: 'https://github.com/nmayur'
+            link: 'https://www.facebook.com/groups/1418391155044562/user/100002243690146'
         },
         {
             icon: <AiFillLinkedin />,
@@ -41,18 +41,14 @@ export const MAYUR: IAuthor = {
 }
 
 export const RUPALI: IAuthor = {
-    name: "Rupali Yadav",
-    designation: "IT Analyst",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    name: "Chao Ching HU",
+    designation: "道一",
+    bio: "",
     profilePic: "",
     social: [
         {
-            icon: <AiFillGithub />,
-            link: 'https://github.com/rupali-yadav'
-        },
-        {
-            icon: <AiFillLinkedin />,
-            link: 'https://www.linkedin.com/in/rupali-yadav-087bb4112/'
+            icon: <AiFillFacebook />,
+            link: 'https://www.facebook.com/groups/1418391155044562/user/100002243690146'
         },
     ]
 }

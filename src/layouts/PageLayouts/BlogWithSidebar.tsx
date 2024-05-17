@@ -6,7 +6,7 @@ import ArticleMoreFromAuthor from '../../components/Misc/ArticleMoreFromAuthor';
 
 const WithSidebar = ({ children, ads }: {children: any, ads?: string[]}) => {
     const ARTICLE_DETAILS = getArticleDetails();
-    const author = ARTICLE_DETAILS.preview.author;
+    const author = ARTICLE_DETAILS?.preview.author;
     const relatedArticles = SORTED_ARTICLES_BY_DATE.filter((each) => each.preview.author === author);
 
     return (
