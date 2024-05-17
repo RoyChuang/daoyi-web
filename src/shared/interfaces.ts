@@ -16,9 +16,11 @@ export interface IArticleHeaderData {
   thumbnail: string;
   shortIntro: string;
   category?: string;
+  images: string[];
 }
 
 export interface iArticle {
+  id: string,
   path: string;
   featureArticle?: boolean;
   preview: IArticleHeaderData;

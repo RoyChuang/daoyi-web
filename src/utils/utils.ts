@@ -106,10 +106,18 @@ export const removeBodyNoScroll = (): void => {
  */
 export const getArticleDetails = (): iArticle => {
   const router = useRouter();
-  const articlePath = "/pages" + router.pathname + ".tsx";
   return (
-    MOCK_ARTICLES_LIST.filter((each) => each.path.includes(articlePath))[0] ||
-    SORTED_ARTICLES_BY_DATE.filter((each) => each.path.includes(articlePath))[0]
+    SORTED_ARTICLES_BY_DATE.filter(item => item.id === router.query.id)[0]
+  );
+};
+
+/**
+ * Returns Article details from SORTED_ARTICLES_BY_DATE wrt the path
+ * @returns iArticle
+ */
+export const getArticleDetailById = (id: string): iArticle=> {
+  return (
+    SORTED_ARTICLES_BY_DATE.filter(item => item.id === id)[0]
   );
 };
 

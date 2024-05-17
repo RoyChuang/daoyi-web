@@ -33,7 +33,8 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
-    path: "/pages/blog/activities.tsx",
+    id: '1',
+    path: "/blog/1",
     preview: {
       author: RUPALI,
       date: "5-11-2024",
@@ -43,11 +44,32 @@ const ARTICLES_LIST: iArticle[] = [
       shortIntro:
         "今日平溪「游氏佛堂」二十多年來再次辦道，壹位佛根深厚(吃素:因看到卡車上載滿很多活生生的豬，將到屠宰場，心生不忍之心、從此開始不吃豬肉--不久就不吃葷、改吃素食)的有緣人聞得孔孟聖道、性理心法。感謝辦道以及服務前賢慈悲了愿，感謝慈悲！",
       category: "道一",
+      images: ['/public/images/blog/1/1.jpeg', '/public/images/blog/1/2.jpeg', '/public/images/blog/1/3.jpeg', '/public/images/blog/1/4.jpeg']
     },
     seo: {
       keywords:
         "社團法人新北市道一關懷協會",
       ogImage: "/public/images/blog/1/1.jpeg",
+    },
+  },
+  {
+    id: '2',
+    path: "/blog/2",
+    preview: {
+      author: RUPALI,
+      date: "5-4-2024",
+      articleTitle: "道親聯誼暨母親節康乃馨獻花活動",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/2/1.jpeg",
+      shortIntro:
+        "社團法人新北市道一關懷協會」道一聖道院，今日於桃園市虎頭山公園舉辦「道親聯誼暨母親節康乃馨獻花活動」，感謝上天慈悲賜給我們一個風和日麗的好天氣，感謝兩位點傳師慈悲領導與關心，感謝彦宸講師和美均講師帶來輕鬆有趣的團康活動，感謝諸位道親準備咖啡、水果、點心、茶水及各式各樣美食饗宴，感謝諸位道親對道一各項班會活動的支持，希望未來協會與道一道務(壇務)能更順遂更宏展。感謝慈悲！",
+      category: "道一",
+      images: ['/public/images/blog/2/1.jpeg', '/public/images/blog/2/2.jpeg', '/public/images/blog/2/3.jpeg', '/public/images/blog/2/4.jpeg']
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/2/1.jpeg",
     },
   },
   // {
