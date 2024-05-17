@@ -49,19 +49,19 @@ const ArticleMoreFromAuthor = ({
         )}
       </div>
 
-      {isDesktopDevice() && (
+      {/* {isDesktopDevice() && (
         <div className={wrapperClasses}>
           <p className="border-b border-gray-300 pb-2 mb-3 font-medium w-full">
             Share this article
           </p>
           <SocialShare />
         </div>
-      )}
+      )} */}
 
       {relatedArticles.length && (
         <div className={wrapperClasses}>
           <p className="border-b border-gray-300 pb-2 mb-3 font-medium w-full">
-            More from Author
+            其他文章
           </p>
           <div className={articleGrid ? "flex flex-wrap" : ""}>
             {relatedArticles.slice(0, 3).map((each, i) => (

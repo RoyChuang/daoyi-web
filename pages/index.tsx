@@ -9,7 +9,7 @@ import HomeNonFeatureArticles from "../src/components/Misc/HomeNonFeatureAricles
 const Home = () => {
   return (
     <PageLayout home PAGE_SEO={DEFAULT_SEO}>
-      <div className='w-full pb-20 mb-10 bg-slate-200 bg-cover bg-top h-[380px]' style={{backgroundImage: 'url(/images/top1.jpg)'}}>
+      <div className='w-full pb-20 mb-10 bg-slate-200 bg-cover bg-top h-[380px] mt-[70px] md:mt-0' style={{backgroundImage: 'url(/images/top1.jpg)'}}>
       </div>
       <div className="container mx-auto lg:px-[15px] px-0">
         <div className={'flex flex-wrap'}>
