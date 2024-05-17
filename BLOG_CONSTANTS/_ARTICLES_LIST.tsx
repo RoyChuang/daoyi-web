@@ -44,7 +44,6 @@ const ARTICLES_LIST: iArticle[] = [
       shortIntro:
         "今日平溪「游氏佛堂」二十多年來再次辦道，壹位佛根深厚(吃素:因看到卡車上載滿很多活生生的豬，將到屠宰場，心生不忍之心、從此開始不吃豬肉--不久就不吃葷、改吃素食)的有緣人聞得孔孟聖道、性理心法。感謝辦道以及服務前賢慈悲了愿，感謝慈悲！",
       category: "道一",
-      images: ['/public/images/blog/1/1.jpeg', '/public/images/blog/1/2.jpeg', '/public/images/blog/1/3.jpeg', '/public/images/blog/1/4.jpeg']
     },
     seo: {
       keywords:
@@ -64,7 +63,6 @@ const ARTICLES_LIST: iArticle[] = [
       shortIntro:
         "社團法人新北市道一關懷協會」道一聖道院，今日於桃園市虎頭山公園舉辦「道親聯誼暨母親節康乃馨獻花活動」，感謝上天慈悲賜給我們一個風和日麗的好天氣，感謝兩位點傳師慈悲領導與關心，感謝彦宸講師和美均講師帶來輕鬆有趣的團康活動，感謝諸位道親準備咖啡、水果、點心、茶水及各式各樣美食饗宴，感謝諸位道親對道一各項班會活動的支持，希望未來協會與道一道務(壇務)能更順遂更宏展。感謝慈悲！",
       category: "道一",
-      images: ['/public/images/blog/2/1.jpeg', '/public/images/blog/2/2.jpeg', '/public/images/blog/2/3.jpeg', '/public/images/blog/2/4.jpeg']
     },
     seo: {
       keywords:
@@ -72,205 +70,25 @@ const ARTICLES_LIST: iArticle[] = [
       ogImage: "/public/images/blog/2/1.jpeg",
     },
   },
-  // {
-  //   path: "/pages/blog/2.tsx",
-  //   preview: {
-  //     author: RUPALI,
-  //     date: "5-11-2024",
-  //     articleTitle: "今日平溪「游氏佛堂」二十多年來再次辦道",
-  //     tags: "社團法人新北市道一關懷協會",
-  //     thumbnail: "/public/images/blog/1/1.jpeg",
-  //     shortIntro:
-  //       "「社團法人新北市道一關懷協會」道一聖道院，今日於桃園市虎頭山公園舉辦「道親聯誼暨母親節康乃馨獻花活動」，感謝上天慈悲賜給我們一個風和日麗的好天氣，感謝兩位點傳師慈悲領導與關心，感謝彦宸講師和美均講師帶來輕鬆有趣的團康活動，感謝諸位道親準備咖啡、水果、點心、茶水及各式各樣美食饗宴，感謝諸位道親對道一各項班會活動的支持，希望未來協會與道一道務(壇務)能更順遂更宏展。感謝慈悲！",
-  //     category: "道一",
-  //   },
-  //   seo: {
-  //     keywords:
-  //       "社團法人新北市道一關懷協會",
-  //     ogImage: "/public/images/blog/1/1.jpeg",
-  //   },
-  // },
-  // {
-  //   path: "/pages/tutorial/how-to-setup-blog.tsx",
-  //   featureArticle: true,
-  //   preview: {
-  //     author: MAYUR,
-  //     date: "August 08 2022",
-  //     articleTitle: "How to setup this blog template",
-  //     tags: "demo, blog setup",
-  //     thumbnail: "/public/imp_assets/tutorials/how-to-setup-blog.svg",
-  //     shortIntro: "These are the steps to setup your blog",
-  //     category: "tutorial",
-  //   },
-  //   seo: {
-  //     title: "How to setup this blog template",
-  //     description: "These are the steps to setup your blog",
-  //     keywords: "demo, blog setup",
-  //     ogImage: "/public/imp_assets/tutorials/how-to-setup-blog.svg",
-  //     twitterHandle: "@mayur_nalwala",
-  //     author: MAYUR.name,
-  //   },
-  // },
-  // {
-  //   path: "/pages/tutorial/how-to-write-your-first-article.tsx",
-  //   featureArticle: true,
-  //   preview: {
-  //     author: RUPALI,
-  //     date: "August 08 2022",
-  //     articleTitle: "How to write your first article",
-  //     tags: "demo, first article",
-  //     thumbnail: "/public/imp_assets/tutorials/how-to-write-first-article.svg",
-  //     shortIntro:
-  //       "This a step by step guide on how to write your first article.",
-  //     category: "tutorial",
-  //   },
-  //   seo: {
-  //     keywords:
-  //       "demo, centered, centered layout, blog page layout, blog page design with centered layout, writing first article, webexpe, webexpe.com",
-  //     ogImage: "/public/imp_assets/tutorials/how-to-write-first-article.svg",
-  //   },
-  // },
-  // {
-  //   path: "/pages/tutorial/how-to-deploy-blog.tsx",
-  //   featureArticle: true,
-  //   preview: {
-  //     author: RUPALI,
-  //     date: "August 08 2022",
-  //     articleTitle: "How to Export and deploy on firebase",
-  //     tags: "demo, deploy blog",
-  //     thumbnail: "/public/imp_assets/tutorials/how-to-deploy.svg",
-  //     shortIntro:
-  //       "In this article you will see how to export blog files and what folder to deploy on your hosting.",
-  //     category: "tutorial",
-  //   },
-  //   seo: {
-  //     ogImage: "/public/imp_assets/tutorials/how-to-deploy.svg",
-  //   },
-  // },
-  // {
-  //   path: "/pages/tutorial/home-layout.tsx",
-  //   preview: {
-  //     author: RUPALI,
-  //     date: "August 14 2022",
-  //     articleTitle: "Home Layout Example",
-  //     tags: "demo, layout, home layout",
-  //     thumbnail: "/public/imp_assets/tutorials/home-layouts.svg",
-  //     shortIntro: "In this article we will see Default Home Layout example.",
-  //     category: "layouts",
-  //   },
-  //   seo: {
-  //     title: "Home Layout Example",
-  //     description: "In this article we will see Default Home Layout example.",
-  //     keywords:
-  //       "next js, tailwind css, typescript, blog template, default layout, default home layout",
-  //     ogImage: "/public/imp_assets/tutorials/home-layouts.svg",
-  //     author: RUPALI.name,
-  //   },
-  // },
-  // {
-  //   path: "/pages/tutorial/blog-with-sidebar-layout.tsx",
-  //   preview: {
-  //     author: MAYUR,
-  //     date: "August 14 2022",
-  //     articleTitle: "Page Layout for a article with sidebar",
-  //     tags: "demo, with sidebar, default layout",
-  //     thumbnail: "/public/imp_assets/tutorials/blog-with-sidebar-layout.svg",
-  //     shortIntro:
-  //       "In this article we will see Page Layout for a blog with sidebar example.",
-  //     category: "layouts",
-  //   },
-  //   seo: {
-  //     keywords:
-  //       "demo, with sidebar, blog page layout, blog page design with sidebar, webexpe, webexpe.com",
-  //     ogImage: "/public/imp_assets/tutorials/blog-with-sidebar-layout.svg",
-  //   },
-  // },
-  // {
-  //   path: "/pages/tutorial/blog-with-centered-layout.tsx",
-  //   preview: {
-  //     author: RUPALI,
-  //     date: "August 14 2022",
-  //     articleTitle: "Page Layout for a article with centered layout",
-  //     tags: "demo, centered, centered layout",
-  //     thumbnail: "/public/imp_assets/tutorials/blog-with-centered-layout.svg",
-  //     shortIntro:
-  //       "This a demo article with centered layout and with demo of all the components.",
-  //     category: "layouts",
-  //   },
-  //   seo: {
-  //     keywords:
-  //       "demo, centered, centered layout, blog page layout, blog page design with centered layout, webexpe, webexpe.com",
-  //     ogImage: "/public/imp_assets/tutorials/blog-with-centered-layout.svg",
-  //   },
-  // },
-  // {
-  //   path: "/pages/tutorial/all-components.tsx",
-  //   preview: {
-  //     author: RUPALI,
-  //     date: "August 08 2022",
-  //     articleTitle: "All Components",
-  //     tags: "demo, all components",
-  //     thumbnail: "/public/imp_assets/tutorials/all-components.svg",
-  //     shortIntro: "List of all usable components, its types and how to use it.",
-  //     category: "tutorial",
-  //   },
-  //   seo: {
-  //     keywords: "demo, all components, webexpe, webexpe.com",
-  //     ogImage: "/public/imp_assets/tutorials/all-components.svg",
-  //   },
-  // },
-  // {
-  //   path: "/pages/tutorial/style-guide.tsx",
-  //   preview: {
-  //     author: MAYUR,
-  //     date: "August 10 2022",
-  //     articleTitle: "Style Guide",
-  //     tags: "demo, all components, style guide, styling tutorial",
-  //     thumbnail: "/public/imp_assets/tutorials/style-guide.svg",
-  //     shortIntro: "Styling and theming tutorial.",
-  //     category: "tutorial",
-  //   },
-  //   seo: {
-  //     keywords:
-  //       "demo, all components, style guide, styling, css, tailwind css, tailwind, webexpe, webexpe.com",
-  //     ogImage: "/public/imp_assets/tutorials/style-guide.svg",
-  //   },
-  // },
-  // {
-  //   path: "/pages/tutorial/icons.tsx",
-  //   preview: {
-  //     author: MAYUR,
-  //     date: "August 13 2022",
-  //     articleTitle: "How to use icons",
-  //     tags: "demo, all components, style guide, styling tutorial, icons, how to use icons in website",
-  //     thumbnail: "/public/imp_assets/tutorials/how-to-use-icons.svg",
-  //     shortIntro: "How to use icons in your blog website.",
-  //     category: "tutorial",
-  //   },
-  //   seo: {
-  //     keywords:
-  //       "demo, all components, style guide, styling, css, tailwind css, tailwind, webexpe, webexpe.com, styling tutorial, icons, how to use icons in website",
-  //     ogImage: "/public/imp_assets/tutorials/how-to-use-icons.svg",
-  //   },
-  // },
-  // {
-  //   path: "/pages/blog/your-first-article.tsx",
-  //   preview: {
-  //     author: MAYUR,
-  //     date: "August 6 2022",
-  //     articleTitle: "Your first article",
-  //     shortIntro:
-  //       "This is a demo file for your first article, you can copy structure of this file to create multile article.",
-  //     tags: "demo, your first article",
-  //     thumbnail: "/public/imp_assets/tutorials/how-to-write-first-article.svg",
-  //     category: "tutorial",
-  //   },
-  //   seo: {
-  //     keywords:
-  //       "demo, all components, style guide, styling, css, tailwind css, tailwind, webexpe, webexpe.com, styling tutorial, icons, how to use icons in website",
-  //     ogImage: "/public/imp_assets/tutorials/how-to-write-first-article.svg",
-  //   },
-  // },
+  {
+    id: '3',
+    path: "/blog/3",
+    preview: {
+      author: RUPALI,
+      date: "4-28-2024",
+      articleTitle: "彌勒家族歡喜樂團",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/3/1.jpg",
+      shortIntro:
+        "感謝「彌勒家族歡喜樂團」蒞臨「社團法人新北市道一關懷協會」道一聖道院，帶來蓬勃熱情、有道氣的帶動唱表演。感謝慈悲！",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/3/1.jpg",
+    },
+  },
 ];
 
 export const SORTED_ARTICLES_BY_DATE = ARTICLES_LIST.sort((a, b) =>
