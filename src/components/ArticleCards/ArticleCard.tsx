@@ -79,7 +79,7 @@ const ArticleCard = ({ article, path }: IProp) => {
             "mt-4 mb-3 flex items-center px-3"
           )}
         >
-          <div className={"flex items-center"}>
+          {/* <div className={"flex items-center"}>
             <Avatar
               author={article.author}
               className="w-[40px] h-[40px] mr-3 text-xl"
@@ -94,11 +94,8 @@ const ArticleCard = ({ article, path }: IProp) => {
             >
               {article.author.name}
             </LinkTo>
-            {/* <p className={combineClasses(classes.author_name, 'text-sm font-medium')}>
-              {article.author.name}
-            </p> */}
           </div>
-          <ArticleCardCategory category={article.category} />
+          <ArticleCardCategory category={article.category} /> */}
         </div>
       </LinkTo>
     </div>

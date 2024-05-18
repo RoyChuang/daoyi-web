@@ -23,7 +23,7 @@ const ArticleMoreFromAuthor = ({
     "bg-white dark:bg-slate-800 dark:border-none border-slate-100 shadow-lg border md:rounded-[8px] px-[15px] py-[10px] mb-[30px] overflow-hidden";
   return (
     <>
-      <div className={wrapperClasses}>
+      {/* <div className={wrapperClasses}>
         <div className="flex items-center">
           <Avatar author={author} className="w-[60px] h-[60px] mr-3 text-xl" />
           <div className="font-semibold">
@@ -47,7 +47,7 @@ const ArticleMoreFromAuthor = ({
             ))}
           </div>
         )}
-      </div>
+      </div> */}
 
       {/* {isDesktopDevice() && (
         <div className={wrapperClasses}>
