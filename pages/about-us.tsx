@@ -18,9 +18,9 @@ const AboutUs = () => {
                         {PRIMARY_NAV.logo.text}
                     </Text>
                     
-                    <div className="flex gap-2">
-                        <img src="/images/about1.jpeg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
-                        <img src="/images/about2.jpeg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
+                    <div className="flex flex-wrap">
+                        <Image className="rounded-lg overflow-hidden shadow" src="/images/about1.jpeg" alt="nextjs-simple-blog-template" size={ImageSize.MEDIUM} />
+                        <Image className="rounded-lg overflow-hidden shadow" src="/images/about2.jpeg" alt="nextjs-simple-blog-template" size={ImageSize.MEDIUM} />
                     </div>
                 </div>
             </section>

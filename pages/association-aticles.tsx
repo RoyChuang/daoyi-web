@@ -15,12 +15,12 @@ const AboutUs = () => {
                         協會章程
                     </div>
                     
-                    <div className="flex flex-col gap-2 mt-4">
-                        <img src="/images/a1.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
-                        <img src="/images/a2.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
-                        <img src="/images/a3.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
-                        <img src="/images/a4.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
-                        <img src="/images/a5.jpg" alt="" className="rounded-lg overflow-hidden"  width="70%"/>
+                    <div className="flex flex-wrap mt-4">
+                        <Image className="rounded-lg overflow-hidden shadow" src="/images/a1.jpg" alt="nextjs-simple-blog-template" size={ImageSize.MEDIUM} />
+                        <Image className="rounded-lg overflow-hidden shadow" src="/images/a2.jpg" alt="nextjs-simple-blog-template" size={ImageSize.MEDIUM} />
+                        <Image className="rounded-lg overflow-hidden shadow" src="/images/a3.jpg" alt="nextjs-simple-blog-template" size={ImageSize.MEDIUM} />
+                        <Image className="rounded-lg overflow-hidden shadow" src="/images/a4.jpg" alt="nextjs-simple-blog-template" size={ImageSize.MEDIUM} />
+                        <Image className="rounded-lg overflow-hidden shadow" src="/images/a5.jpg" alt="nextjs-simple-blog-template" size={ImageSize.MEDIUM} />
                     </div>
                 </div>
             </section>

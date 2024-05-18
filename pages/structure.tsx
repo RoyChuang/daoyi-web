@@ -16,7 +16,7 @@ const AboutUs = () => {
                     </div>
                     
                     <div className="flex flex-col gap-2 mt-4">
-                        <img src="/images/s1.jpg" alt="" className="rounded-lg overflow-hidden" />
+                        <Image className="rounded-lg overflow-hidden shadow" src="/images/s1.jpg" alt="nextjs-simple-blog-template" size={ImageSize.DEFAULT} />
                     </div>
                 </div>
             </section>

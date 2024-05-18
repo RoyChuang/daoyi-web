@@ -53,7 +53,7 @@ const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) =>
           category ? "pt-10" : "pt-14"
         )}
       >
-        {category || author ? (
+        {/* {category || author ? (
           <h1
             className="px-2 mb-[30px] text-[45px] font-bold"
             style={{ textTransform: "capitalize" }}
@@ -61,7 +61,7 @@ const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) =>
             {category || author}
             <hr className="mt-[10px]" />
           </h1>
-        ) : null}
+        ) : null} */}
 
         <div className="flex flex-wrap">
           {currentItems
