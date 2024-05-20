@@ -33,6 +33,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '24519',
+    path: "/blog/24519",
+    preview: {
+      author: RUPALI,
+      date: "5-19-2024",
+      articleTitle: "興毅(忠信)北區全家福班",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/24519/1.jpeg",
+      shortIntro:
+        "興毅(忠信)北區全家福班，於今日在道明聖堂與道弘舉行，道一聖道院多位壇主人才參與班會，諸多道親並了愿兒童班輔導員、青少年班輔導員以長青班、壇主人才班執禮、茶水毛中、環境整理等各項服務工作，並從旁聞法，大家法喜充滿了愿快樂。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/24519/1.jpeg",
+    },
+  },
+  {
     id: '24518',
     path: "/blog/24518",
     preview: {
