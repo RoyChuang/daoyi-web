@@ -71,25 +71,6 @@ const ARTICLES_LIST: iArticle[] = [
     },
   },
   {
-    id: '1',
-    path: "/blog/1",
-    preview: {
-      author: RUPALI,
-      date: "5-11-2024",
-      articleTitle: "今日平溪「游氏佛堂」二十多年來再次辦道",
-      tags: "社團法人新北市道一關懷協會",
-      thumbnail: "/public/images/blog/1/1.jpeg",
-      shortIntro:
-        "今日平溪「游氏佛堂」二十多年來再次辦道，壹位佛根深厚(吃素:因看到卡車上載滿很多活生生的豬，將到屠宰場，心生不忍之心、從此開始不吃豬肉--不久就不吃葷、改吃素食)的有緣人聞得孔孟聖道、性理心法。感謝辦道以及服務前賢慈悲了愿，感謝慈悲！",
-      category: "道一",
-    },
-    seo: {
-      keywords:
-        "社團法人新北市道一關懷協會",
-      ogImage: "/public/images/blog/1/1.jpeg",
-    },
-  },
-  {
     id: '2',
     path: "/blog/2",
     preview: {
