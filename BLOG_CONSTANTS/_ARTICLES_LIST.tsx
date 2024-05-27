@@ -37,7 +37,7 @@ const ARTICLES_LIST: iArticle[] = [
     path: "/blog/24526",
     preview: {
       author: RUPALI,
-      date: "5-19-2024",
+      date: "5-26-2024",
       articleTitle: "泰國-上半年度「壇主人才班」",
       tags: "社團法人新北市道一關懷協會",
       thumbnail: "/public/images/blog/24526/1.jpeg",
