@@ -41,14 +41,14 @@ export const MAYUR: IAuthor = {
 }
 
 export const RUPALI: IAuthor = {
-    name: "Chao Ching HU",
+    name: "道一關懷協會",
     designation: "道一",
     bio: "",
     profilePic: "",
     social: [
         {
             icon: <AiFillFacebook />,
-            link: 'https://www.facebook.com/groups/1418391155044562/user/100002243690146'
+            link: 'https://www.facebook.com/groups/1418391155044562'
         },
     ]
 }
