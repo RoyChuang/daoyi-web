@@ -29,7 +29,6 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
     }
 }
  */
-
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
