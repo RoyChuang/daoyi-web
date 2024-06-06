@@ -48,7 +48,7 @@ const ARTICLES_LIST: iArticle[] = [
     seo: {
       keywords:
         "社團法人新北市道一關懷協會",
-      ogImage: "/public/images/blog/24526/1.jpeg",
+      ogImage: "/public/images/blog/24602/1.jpeg",
     },
   },
   {
