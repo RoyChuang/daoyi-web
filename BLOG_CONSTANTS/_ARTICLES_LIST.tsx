@@ -37,8 +37,8 @@ const ARTICLES_LIST: iArticle[] = [
     path: "/blog/24602",
     preview: {
       author: RUPALI,
-      date: "2-6-2024",
-      articleTitle: "土城「胡氏佛堂」班會邀請陳彦宸講師慈悲成全，題目：「道化人生」",
+      date: "6-2-2024",
+      articleTitle: "土城「胡氏佛堂」班會邀請陳彦宸講師慈悲成全，題目：「道化人生」。",
       tags: "社團法人新北市道一關懷協會",
       thumbnail: "/public/images/blog/24602/1.jpeg",
       shortIntro:
@@ -48,7 +48,7 @@ const ARTICLES_LIST: iArticle[] = [
     seo: {
       keywords:
         "社團法人新北市道一關懷協會",
-      ogImage: "/public/images/blog/24602/1.jpeg",
+      ogImage: "/public/images/blog/24526/1.jpeg",
     },
   },
   {
