@@ -62,7 +62,6 @@ const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) =>
             <hr className="mt-[10px]" />
           </h1>
         ) : null} */}
-
         <div className="flex flex-wrap">
           {currentItems
             ? (currentItems as any).map((each: iArticle, i: any) => (
