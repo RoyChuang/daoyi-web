@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '24609',
+    path: "/blog/24609",
+    preview: {
+      author: RUPALI,
+      date: "6-9-2024",
+      articleTitle: "第一屆第十四次理監事會議暨「道一聖道院」召開道務會議",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/24609/1.jpg",
+      shortIntro:
+        "今(6/9)日早上「社團法人新北市道一關懷協會」召開第一屆第十四次理監事會議暨「道一聖道院」召開道務會議。感謝諸位理監事、會員以及壇主人才踴躍出(列)席參加會議。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/24609/1.jpg",
+    },
+  },
+  {
     id: '24602',
     path: "/blog/24602",
     preview: {
