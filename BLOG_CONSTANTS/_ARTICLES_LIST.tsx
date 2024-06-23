@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '24623',
+    path: "/blog/24623",
+    preview: {
+      author: RUPALI,
+      date: "6-15-2024",
+      articleTitle: "道一聖道院今日班會邀請胡朝慶講師講：「皇母十誡-第五誡與第一誡至第五誡的小結論。",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/24623/1.jpg",
+      shortIntro:
+        "道一聖道院今日班會邀請胡朝慶講師講：「皇母十誡-第五誡與第一誡至第五誡的小結論。感謝陳領導點傳師慈悲致詞：「能忍為君子、堅忍為豪傑、化忍為聖賢、無生忍為佛」-前五誡小結。第一誡：靈性來源，回歸須「求真與力行」。第二誡：道脈傳承,超生了死，回歸本源。第三誡:道為尊，萬物皆由此生。第四誡：認清真假，借假修真，同登理天。第五誡：三期末劫，真道真解脫。感謝莊太太(春敏)、胡太太(素娥)、芳宜前賢和桂媚前賢準備豐盛午餐。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/24623/1.jpg",
+    },
+  },
+  {
     id: '24615',
     path: "/blog/24615",
     preview: {
