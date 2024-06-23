@@ -36,7 +36,7 @@ const ARTICLES_LIST: iArticle[] = [
     path: "/blog/24623",
     preview: {
       author: RUPALI,
-      date: "6-15-2024",
+      date: "6-23-2024",
       articleTitle: "道一聖道院今日班會邀請胡朝慶講師講：「皇母十誡-第五誡與第一誡至第五誡的小結論。",
       tags: "社團法人新北市道一關懷協會",
       thumbnail: "/public/images/blog/24623/1.jpg",
