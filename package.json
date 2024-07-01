@@ -11,7 +11,6 @@
     "out": "next build && next export"
   },
   "dependencies": {
-    "@types/lodash": "^4.17.5",
     "@uiw/react-textarea-code-editor": "^1.4.4",
     "css-loader": "^6.7.1",
     "next": "12.1.0",
@@ -35,6 +34,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@tailwindcss/typography": "^0.5.4",
+    "@types/lodash": "^4.17.5",
     "@types/node": "17.0.20",
     "@types/prismjs": "^1.26.0",
     "@types/react": "17.0.39",
