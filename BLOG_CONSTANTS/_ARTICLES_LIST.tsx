@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '24627',
+    path: "/blog/24627",
+    preview: {
+      author: RUPALI,
+      date: "6-27-2024",
+      articleTitle: "玄懋公司六月班會感謝廖文闊講師慈悲結緣（人生智慧）",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/24627/1.jpg",
+      shortIntro:
+        "玄懋公司六月班會感謝廖文闊講師慈悲結緣（人生智慧）感謝陳點傳師慈悲到班指導、感謝何點傳師慈悲結語，感謝公司夥伴們以及道親同修參加共修-護持班會。(資料來源-家慶壇主)",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/24627/1.jpg",
+    },
+  },
+  {
     id: '24623',
     path: "/blog/24623",
     preview: {
