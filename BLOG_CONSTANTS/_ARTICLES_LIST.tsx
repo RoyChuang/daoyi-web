@@ -37,7 +37,7 @@ const ARTICLES_LIST: iArticle[] = [
     preview: {
       author: RUPALI,
       date: "6-27-2024",
-      articleTitle: "玄懋公司六月班會感謝廖文闊講師慈悲結緣（人生智慧）",
+      articleTitle: "玄懋公司六月班會感謝廖文闊講師慈悲結緣（人生智慧）。",
       tags: "社團法人新北市道一關懷協會",
       thumbnail: "/public/images/blog/24627/1.jpg",
       shortIntro:
