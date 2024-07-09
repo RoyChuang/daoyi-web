@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '24707',
+    path: "/blog/24707",
+    preview: {
+      author: RUPALI,
+      date: "7-7-2024",
+      articleTitle: "胡氏佛堂班會邀請劉茂炳講師慈悲成全:題目:「羅漢道與菩薩道」",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/24707/1.jpg",
+      shortIntro:
+        "今7/7(日)土城胡氏佛堂班會邀請劉茂炳講師慈悲成全:題目:「羅漢道與菩薩道」，感謝陳領導點傳師慈悲結語。前言：由十八羅漢說起-由阿羅漢(自覺、自渡-了脫生死)至菩薩道(渡人、覺他-求道是回天之路成佛、成菩薩)說起；四聖諦-八正道至修持(須陀洹、斯陀含、阿那含、阿羅漢這是小乘)佛法中修行次第的四個階段(果位)，合起來稱為「四果羅漢」。也就是說，要修到「阿羅漢」這個層次，要先後經過這四個階段。也就是修習佛法的人達到了脫生死，即不再生死輪迴就叫阿羅漢，佛經(教)塑有十八羅漢。從凡夫位開始發心修行，必須歷經十信、十住、十行、十迴向、十地、等覺、妙覺等，總共有五十二階位的菩薩修行，才能次第的圓滿佛道的修證。感謝諸位前賢護持參加班會。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/24707/1.jpg",
+    },
+  },
+  {
     id: '24627',
     path: "/blog/24627",
     preview: {
