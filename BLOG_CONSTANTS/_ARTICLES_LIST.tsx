@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '24708',
+    path: "/blog/24708",
+    preview: {
+      author: RUPALI,
+      date: "7-8-2024",
+      articleTitle: "做「香椿醬」，準備馬來西亞北海「九皇齋」義賣水煎包及蘿蔔絲餅配料",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/24708/1.jpg",
+      shortIntro:
+        "今早到古坑「陳氏佛堂」做「香椿醬」，準備馬來西亞北海「九皇齋」義賣水煎包及蘿蔔絲餅配料用，感謝陳明芳壇主夫妻一早就砍香椿待用。感謝慈悲！",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/24708/1.jpg",
+    },
+  },
+  {
     id: '24707',
     path: "/blog/24707",
     preview: {
