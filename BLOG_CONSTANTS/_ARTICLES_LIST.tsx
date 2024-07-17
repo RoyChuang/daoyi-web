@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '247141',
+    path: "/blog/247141",
+    preview: {
+      author: RUPALI,
+      date: "7-14-2024",
+      articleTitle: "「九皇齋義賣」工作協調座談會",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/247141/1.jpg",
+      shortIntro:
+        "今(14)日下午舉行「九皇齋義賣」工作協調座談會，感謝何點傳師慈悲重點提示；其各項工作有一、切高麗菜、蘿蔔絲餅、攪拌。二、包水煎包、紅豆餅。三、包蘿蔔絲餅。四、煎水煎包、蘿蔔絲餅、紅豆餅。五、煮紅豆餅以及炒餡料。六、準備包裝袋子(紙袋外裝塑膠袋)。七、麵粉攪拌等。感謝諸位前賢慈悲出席參與座談。感謝慈悲！",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/247141/1.jpg",
+    },
+  },
+  {
     id: '24714',
     path: "/blog/24714",
     preview: {
