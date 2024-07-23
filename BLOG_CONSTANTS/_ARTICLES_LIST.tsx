@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '24719',
+    path: "/blog/24719",
+    preview: {
+      author: RUPALI,
+      date: "7-19-2024",
+      articleTitle: "「越南」，為期六天參辦道務",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/24719/1.jpg",
+      shortIntro:
+        "何點傳師慈悲帶領數位壇主人才到「越南」，為期六天參辦道務，感謝陳正安壇主與人才慈悲接機並至「禮正佛堂」與道親結緣，感謝陳壇主和道親慈悲熱誠服務款待，感謝慈悲。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/24719/1.jpg",
+    },
+  },
+  {
     id: '247141',
     path: "/blog/247141",
     preview: {
