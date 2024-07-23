@@ -37,7 +37,7 @@ const ARTICLES_LIST: iArticle[] = [
     preview: {
       author: RUPALI,
       date: "7-19-2024",
-      articleTitle: "「越南」，為期六天參辦道務",
+      articleTitle: "何點傳師帶領數位壇主人才到「越南」，為期六天參辦道務",
       tags: "社團法人新北市道一關懷協會",
       thumbnail: "/public/images/blog/24719/1.jpg",
       shortIntro:
