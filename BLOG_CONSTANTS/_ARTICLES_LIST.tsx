@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '24728',
+    path: "/blog/24728",
+    preview: {
+      author: RUPALI,
+      date: "7-28-2024",
+      articleTitle: "邀請辛勝華講師慈悲分享:「金剛般若波羅蜜經-持誦心得」",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/24728/1.jpg",
+      shortIntro:
+        "7/28(日)早上道一聖道院綜合班，邀請辛勝華講師慈悲分享:「金剛般若波羅蜜經-持誦心得」。感謝何點傳師慈悲致詞；分享內容從「法會因由分第一」--「莊嚴淨土分第十」。感謝鈞毅前賢、純良前賢慈悲輔導兒童班，感謝廚務二位陳太、劉太、吳太、洪大嫂和二位女兒們慈悲準備豐盛的午餐。感謝諸位前賢護持會。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/24728/1.jpg",
+    },
+  },
+  {
     id: '24719',
     path: "/blog/24719",
     preview: {
