@@ -77,7 +77,7 @@ const ARTICLES_LIST: iArticle[] = [
       date: "8-22-2024",
       articleTitle: "福地福人居、心田心性栽」最好的風水是人",
       tags: "社團法人新北市道一關懷協會",
-      thumbnail: "/public/images/blog/24822/1.jpeg",
+      thumbnail: "/public/images/blog/24822/1.jpg",
       shortIntro:
         "玄懋公司心靈講座，感謝陳點傳師慈悲到堂指導，感謝何點傳師慈悲結語鼓勵,感謝胡壇主結緣，題目:「福地福人居、心田心性栽」最好的風水是人。人間最好的風水就是——行善積德。這個道理看似簡單，實際上「大道至簡」。改變不了外在的環境，何不改變自己的行為，從自身做起，每一個身、口、意不對別人造成傷害，多行善，這不是在改變自己身上的風水了嗎？結論:世人盡知穴在山，豈知穴在方寸間。好山好水世不欠，苟非其人尋不見。",
       category: "道一",
@@ -85,7 +85,7 @@ const ARTICLES_LIST: iArticle[] = [
     seo: {
       keywords:
         "社團法人新北市道一關懷協會",
-      ogImage: "/public/images/blog/24822/1.jpeg",
+      ogImage: "/public/images/blog/24822/1.jpg",
     },
   },
   {
@@ -96,7 +96,7 @@ const ARTICLES_LIST: iArticle[] = [
       date: "8-18-2024",
       articleTitle: "總壇經典班、長青班道一服務",
       tags: "社團法人新北市道一關懷協會",
-      thumbnail: "/public/images/blog/24818/1.jpeg",
+      thumbnail: "/public/images/blog/24818/1.jpg",
       shortIntro:
         "8/18(日)總壇經典班、長青班道一服務：有您們真好!感謝鄧浴華、吳真漢、劉茂炳、鄧琴健、洪憲郎、胡朝慶、陳麗珠、李素娥、李淑華等前慈悲以及青年精英:美均、沛玲、子萱、鈞毅、軍霆等前賢慈悲了愿，分工合作、盡心盡力、圓滿完成任務，大家了愿快樂，真的!有您們真好!感謝慈悲!",
       category: "道一",
@@ -104,7 +104,7 @@ const ARTICLES_LIST: iArticle[] = [
     seo: {
       keywords:
         "社團法人新北市道一關懷協會",
-      ogImage: "/public/images/blog/24818/1.jpeg",
+      ogImage: "/public/images/blog/24818/1.jpg",
     },
   },
   {
