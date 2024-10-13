@@ -32,6 +32,44 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '241001',
+    path: "/blog/241001",
+    preview: {
+      author: RUPALI,
+      date: "10-01-2024",
+      articleTitle: "陳領導點傳師、何點傳師慈悲帶領台灣道親前往馬來西亞檳城了愿九皇齋義賣活動",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/241001/1.jpg",
+      shortIntro:
+        "陳領導點傳師、何點傳師慈悲帶領台灣道親前往馬來西亞檳城了愿九皇齋義賣活動，從06：30就有人購買，人潮開始增加早、午晚餐-宵夜更是絡繹不絕，餐桌客滿，無位，工作的前賢用餐只有就席而坐；青年精英更是用心經營，大家了愿歡喜，忙得不亦悅乎！辛苦了！",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/241001/1.jpg",
+    },
+  },
+  {
+    id: '24921',
+    path: "/blog/24921",
+    preview: {
+      author: RUPALI,
+      date: "9-21-2024",
+      articleTitle: "道親聯誼9/21(六)-9/22(日)二日遊暨敬老活動",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/24921/1.jpg",
+      shortIntro:
+        "道親聯誼9/21(六)-9/22(日)二日遊暨敬老活動-早上道一聖道院(巷口)出發→明德水庫-七里香玻瑰森林-午餐禪廚蔬食餐廳。感謝陳領導點傳師、何點傳師慈悲致詞鼓勵並祝福旅途愉快，大家平安、順利，感謝宏祥旅行社何奐毅先生、弘道彥宸講師精心籌劃安排、感謝財務劉前賢配合各項活動支援，感謝諸位前賢踴躍參與活動。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/24921/1.jpg",
+    },
+  },
+  {
     id: '24901',
     path: "/blog/24901",
     preview: {
