@@ -34,11 +34,11 @@ const ArticleCard = ({ article, path }: IProp) => {
         passHref
         className={combineClasses(
           classes.article_card,
-          "border-b-[5px] border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg flex flex-col justify-between"
+          "border-b-[5px] border-blue-500 dark:bg-slate-800 dark:text-white dark:drop-shadow-lg flex flex-col justify-between !rounded-xl"
         )}
       >
         <div>
-          <div className={"rounded-t-[4px] overflow-hidden h-[200px] relative"}>
+          <div className={"overflow-hidden h-[200px] relative"}>
             <Image
               src={transformImagePaths(article.thumbnail)}
               alt={article.articleTitle}

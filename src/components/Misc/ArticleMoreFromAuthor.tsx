@@ -88,23 +88,26 @@ const ArticleMoreFromAuthor = ({
                         alt={each.preview.articleTitle}
                       />
                     </div>
-                    <div className="pr-1 text-[16px] hover:text-blue-500 font-semibold">
-                      {each.preview.articleTitle}
+                    <div className="pr-1 text-[16px] hover:text-blue-500 font-semibold overflow-hidden">
+                      <p className="line-clamp-2 overflow-hidden">
+                        {each.preview.articleTitle}
+                      </p>
                     </div>
                   </div>
                 </div>
               </Link>
             ))}
-            {relatedArticles.length > 3 ? (
+            
+          </div>
+          {relatedArticles.length > 3 ? (
               <LinkTo
                 href={"/blog?author=" + author.name}
                 passHref
-                className="block text-sm py-3 px-2 text-center dark:bg-slate-900 bg-blue-500 rounded text-white font-bold hover:!text-blue-900 dark:hover:!text-slate-400 transition-all"
+                className="text-sm py-3 px-2 text-center dark:bg-slate-900 bg-blue-500 rounded text-white font-bold hover:!text-blue-900 dark:hover:!text-slate-400 transition-all flex justify-center items-center"
               >
-                <p>所有文章</p>
+                <p>顯示所有文章</p>
               </LinkTo>
             ) : null}
-          </div>
         </div>
       )}
     </>
