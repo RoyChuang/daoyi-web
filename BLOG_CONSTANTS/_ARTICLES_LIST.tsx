@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '241124',
+    path: "/blog/241124",
+    preview: {
+      author: RUPALI,
+      date: "11-24-2024",
+      articleTitle: "社團法人新北市道一關懷協會第一屆第十六次理監事會議暨「道一」道務會議",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/241124/1.jpg",
+      shortIntro:
+        "今日早上10:30召開「社團法人新北市道一關懷協會」第一屆第十六次理監事會議暨「道一」道務會議，感謝何常務理事致詞說明協會與興毅基金會之相互配合以及未來展望的推動方向，鼓勵諸位會員多多參與各項活動。感謝諸位理監事出席與諸位會員列席參加會議。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/241124/1.jpg",
+    },
+  },
+  {
     id: '241116',
     path: "/blog/241116",
     preview: {
