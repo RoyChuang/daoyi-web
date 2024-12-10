@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '241128',
+    path: "/blog/241128",
+    preview: {
+      author: RUPALI,
+      date: "11-28-2024",
+      articleTitle: "玄懋公司11月班會感謝廖文闊講師慈悲結緣主題（人生智慧）",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/241128/1.jpg",
+      shortIntro:
+        "玄懋公司11月班會感謝廖文闊講師慈悲結緣主題（人生智慧），感謝何點傳師慈悲到班指導。(資料來源-家慶壇主)",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/241128/1.jpg",
+    },
+  },
+  {
     id: '241124',
     path: "/blog/241124",
     preview: {
