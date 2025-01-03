@@ -24,18 +24,14 @@ import { AiFillGithub, AiOutlineTwitter, AiFillLinkedin, AiFillInstagram, AiFill
  */
 
 export const MAYUR: IAuthor = {
-    name: "Mayur Nalwala",
-    designation: "Software Engineer",
-    bio: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    name: "道一關懷協會",
+    designation: "道一",
+    bio: "",
     profilePic: "",
     social: [
         {
-            icon: <AiFillGithub />,
-            link: 'https://www.facebook.com/groups/1418391155044562/user/100002243690146'
-        },
-        {
-            icon: <AiFillLinkedin />,
-            link: 'https://www.linkedin.com/in/mayur-nalwala/'
+            icon: <AiFillFacebook />,
+            link: 'https://www.facebook.com/groups/1418391155044562'
         },
     ]
 }
@@ -177,7 +173,7 @@ export const DEFAULT_SEO: iSEO = {
     description: "社團法人新北市道一關懷協會 || DAOYI Care Association",
     keywords: "Care Association, 關懷協會, 社團法人, 新北市",
     url: WEBSITE_URL,
-    author: `${MAYUR.name}, ${RUPALI.name}`,
+    author: `${RUPALI.name}`,
     // twitterHandle: '@WebExpe',
     ogImage: '/public/images/cropped-LOGO.png'
 }
