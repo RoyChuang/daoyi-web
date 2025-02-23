@@ -32,6 +32,63 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '250131',
+    path: "/blog/250131",
+    preview: {
+      author: RUPALI,
+      date: "01-31-2025",
+      articleTitle: "道一年初三道一總壇團拜",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/250131/1.jpg",
+      shortIntro:
+        "年初三道一總壇團拜，感謝陳前人慈悲：「巳」也是己，「道」、「自己本性」也、本性本圓，修道去其本無，發揮本有的自性之光，人要圓、事要圓、身要圓、心要圓、性自光明而圓滿。感謝前人慈悲發紅包，何點傳師慈悲發賀年卡，大家互道恭禧、祝新年快樂、道務宏展(自性更圓滿)。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/250131/1.jpg",
+    },
+  },
+  {
+    id: '250129',
+    path: "/blog/250129",
+    preview: {
+      author: RUPALI,
+      date: "01-29-2025",
+      articleTitle: "道一龍飛蛇舞報新春、除歲獻供拜大年。",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/250129/1.jpg",
+      shortIntro:
+        "龍飛蛇舞報新春、除歲獻供拜大年。聲聲恭喜笑顏臉、祝福道務展鴻延。感謝何點傳師慈悲以及諸位壇主人才慈悲，回老母的家「道一聖道院」樹林中心佛堂守歲、道喜、拜年並祝福諸位前賢大德「新年快樂、道務宏展！」",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/250129/1.jpg",
+    },
+  },
+  {
+    id: '241219',
+    path: "/blog/241219",
+    preview: {
+      author: RUPALI,
+      date: "12-19-2024",
+      articleTitle: "玄懋公司12月班會感謝何點傳師慈悲結緣（身心性一貫）",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/241219/1.jpg",
+      shortIntro:
+        "玄懋公司12月班會感謝何點傳師慈悲結緣（身心性一貫）讓今年班會圓滿結束，感謝陳領導點傳師到班指導，以及各位前賢們與公司夥伴們的共同護持班會，感謝上天慈悲與天恩師德。(資料來源~家慶壇主)",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/241208/1.jpg",
+    },
+  },
+  {
     id: '241222',
     path: "/blog/241222",
     preview: {
