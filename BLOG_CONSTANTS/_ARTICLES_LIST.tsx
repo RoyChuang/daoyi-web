@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '250223',
+    path: "/blog/250223",
+    preview: {
+      author: RUPALI,
+      date: "02-23-2025",
+      articleTitle: "「社團法人新北市道一關懷協會」第一屆第十七次理監事會議暨「道一」道務會議 暨 道一經典班請胡朝慶壇主慈悲成全，題目「金剛經-如是我閒分第一」",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/250223/1.jpg",
+      shortIntro:
+        "今日早上10:30召開「社團法人新北市道一關懷協會」第一屆第十七次理監事會議暨「道一」道務會議，感謝陳理事致詞讚美去年大家的用心並期望未來協助各項工作都能推動順利。感謝諸位理監事出席與諸位會員列席參加會議。今年首次「道一經典班邀請胡朝慶壇主慈悲成全，題目「金剛經-如是我閒分第一」感謝陳點傳師慈悲致詞，感謝林太太、劉太太、陳太太、淑琴前賢桂等慈悲準備豐盛的午餐，感謝鈞毅講員等慈悲輔導兒童班會，感謝諸位前賢慈悲參加護持班會。感謝慈悲!",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/250223/1.jpg",
+    },
+  },
+  {
     id: '250131',
     path: "/blog/250131",
     preview: {
@@ -67,25 +86,6 @@ const ARTICLES_LIST: iArticle[] = [
       keywords:
         "社團法人新北市道一關懷協會",
       ogImage: "/public/images/blog/250129/1.jpg",
-    },
-  },
-  {
-    id: '241219',
-    path: "/blog/241219",
-    preview: {
-      author: RUPALI,
-      date: "12-19-2024",
-      articleTitle: "玄懋公司12月班會感謝何點傳師慈悲結緣（身心性一貫）",
-      tags: "社團法人新北市道一關懷協會",
-      thumbnail: "/public/images/blog/241219/1.jpg",
-      shortIntro:
-        "玄懋公司12月班會感謝何點傳師慈悲結緣（身心性一貫）讓今年班會圓滿結束，感謝陳領導點傳師到班指導，以及各位前賢們與公司夥伴們的共同護持班會，感謝上天慈悲與天恩師德。(資料來源~家慶壇主)",
-      category: "道一",
-    },
-    seo: {
-      keywords:
-        "社團法人新北市道一關懷協會",
-      ogImage: "/public/images/blog/241208/1.jpg",
     },
   },
   {
