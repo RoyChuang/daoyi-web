@@ -32,6 +32,63 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '250420',
+    path: "/blog/250420",
+    preview: {
+      author: RUPALI,
+      date: "04-20-2025",
+      articleTitle: "馬來西亞勞勿道一壇主人才班",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/250420/1.jpg",
+      shortIntro:
+        "馬來西亞勞勿道一壇主人才班，昨晚正式開始，此班會有新加坡、馬來西亞以及台灣道親們共同參與班；感謝顏點傳師致詞鼓勵，第一節課感謝何點傳師慈悲成全題目：「壇主人才素養」。第二節課由胡壇主主講，題目：「宏展道場光與熱」",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/250420/1.jpg",
+    },
+  },
+  {
+    id: '250328',
+    path: "/blog/250328",
+    preview: {
+      author: RUPALI,
+      date: "03-28-2025",
+      articleTitle: "「海外行愿班」暨「祖師紀念活動」",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/250328/1.jpg",
+      shortIntro:
+        "今年「海外行愿班」暨「祖師紀念活動」於3/27～3/30，舉行，道一台、新、馬道親於3/26早上09:00在道一聖道院舉辦座談會，中午到板橋遠百「果然匯」聚餐，歡迎國外道親來台參加班會暨祖師紀念活動。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/250328/1.jpg",
+    },
+  },
+  {
+    id: '250323',
+    path: "/blog/250323",
+    preview: {
+      author: RUPALI,
+      date: "03-23-2025",
+      articleTitle: "本會今日舉行「第二屆第一次會員大會」暨「理監事」改選。",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/250323/1.jpg",
+      shortIntro:
+        "本會今日舉行「第二屆第一次會員大會」暨「理監事」改選，並順利選出第二屆理事長、常務理事、理事、常務監事、監事以及總幹事、財務長等職位。感謝諸位會員出席參加會議。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/250323/1.jpg",
+    },
+  },
+  {
     id: '250223',
     path: "/blog/250223",
     preview: {
