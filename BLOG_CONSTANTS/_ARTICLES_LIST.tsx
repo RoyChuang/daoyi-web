@@ -75,7 +75,7 @@ const ARTICLES_LIST: iArticle[] = [
     preview: {
       author: RUPALI,
       date: "05-08-2025",
-      articleTitle: "道一泰國二天班會廚務任務",
+      articleTitle: "道一泰國二天班會廚務了愿",
       tags: "社團法人新北市道一關懷協會",
       thumbnail: "/public/images/blog/250508/1.jpg",
       shortIntro:
