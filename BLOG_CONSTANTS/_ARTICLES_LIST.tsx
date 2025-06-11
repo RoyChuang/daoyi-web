@@ -32,6 +32,63 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '250608',
+    path: "/blog/250608",
+    preview: {
+      author: RUPALI,
+      date: "06-08-2025",
+      articleTitle: "今日本協會開第二屆第二次理監事聯席會暨道一道務會議",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/250608/1.jpg",
+      shortIntro:
+        "今日本協會開第二屆第二次理監事聯席會暨道一道務會議，感謝何理事長對近期協會完成各項任務的嘉勉;感謝陳領導點傳師對道務的關心與鼓勵，感謝諸位理監事出席和諸會員與壇主人才列席開會。感謝慈悲！",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/250608/1.jpg",
+    },
+  },
+  {
+    id: '250525',
+    path: "/blog/250525",
+    preview: {
+      author: RUPALI,
+      date: "05-25-2025",
+      articleTitle: "道一經典班邀請蘇春香與黃坤紅二位講師慈悲講「金剛經-正信希有分第六」",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/250525/1.jpg",
+      shortIntro:
+        "道一經典班邀請蘇春香與黃坤紅二位講師慈悲講「金剛經-正信希有分第六」；感謝陳領導點傳師致詞鼓勵；講師云：「正信:正信者即對正道起信之謂也。」因為華嚴經云：「信為道源功德母，長養一切諸善根。」此已說明既聞大道，而更能生信心者，這絕非等閒之人也。「希有」者，因正法之難聞，而信者希有也。修道最大的障礙就是強烈的自我意識。就像影子隨著身體，遇到任何關係到自我的緣境，便會立刻顯現出來。感謝子薰、品妘等前賢輔導兒童班，感謝林太太、陳太太、素柔姐、淑琴等廚務前賢準備豐盛午餐。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/250525/1.jpg",
+    },
+  },
+  {
+    id: '250508',
+    path: "/blog/250508",
+    preview: {
+      author: RUPALI,
+      date: "05-08-2025",
+      articleTitle: "道一泰國二天班會廚務任務",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/250508/1.jpg",
+      shortIntro:
+        "今5/8（四）早上出發到泰國（曼谷），下午約三點抵達萬緣佛堂，感謝黃點傳師、吳點傳師、溫壇主慈悲接機，參駕後即刻討論二天班會之各項廚務準備工作",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/250508/1.jpg",
+    },
+  },
+  {
     id: '250420',
     path: "/blog/250420",
     preview: {
