@@ -36,7 +36,7 @@ const ARTICLES_LIST: iArticle[] = [
     path: "/blog/251109",
     preview: {
       author: RUPALI,
-      date: "11-10-2025",
+      date: "11-09-2025",
       articleTitle: "許瓊月講師慈悲成全，題目：「抱一為天下式」",
       tags: "社團法人新北市道一關懷協會",
       thumbnail: "/public/images/blog/251109/1.jpg",
@@ -55,7 +55,7 @@ const ARTICLES_LIST: iArticle[] = [
     path: "/blog/251012",
     preview: {
       author: RUPALI,
-      date: "11-10-2025",
+      date: "10-12-2025",
       articleTitle: "第一節邀請何良純講師慈悲成全，題目：「放下我執」，第二節邀請劉美均講師慈悲成全題目：「以愿力投入道場」",
       tags: "社團法人新北市道一關懷協會",
       thumbnail: "/public/images/blog/251012/1.jpg",
