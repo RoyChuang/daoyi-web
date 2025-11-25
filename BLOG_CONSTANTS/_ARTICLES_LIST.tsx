@@ -32,6 +32,25 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 const ARTICLES_LIST: iArticle[] = [
   {
+    id: '251124',
+    path: "/blog/251124",
+    preview: {
+      author: RUPALI,
+      date: "11-24-2025",
+      articleTitle: "道一關懷協會第二屆第四次理監事聯席會暨道一道務會議",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "/public/images/blog/251124/1.jpg",
+      shortIntro:
+        "本會於11/24（一）在礁溪溫泉公園舉行第二屆第四次理監事會議，並舉辦敬老活動。感謝何理事長致詞：本次舉辦二日遊的第二天在戶外開會是很不錯的體驗，每年也多有敬老活動，希望大家長長久久，希望明年協會的會務工作能更順利推動。感謝諸位理監事撥冗共襄盛舉並參與會議。",
+      category: "道一",
+    },
+    seo: {
+      keywords:
+        "社團法人新北市道一關懷協會",
+      ogImage: "/public/images/blog/251124/1.jpg",
+    },
+  },
+  {
     id: '251109',
     path: "/blog/251109",
     preview: {
