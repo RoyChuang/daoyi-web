@@ -18,8 +18,8 @@ const Home = () => {
           {/* <FeaturedArticleSection />
           <h1 className='px-3 w-full mb-5 text-xl md:text-3xl font-medium'>Checkout the below articles on how to use different layouts and components</h1>
           <hr className='border-1 mb-5 w-[98%] mx-auto' /> */}
-          <h1 className='px-3 w-full mb-5 text-3xl font-bold text-[#1e1e1e] flex items-center gap-3'>
-            <FontAwesomeIcon icon={faCalendarDays} className="text-[#1e1e1e]" />
+          <h1 className='px-3 w-full mb-5 text-3xl font-bold text-[#334155] flex items-center gap-3'>
+            <FontAwesomeIcon icon={faCalendarDays} className="text-[#334155]" />
             近期活動
           </h1>
           <HomeNonFeatureArticles />

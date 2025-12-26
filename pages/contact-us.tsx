@@ -13,9 +13,9 @@ const ContactUs = () => {
     } 
     return (
         <PageLayout PAGE_SEO={PAGE_SEO} home>
-            <section className='container px-3 pb-10 md:pt-20 pt-[80px]'>
-                <h1 className='text-3xl font-bold py-6 text-[#1e1e1e] flex items-center gap-3'>
-                    <FontAwesomeIcon icon={faHandHoldingHeart} className="text-[#1e1e1e]" />
+            <section className='container px-3 pb-10 pt-6'>
+                <h1 className='text-3xl font-bold py-6 text-[#334155] flex items-center gap-3'>
+                    <FontAwesomeIcon icon={faHandHoldingHeart} className="text-[#334155]" />
                     贊助本會
                 </h1>
             </section>

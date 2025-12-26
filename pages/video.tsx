@@ -8,14 +8,14 @@ const VideoPage = () => {
     return (
         <PageLayout home>
             <NextSeo
-                title="影音作品 | 社團法人新北市道一關懷協會"
-                description="道一關懷協會影音作品"
+                title="影音分享 | 社團法人新北市道一關懷協會"
+                description="道一關懷協會影音分享"
                 {...DEFAULT_SEO}
             />
-            <section className='container px-3 pb-10'>
-                <h1 className='text-3xl font-bold py-6 text-[#1e1e1e] flex items-center gap-3'>
-                    <FontAwesomeIcon icon={faVideo} className="text-[#1e1e1e]" />
-                    影音作品
+            <section className='container px-3 pb-10 pt-6'>
+                <h1 className='text-3xl font-bold py-6 text-[#334155] flex items-center gap-3'>
+                    <FontAwesomeIcon icon={faVideo} className="text-[#334155]" />
+                    影音分享
                 </h1>
                 <div className='py-5 grid grid-cols-1 lg:grid-cols-2 gap-6'>
                     <div className='aspect-video w-full rounded-xl overflow-hidden shadow-lg'>

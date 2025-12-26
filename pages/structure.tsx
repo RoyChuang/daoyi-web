@@ -10,10 +10,10 @@ import { faSitemap } from "@fortawesome/free-solid-svg-icons";
 const AboutUs = () => {
     return (
         <PageLayout home>
-            <section className='container px-3 md:pb-20 md:pt-10 pt-20'>
+            <section className='container px-3 md:pb-20 pt-6'>
                 <div className="">
-                    <h1 className='text-3xl font-bold py-6 text-[#1e1e1e] flex items-center gap-3'>
-                        <FontAwesomeIcon icon={faSitemap} className="text-[#1e1e1e]" />
+                    <h1 className='text-3xl font-bold py-6 text-[#334155] flex items-center gap-3'>
+                        <FontAwesomeIcon icon={faSitemap} className="text-[#334155]" />
                         組織架構
                     </h1>
                     

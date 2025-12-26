@@ -51,8 +51,7 @@ const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) =>
     <PageLayout home>
       <div
         className={combineClasses(
-          "container mt-10 md:pt-0 px-0 md:px-3",
-          category ? "pt-10" : "pt-14"
+          "container px-0 md:px-3 pt-6"
         )}
       >
         {/* {category || author ? (
@@ -64,8 +63,8 @@ const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) =>
             <hr className="mt-[10px]" />
           </h1>
         ) : null} */}
-        <h1 className='px-3 w-full mb-5 text-3xl font-bold text-[#1e1e1e] flex items-center gap-3'>
-          <FontAwesomeIcon icon={faBullhorn} className="text-[#1e1e1e]" />
+        <h1 className='px-3 w-full mb-5 text-3xl font-bold text-[#334155] flex items-center gap-3'>
+          <FontAwesomeIcon icon={faBullhorn} className="text-[#334155]" />
           班會報導
         </h1>
         <div className="flex flex-wrap">
