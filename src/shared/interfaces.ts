@@ -65,6 +65,7 @@ export interface iNavLink {
   path: string;
   type?: string;
   newTab?: boolean;
+  children?: iNavLink[];
 }
 
 export interface iNavSocials {

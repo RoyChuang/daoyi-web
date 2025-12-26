@@ -7,7 +7,7 @@ import { Text, LinkTo } from '../../components';
 import { useTheme } from 'next-themes';
 import { BsFillMoonFill, BsFillSunFill } from "react-icons/bs";
 import { MdOutlineClose } from 'react-icons/md';
-import NavCatergoryDD from '../Misc/NavCategoryDD';
+import NavDropdown from '../Misc/NavDropdown';
 import { iNavLink, iNavSetup, iNavSocials } from '../../shared/interfaces';
 
 interface IProps {
@@ -45,7 +45,7 @@ const NavSidebar = ({ openSidebar = false, closeNavSidebar, navSetup, changeThem
                 </div>
                 <hr />
                 <div className='my-15'>
-                    {
+                {
                         navSetup.sideNavLinks.map((each: iNavLink, i: any) => (
                             each.type !== 'dropdown' ? !each.newTab ?
                                 <LinkTo href={each.path} key={i} passHref className='text-[16px] block my-3'>
@@ -55,7 +55,9 @@ const NavSidebar = ({ openSidebar = false, closeNavSidebar, navSetup, changeThem
                                     {each.label}
                                 </a>
                                 :
-                                <NavCatergoryDD label={each.label} openDD={openDD} setOpenDD={() => setOpenDD(!openDD)} />
+                                <div className="my-3" key={i}>
+                                    <NavDropdown item={each} onItemClick={closeNavSidebar} />
+                                </div>
                         ))
                     }
 

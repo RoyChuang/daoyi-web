@@ -8,7 +8,7 @@ import LinkTo from "../LinkTo";
 import { useTheme } from "next-themes";
 import { BsFillMoonFill, BsFillSunFill , BsFillShareFill} from "react-icons/bs";
 import { AiOutlineMenu, AiOutlineSearch } from "react-icons/ai";
-import NavCatergoryDD from "../Misc/NavCategoryDD";
+import NavDropdown from "../Misc/NavDropdown";
 import { iNavbar, iNavLink, iNavSocials } from "../../shared/interfaces";
 
 
@@ -54,7 +54,7 @@ const SimpleNavbar = ({ openSearch, changeTheme, toggleSideMenu, openSidebar = f
                   {each.label}
                 </a>
                 :
-                <NavCatergoryDD label={each.label} openDD={openDD} setOpenDD={() => setOpenDD(!openDD)} floating />
+                <NavDropdown key={i} item={each} floating />
             ))
           }
           {

@@ -68,10 +68,6 @@ export const PRIMARY_NAV: iNavSetup = {
         text: '社團法人新北市道一關懷協會',
         logoLight: '/images/cropped-LOGO.png'
     },
-    // logo: {
-    //     type: LogoType.TEXT,
-    //     logo: '社團法人新北市道一關懷協會',
-    // },
     // navLinks are the main navbar links that apper on top of every page
     navLinks: [
         {
@@ -79,35 +75,46 @@ export const PRIMARY_NAV: iNavSetup = {
             path: '/'
         },
         {
-            // for categories don't add path and add type: dropdown and pass path empty
+            label: '影音作品',
+            path: '/video'
+        },
+        {
             label: '文章',
             type: 'dropdown',
-            path: ''
+            path: '',
+            children: [
+                {
+                    label: '書名',
+                    type: 'dropdown',
+                    path: '',
+                    children: [
+                        {
+                            label: '道親手冊',
+                            path: '/dao-qin-handbook'
+                        }
+                    ]
+                },
+                {
+                    label: '班會報導',
+                    path: '/blog'
+                }
+            ]
         },
         {
             label: '關於我們',
-            path: '/about-us'
+            type: 'dropdown',
+            path: '',
+            children: [
+                {
+                    label: '協會章程',
+                    path: '/association-aticles'
+                },
+                {
+                    label: '組織架構',
+                    path: '/structure'
+                }
+            ]
         },
-        {
-            label: '協會章程',
-            path: '/association-aticles'
-        },
-        {
-            label: '組織架構',
-            path: '/structure'
-        },
-        
-        // {
-        //     // to open a link in new tab pass newTab: true
-        //     label: 'Support Us',
-        //     path: 'https://www.buymeacoffee.com/webexpe13z',
-        //     newTab: true
-        // },
-        // {
-        //     label: 'Github Repo',
-        //     path: 'https://github.com/webexpe13/blog-template-using-nextjs-typescript-tailwindcss',
-        //     newTab: true
-        // },
         {
             label: '贊助本會',
             path: '/contact-us'
@@ -120,52 +127,52 @@ export const PRIMARY_NAV: iNavSetup = {
             path: '/'
         },
         {
-            // for categories dont add path and add type: dropdown
+            label: '影音作品',
+            path: '/video'
+        },
+        {
             label: '文章',
             type: 'dropdown',
-            path: ''
+            path: '',
+            children: [
+                {
+                    label: '書名',
+                    type: 'dropdown',
+                    path: '',
+                    children: [
+                        {
+                            label: '道親手冊',
+                            path: '/dao-qin-handbook'
+                        }
+                    ]
+                },
+                {
+                    label: '班會報導',
+                    path: '/blog'
+                }
+            ]
         },
         {
             label: '關於我們',
-            path: '/about-us'
+            type: 'dropdown',
+            path: '',
+            children: [
+                {
+                    label: '協會章程',
+                    path: '/association-aticles'
+                },
+                {
+                    label: '組織架構',
+                    path: '/structure'
+                }
+            ]
         },
-        {
-            label: '協會章程',
-            path: '/association-aticles'
-        },
-        {
-            label: '組織架構',
-            path: '/structure'
-        },
-        // {
-        //     label: 'Support Us',
-        //     path: 'https://www.buymeacoffee.com/webexpe13z',
-        //     newTab: true
-        // },
-        // {
-        //     label: 'Github Repo',
-        //     path: 'https://github.com/webexpe13/blog-template-using-nextjs-typescript-tailwindcss',
-        //     newTab: true
-        // },
         {
             label: '贊助本會',
             path: '/contact-us'
         }
     ],
-    socials: [
-        // {
-        //     link: 'https://www.facebook.com/',
-        //     icon: <AiFillFacebook />
-        // },
-        // {
-        //     link: 'https://www.instagram.com/',
-        //     icon: <AiFillInstagram />
-        // },
-        // {
-        //     link: 'https://twitter.com/WebExpe',
-        //     icon: <AiOutlineTwitter />
-        // },
-    ]
+    socials: []
 }
 
 export const DEFAULT_SEO: iSEO = {
