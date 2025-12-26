@@ -5,6 +5,8 @@ import { SORTED_ARTICLES_BY_DATE } from '../BLOG_CONSTANTS/_ARTICLES_LIST';
 import { DEFAULT_SEO } from "../BLOG_CONSTANTS/_BLOG_SETUP";
 import FeaturedArticleSection from "../src/components/Misc/FeaturedArticleSection";
 import HomeNonFeatureArticles from "../src/components/Misc/HomeNonFeatureAricles";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 
 const Home = () => {
   return (
@@ -16,7 +18,10 @@ const Home = () => {
           {/* <FeaturedArticleSection />
           <h1 className='px-3 w-full mb-5 text-xl md:text-3xl font-medium'>Checkout the below articles on how to use different layouts and components</h1>
           <hr className='border-1 mb-5 w-[98%] mx-auto' /> */}
-          <h1 className='px-3 w-full mb-5 text-3xl md:text-5xl font-bold text-[#1e1e1e]'>近期活動</h1>
+          <h1 className='px-3 w-full mb-5 text-3xl font-bold text-[#1e1e1e] flex items-center gap-3'>
+            <FontAwesomeIcon icon={faCalendarDays} className="text-[#1e1e1e]" />
+            近期活動
+          </h1>
           <HomeNonFeatureArticles />
         </div>
       </div>

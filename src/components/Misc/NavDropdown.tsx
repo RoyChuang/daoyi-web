@@ -29,7 +29,10 @@ const SubMenuItem = ({
           "w-full flex items-center justify-between text-sm py-2 hover:bg-gray-100 dark:hover:bg-slate-700 text-left",
           floating ? "px-3" : "px-4"
         )}>
-          <span>{child.label}</span>
+          <span className="flex items-center gap-1">
+            {child.icon && <span className="text-sm">{child.icon}</span>}
+            {child.label}
+          </span>
           <BiChevronRight className="text-[16px] transform rotate-90" />
         </Menu.Button>
         <Transition
@@ -54,7 +57,10 @@ const SubMenuItem = ({
                         "block text-sm py-2 px-3"
                       )}
                     >
-                      <span onClick={onItemClick}>{subChild.label}</span>
+                      <span onClick={onItemClick} className="flex items-center gap-1">
+                        {subChild.icon && <span className="text-sm">{subChild.icon}</span>}
+                        {subChild.label}
+                      </span>
                     </LinkTo>
                   )}
                 </Menu.Item>
@@ -78,7 +84,10 @@ const SubMenuItem = ({
             "block text-sm py-2 px-3"
           )}
         >
-          <span onClick={onItemClick}>{child.label}</span>
+          <span onClick={onItemClick} className="flex items-center gap-1">
+            {child.icon && <span className="text-sm">{child.icon}</span>}
+            {child.label}
+          </span>
         </LinkTo>
       )}
     </Menu.Item>
@@ -93,7 +102,10 @@ const NavDropdown = ({
   return (
     <Menu as="div" className={combineClasses("relative", floating ? "mx-2" : "")}>
       <Menu.Button className="flex items-center cursor-pointer focus:outline-none">
-        <span className="my-0">{item.label}</span>
+        <span className="my-0 flex items-center gap-1">
+          {item.icon && <span className="text-sm">{item.icon}</span>}
+          {item.label}
+        </span>
         <BiChevronDown className="text-[20px] ml-1" />
       </Menu.Button>
       <Transition

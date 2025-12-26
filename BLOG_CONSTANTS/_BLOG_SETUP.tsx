@@ -1,6 +1,8 @@
 import { LogoType, NavbarType } from "../src/shared/enums";
 import { IAuthor, iNavSetup, iSEO } from "../src/shared/interfaces";
 import { AiFillGithub, AiOutlineTwitter, AiFillLinkedin, AiFillInstagram, AiFillFacebook } from "react-icons/ai";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHome, faVideo, faNewspaper, faUsers, faHandHoldingHeart, faBook, faBullhorn, faScroll, faSitemap } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * EXAMPLE AUTHOR
@@ -72,21 +74,25 @@ export const PRIMARY_NAV: iNavSetup = {
     navLinks: [
         {
             label: '首頁',
-            path: '/'
+            path: '/',
+            icon: <FontAwesomeIcon icon={faHome} />
         },
         {
             label: '影音作品',
-            path: '/video'
+            path: '/video',
+            icon: <FontAwesomeIcon icon={faVideo} />
         },
         {
             label: '文章',
             type: 'dropdown',
             path: '',
+            icon: <FontAwesomeIcon icon={faNewspaper} />,
             children: [
                 {
                     label: '書名',
                     type: 'dropdown',
                     path: '',
+                    icon: <FontAwesomeIcon icon={faBook} />,
                     children: [
                         {
                             label: '道親手冊',
@@ -96,7 +102,8 @@ export const PRIMARY_NAV: iNavSetup = {
                 },
                 {
                     label: '班會報導',
-                    path: '/blog'
+                    path: '/blog',
+                    icon: <FontAwesomeIcon icon={faBullhorn} />
                 }
             ]
         },
@@ -104,41 +111,49 @@ export const PRIMARY_NAV: iNavSetup = {
             label: '關於我們',
             type: 'dropdown',
             path: '',
+            icon: <FontAwesomeIcon icon={faUsers} />,
             children: [
                 {
                     label: '協會章程',
-                    path: '/association-aticles'
+                    path: '/association-aticles',
+                    icon: <FontAwesomeIcon icon={faScroll} />
                 },
                 {
                     label: '組織架構',
-                    path: '/structure'
+                    path: '/structure',
+                    icon: <FontAwesomeIcon icon={faSitemap} />
                 }
             ]
         },
         {
             label: '贊助本會',
-            path: '/contact-us'
+            path: '/contact-us',
+            icon: <FontAwesomeIcon icon={faHandHoldingHeart} />
         }
     ],
     // sideNavLinks are the links which appear when you open the side menu after clicking the burger menu icon.
     sideNavLinks: [
         {
             label: '首頁',
-            path: '/'
+            path: '/',
+            icon: <FontAwesomeIcon icon={faHome} />
         },
         {
             label: '影音作品',
-            path: '/video'
+            path: '/video',
+            icon: <FontAwesomeIcon icon={faVideo} />
         },
         {
             label: '文章',
             type: 'dropdown',
             path: '',
+            icon: <FontAwesomeIcon icon={faNewspaper} />,
             children: [
                 {
                     label: '書名',
                     type: 'dropdown',
                     path: '',
+                    icon: <FontAwesomeIcon icon={faBook} />,
                     children: [
                         {
                             label: '道親手冊',
@@ -148,7 +163,8 @@ export const PRIMARY_NAV: iNavSetup = {
                 },
                 {
                     label: '班會報導',
-                    path: '/blog'
+                    path: '/blog',
+                    icon: <FontAwesomeIcon icon={faBullhorn} />
                 }
             ]
         },
@@ -156,20 +172,24 @@ export const PRIMARY_NAV: iNavSetup = {
             label: '關於我們',
             type: 'dropdown',
             path: '',
+            icon: <FontAwesomeIcon icon={faUsers} />,
             children: [
                 {
                     label: '協會章程',
-                    path: '/association-aticles'
+                    path: '/association-aticles',
+                    icon: <FontAwesomeIcon icon={faScroll} />
                 },
                 {
                     label: '組織架構',
-                    path: '/structure'
+                    path: '/structure',
+                    icon: <FontAwesomeIcon icon={faSitemap} />
                 }
             ]
         },
         {
             label: '贊助本會',
-            path: '/contact-us'
+            path: '/contact-us',
+            icon: <FontAwesomeIcon icon={faHandHoldingHeart} />
         }
     ],
     socials: []

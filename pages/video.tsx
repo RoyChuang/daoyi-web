@@ -1,6 +1,8 @@
 import { PageLayout, Text, LinkTo } from '../src/components';
 import { MAYUR, DEFAULT_SEO } from '../BLOG_CONSTANTS/_BLOG_SETUP';
 import { NextSeo } from 'next-seo';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faVideo } from "@fortawesome/free-solid-svg-icons";
 
 const VideoPage = () => {
     return (
@@ -11,11 +13,10 @@ const VideoPage = () => {
                 {...DEFAULT_SEO}
             />
             <section className='container px-3 pb-10'>
-                <div className='pt-10 pb-5'>
-                    <Text title className='text-3xl'>
-                        影音作品
-                    </Text>
-                </div>
+                <h1 className='text-3xl font-bold py-6 text-[#1e1e1e] flex items-center gap-3'>
+                    <FontAwesomeIcon icon={faVideo} className="text-[#1e1e1e]" />
+                    影音作品
+                </h1>
                 <div className='py-5 grid grid-cols-1 lg:grid-cols-2 gap-6'>
                     <div className='aspect-video w-full rounded-xl overflow-hidden shadow-lg'>
                         <iframe

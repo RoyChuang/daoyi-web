@@ -7,6 +7,8 @@ import ReactPaginate from "react-paginate";
 import { useEffect, useState } from "react";
 import { iArticle } from "../../shared/interfaces";
 import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBullhorn } from "@fortawesome/free-solid-svg-icons";
 
 const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) => {
   const router = useRouter();
@@ -62,6 +64,10 @@ const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) =>
             <hr className="mt-[10px]" />
           </h1>
         ) : null} */}
+        <h1 className='px-3 w-full mb-5 text-3xl font-bold text-[#1e1e1e] flex items-center gap-3'>
+          <FontAwesomeIcon icon={faBullhorn} className="text-[#1e1e1e]" />
+          班會報導
+        </h1>
         <div className="flex flex-wrap">
           {currentItems
             ? (currentItems as any).map((each: iArticle, i: any) => (

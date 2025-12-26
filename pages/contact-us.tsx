@@ -2,6 +2,8 @@
 import { ImageSize, TextAlign, ListType } from "../src/shared/enums";
 import { PageLayout, Text, List, Image, LinkTo, Seperator, Slider  } from "../src/components";
 import { iSEO } from "../src/shared/interfaces";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHandHoldingHeart } from "@fortawesome/free-solid-svg-icons";
 
 const ContactUs = () => {
     const PAGE_SEO: iSEO = {
@@ -11,11 +13,11 @@ const ContactUs = () => {
     } 
     return (
         <PageLayout PAGE_SEO={PAGE_SEO} home>
-            <section className='container px-3 pb-10 md:pt-20 pt-[80px] flex items-center gap-3'>
-                <img src="/images/cropped-LOGO.png" alt="" className="rounded-lg overflow-hidden" width={100}/>
-                <Text title className="!text-5xl text-[#717172]">
+            <section className='container px-3 pb-10 md:pt-20 pt-[80px]'>
+                <h1 className='text-3xl font-bold py-6 text-[#1e1e1e] flex items-center gap-3'>
+                    <FontAwesomeIcon icon={faHandHoldingHeart} className="text-[#1e1e1e]" />
                     贊助本會
-                </Text>
+                </h1>
             </section>
             <section className={"dark:bg-slate-800 bg-blue-100 container py-3 md:px-20 px-5 rounded"}>
                 <Text p className="!text-lg leading-relaxed mt-5 px-1">

@@ -48,10 +48,12 @@ const NavSidebar = ({ openSidebar = false, closeNavSidebar, navSetup, changeThem
                 {
                         navSetup.sideNavLinks.map((each: iNavLink, i: any) => (
                             each.type !== 'dropdown' ? !each.newTab ?
-                                <LinkTo href={each.path} key={i} passHref className='text-[16px] block my-3'>
+                                <LinkTo href={each.path} key={i} passHref className='text-[16px] my-3 flex items-center gap-2'>
+                                    {each.icon && <span className="text-sm">{each.icon}</span>}
                                     {each.label}
                                 </LinkTo> :
-                                <a href={each.path} key={each.path} target="_blank" rel="noopener noreferrer" className='text-[16px] block my-3 flex-wrap'>
+                                <a href={each.path} key={each.path} target="_blank" rel="noopener noreferrer" className='text-[16px] my-3 flex items-center gap-2'>
+                                    {each.icon && <span className="text-sm">{each.icon}</span>}
                                     {each.label}
                                 </a>
                                 :
@@ -84,14 +86,9 @@ const NavSidebar = ({ openSidebar = false, closeNavSidebar, navSetup, changeThem
                     </button>
                 </div>
                 <hr /> */}
-                <div className='my-5'>
-                    <p className='text-sm font-light dark:text-gray-400 text-gray-500 mb-1'>Copyright © 2024</p>
-                    <LinkTo href="/privacy-policy" passHref className='text-sm font-light dark:text-gray-400 text-gray-500 pr-3'>
-                        Privacy Policy
-                    </LinkTo>
-                    <LinkTo href="/terms-and-condition" passHref className='text-sm font-light dark:text-gray-400 text-gray-500'>
-                        Terms and Conditions
-                    </LinkTo>
+                <div className='my-5 text-sm font-light dark:text-gray-400 text-gray-500'>
+                    <p className='mb-1'>社團法人新北市道一關懷協會</p>
+                    <p>© 2025 All Rights Reserved</p>
                 </div>
             </aside>
         </>

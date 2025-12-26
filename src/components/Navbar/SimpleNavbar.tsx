@@ -47,10 +47,12 @@ const SimpleNavbar = ({ openSearch, changeTheme, toggleSideMenu, openSidebar = f
           {
             navLinks.map((each: iNavLink, i: any) => (
               each.type !== 'dropdown' ? !each.newTab ?
-                <LinkTo href={each.path} key={i} passHref className='mx-2'>
+                <LinkTo href={each.path} key={i} passHref className='mx-2 flex items-center gap-1'>
+                  {each.icon && <span className="text-sm">{each.icon}</span>}
                   {each.label}
                 </LinkTo> :
-                <a href={each.path} key={each.path + 1} target="_blank" rel="noopener noreferrer" className='d-block mx-2 flex-wrap'>
+                <a href={each.path} key={each.path + 1} target="_blank" rel="noopener noreferrer" className='d-block mx-2 flex-wrap flex items-center gap-1'>
+                  {each.icon && <span className="text-sm">{each.icon}</span>}
                   {each.label}
                 </a>
                 :

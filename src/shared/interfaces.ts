@@ -19,7 +19,7 @@ export interface IArticleHeaderData {
 }
 
 export interface iArticle {
-  id: string,
+  id: string;
   path: string;
   featureArticle?: boolean;
   preview: IArticleHeaderData;
@@ -46,7 +46,7 @@ export interface iNavbar {
 }
 
 export interface iNavSetup {
-  type: NavbarType,
+  type: NavbarType;
   navLinks: iNavLink[];
   sideNavLinks: iNavLink[];
   socials: iNavSocials[];
@@ -66,6 +66,7 @@ export interface iNavLink {
   type?: string;
   newTab?: boolean;
   children?: iNavLink[];
+  icon?: any;
 }
 
 export interface iNavSocials {

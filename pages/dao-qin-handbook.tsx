@@ -1,6 +1,8 @@
 import { PageLayout, Text } from '../src/components';
 import { DEFAULT_SEO } from '../BLOG_CONSTANTS/_BLOG_SETUP';
 import { NextSeo } from 'next-seo';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
 
 const DaoQinHandbookPage = () => {
     // Google Drive PDF 嵌入連結
@@ -14,7 +16,8 @@ const DaoQinHandbookPage = () => {
                 {...DEFAULT_SEO}
             />
             <section className='container px-3 pb-10'>
-                <h1 className='text-3xl font-bold py-6 dark:text-white'>
+                <h1 className='text-3xl font-bold py-6 text-[#1e1e1e] flex items-center gap-3'>
+                    <FontAwesomeIcon icon={faBook} className="text-[#1e1e1e]" />
                     道親手冊
                 </h1>
                 <div 
