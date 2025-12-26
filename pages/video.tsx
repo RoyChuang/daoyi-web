@@ -20,20 +20,22 @@ const VideoPage = () => {
                     <div className='aspect-video w-full rounded-xl overflow-hidden shadow-lg'>
                         <iframe
                             className='w-full h-full'
-                            src="https://www.youtube.com/embed/QefFeDgybhs"
-                            title="YouTube video player"
+                            src="https://www.youtube.com/embed/QefFeDgybhs?feature=oembed"
+                            title="善歌丨但願丨活佛師尊 慈訓丨白陽小徒兒"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
                             allowFullScreen
                         ></iframe>
                     </div>
                     <div className='aspect-video w-full rounded-xl overflow-hidden shadow-lg'>
                         <iframe
                             className='w-full h-full'
-                            src="https://www.youtube.com/embed/xeBZjbmTlv0"
-                            title="YouTube video player"
+                            src="https://www.youtube.com/embed/xeBZjbmTlv0?feature=oembed"
+                            title="10聖賢腳步柳烱堯"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerPolicy="strict-origin-when-cross-origin"
                             allowFullScreen
                         ></iframe>
                     </div>
