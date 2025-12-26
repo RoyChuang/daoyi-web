@@ -1,19 +1,11 @@
 import { PageLayout, Text } from '../src/components';
 import { DEFAULT_SEO } from '../BLOG_CONSTANTS/_BLOG_SETUP';
 import { NextSeo } from 'next-seo';
-import dynamic from 'next/dynamic';
-
-// 動態載入 PDF Viewer（避免 SSR 問題）
-const PDFViewer = dynamic(() => import('../src/components/PDFViewer'), {
-    ssr: false,
-    loading: () => (
-        <div className="flex items-center justify-center h-[600px]">
-            <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
-        </div>
-    ),
-});
 
 const DaoQinHandbookPage = () => {
+    // Google Drive PDF 嵌入連結
+    const pdfUrl = "https://drive.google.com/file/d/1LhYOiGRLvwx6GrYdEZfKVkJp3xpkpDBZ/preview";
+
     return (
         <PageLayout home>
             <NextSeo
@@ -25,8 +17,18 @@ const DaoQinHandbookPage = () => {
                 <h1 className='text-3xl font-bold py-6 dark:text-white'>
                     道親手冊
                 </h1>
-                <div style={{ height: '700px' }}>
-                    <PDFViewer fileUrl="/book/book1.pdf" />
+                <div 
+                    className='border border-gray-300 dark:border-gray-700 rounded-lg overflow-hidden'
+                    style={{ height: '80vh', minHeight: '500px' }}
+                >
+                    <iframe
+                        src={pdfUrl}
+                        width="100%"
+                        height="100%"
+                        allow="autoplay"
+                        style={{ border: 'none' }}
+                        title="道親手冊"
+                    />
                 </div>
             </section>
         </PageLayout>
