@@ -16,8 +16,27 @@ const VideoPage = () => {
                         影音作品
                     </Text>
                 </div>
-                <div className='py-10 text-center text-gray-500 dark:text-gray-400'>
-                    <p className='text-lg'>頁面建置中，敬請期待...</p>
+                <div className='py-5 grid grid-cols-1 lg:grid-cols-2 gap-6'>
+                    <div className='aspect-video w-full rounded-xl overflow-hidden shadow-lg'>
+                        <iframe
+                            className='w-full h-full'
+                            src="https://www.youtube.com/embed/QefFeDgybhs"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                    <div className='aspect-video w-full rounded-xl overflow-hidden shadow-lg'>
+                        <iframe
+                            className='w-full h-full'
+                            src="https://www.youtube.com/embed/xeBZjbmTlv0"
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
                 </div>
             </section>
         </PageLayout>
