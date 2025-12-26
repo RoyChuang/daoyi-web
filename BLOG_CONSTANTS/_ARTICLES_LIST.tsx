@@ -30,7 +30,7 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 }
  */
 // clear this article list and add your own
-const ARTICLES_LIST: iArticle[] = [
+export const ARTICLES_LIST: iArticle[] = [
   {
     id: '251124',
     path: "/blog/251124",
