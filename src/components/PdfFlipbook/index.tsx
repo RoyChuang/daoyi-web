@@ -3,6 +3,7 @@ import HTMLFlipBook from 'react-pageflip';
 import * as pdfjsLib from 'pdfjs-dist';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft, faChevronRight, faExpand, faCompress, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import styles from './PdfFlipbook.module.css';
 
 // 設定 PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
@@ -16,7 +17,7 @@ interface PdfFlipbookProps {
 const Page = forwardRef<HTMLDivElement, { pageImage: string; pageNumber: number }>(
   ({ pageImage, pageNumber }, ref) => {
     return (
-      <div ref={ref} className="pdf-page bg-white shadow-lg">
+      <div ref={ref} className={`${styles.pdfPage} bg-white shadow-lg`}>
         <img 
           src={pageImage} 
           alt={`第 ${pageNumber} 頁`}
@@ -145,10 +146,10 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
   return (
     <div 
       ref={containerRef}
-      className={`pdf-flipbook-container ${className} ${isFullscreen ? 'fixed inset-0 z-50 bg-gray-900 flex flex-col' : ''}`}
+      className={`${styles.pdfFlipbookContainer} ${className} ${isFullscreen ? 'fixed inset-0 z-50 bg-gray-900 flex flex-col' : ''}`}
     >
       {/* 控制列 */}
-      <div className={`flex items-center justify-between px-4 py-3 bg-gradient-to-r from-slate-700 to-slate-800 text-white rounded-t-lg ${isFullscreen ? '' : ''}`}>
+      <div className={`flex items-center justify-between px-4 py-3 bg-gradient-to-r from-slate-700 to-slate-800 text-white rounded-t-lg`}>
         <div className="flex items-center gap-2">
           <button
             onClick={goToPrevPage}
@@ -223,21 +224,9 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
           ← 向左滑動翻下一頁 | 向右滑動翻上一頁 →
         </div>
       )}
-
-      <style jsx global>{`
-        .pdf-flipbook-container .stf__wrapper {
-          margin: 0 auto;
-        }
-        .pdf-page {
-          position: relative;
-          background: linear-gradient(135deg, #fff 0%, #f5f5f5 100%);
-        }
-        .stf__block {
-          box-shadow: 0 0 20px rgba(0,0,0,0.1);
-        }
-      `}</style>
     </div>
   );
 };
 
 export default PdfFlipbook;
+
