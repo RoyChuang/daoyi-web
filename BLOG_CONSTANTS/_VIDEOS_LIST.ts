@@ -1,0 +1,58 @@
+// 影片資料集中管理 - 新增影片只需在這裡加入即可
+
+export interface Video {
+  id: string;           // YouTube 影片 ID
+  title: string;        // 影片標題
+  description?: string; // 影片描述 (選填)
+  featured?: boolean;   // 是否為精選影片 (會顯示在首頁)
+}
+
+// YouTube 影片列表
+export const VIDEOS: Video[] = [
+  {
+    id: "QefFeDgybhs",
+    title: "善歌丨但願丨活佛師尊 慈訓丨白陽小徒兒",
+    description: "活佛師尊慈訓善歌",
+    featured: true,
+  },
+  {
+    id: "xeBZjbmTlv0",
+    title: "聖賢腳步 - 柳烱堯",
+    description: "聖賢腳步善歌",
+    featured: true,
+  },
+  // 新增影片範例：
+  // {
+  //   id: "VIDEO_ID_HERE",
+  //   title: "影片標題",
+  //   description: "影片描述",
+  //   featured: false,  // 設為 true 會顯示在首頁
+  // },
+];
+
+// 取得精選影片 (首頁用)
+export const getFeaturedVideos = (count?: number): Video[] => {
+  const featured = VIDEOS.filter(v => v.featured);
+  return count ? featured.slice(0, count) : featured;
+};
+
+// 取得 YouTube 縮圖 URL
+export const getYoutubeThumbnail = (videoId: string, quality: 'default' | 'medium' | 'high' | 'maxres' = 'high'): string => {
+  const qualityMap = {
+    default: 'default',      // 120x90
+    medium: 'mqdefault',     // 320x180
+    high: 'hqdefault',       // 480x360
+    maxres: 'maxresdefault', // 1280x720
+  };
+  return `https://img.youtube.com/vi/${videoId}/${qualityMap[quality]}.jpg`;
+};
+
+// 取得 YouTube 嵌入 URL
+export const getYoutubeEmbedUrl = (videoId: string): string => {
+  return `https://www.youtube.com/embed/${videoId}`;
+};
+
+// 取得 YouTube 播放 URL
+export const getYoutubeWatchUrl = (videoId: string): string => {
+  return `https://www.youtube.com/watch?v=${videoId}`;
+};

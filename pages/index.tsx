@@ -6,7 +6,8 @@ import { DEFAULT_SEO } from "../BLOG_CONSTANTS/_BLOG_SETUP";
 import FeaturedArticleSection from "../src/components/Misc/FeaturedArticleSection";
 import HomeNonFeatureArticles from "../src/components/Misc/HomeNonFeatureAricles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faUserCircle, faBookOpen, faBook } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays, faUserCircle, faBookOpen, faBook, faVideo, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { getFeaturedVideos, getYoutubeThumbnail, getYoutubeWatchUrl } from "../BLOG_CONSTANTS/_VIDEOS_LIST";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { getAllBlogImages, BlogImage } from "../src/utils/imageUtils";
@@ -147,6 +148,64 @@ const Home = ({ allImages }: HomeProps) => {
               ))}
             </div>
           </div>
+        </div>
+
+        {/* 影音分享區塊 */}
+        <div className="mb-12 px-3">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className='text-3xl font-bold text-[#334155] flex items-center gap-3'>
+              <FontAwesomeIcon icon={faVideo} className="text-[#334155]" />
+              影音分享
+            </h2>
+            <Link href="/video" passHref>
+              <a className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors group">
+                更多
+                <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </a>
+            </Link>
+          </div>
+          <Swiper
+            modules={[Autoplay]}
+            spaceBetween={12}
+            slidesPerView={2}
+            breakpoints={{
+              480: { slidesPerView: 3 },
+              640: { slidesPerView: 4 },
+              1024: { slidesPerView: 5 },
+            }}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            loop={getFeaturedVideos().length > 5}
+          >
+            {getFeaturedVideos().map((video) => (
+              <SwiperSlide key={video.id}>
+                <a 
+                  href={getYoutubeWatchUrl(video.id)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative block rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                >
+                  <div className="aspect-video w-full">
+                    <img 
+                      src={getYoutubeThumbnail(video.id, 'medium')} 
+                      alt={video.title}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  {/* 播放按鈕 */}
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="w-10 h-10 rounded-full bg-red-600/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <FontAwesomeIcon icon={faPlay} className="text-white text-sm ml-0.5" />
+                    </div>
+                  </div>
+                </a>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
 
         <div className={'flex flex-wrap'}>
