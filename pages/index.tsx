@@ -8,6 +8,14 @@ import HomeNonFeatureArticles from "../src/components/Misc/HomeNonFeatureAricles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faUserCircle, faBookOpen, faBook } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
+import { GetServerSideProps } from "next";
+import { getAllBlogImages, getRandomImages, BlogImage } from "../src/utils/imageUtils";
+
+// Swiper 相關
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 // 書籍資料 - 未來新增書籍只需在這裡加入即可
 const books = [
@@ -26,11 +34,57 @@ const books = [
   // },
 ];
 
-const Home = () => {
+interface HomeProps {
+  randomImages: BlogImage[];
+}
+
+const Home = ({ randomImages }: HomeProps) => {
   return (
     <PageLayout home PAGE_SEO={DEFAULT_SEO}>
       <div className='w-full pb-20 mb-10 bg-slate-200 bg-cover bg-top h-[200px]' style={{backgroundImage: 'url(/images/top1.jpg)'}}>
       </div>
+      
+      {/* 隨機活動照片輪播區塊 */}
+      {randomImages && randomImages.length > 0 && (
+        <div className="container mx-auto lg:px-[15px] px-3 -mt-28 mb-8">
+          <div className="bg-white/70 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-white/20">
+            <Swiper
+              modules={[Autoplay, Pagination]}
+              spaceBetween={12}
+              slidesPerView={2}
+              breakpoints={{
+                640: { slidesPerView: 3 },
+                768: { slidesPerView: 4 },
+                1024: { slidesPerView: 5 },
+              }}
+              autoplay={{
+                delay: 3000,
+                disableOnInteraction: false,
+              }}
+              pagination={{
+                clickable: true,
+              }}
+              loop={true}
+              className="pb-8"
+            >
+              {randomImages.map((image, index) => (
+                <SwiperSlide key={index}>
+                  <Link href={image.blogPath} passHref>
+                    <a className="block w-full h-28 md:h-36 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                      <img 
+                        src={image.src} 
+                        alt={`活動照片 ${index + 1}`}
+                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                      />
+                    </a>
+                  </Link>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+        </div>
+      )}
+
       <div className="container mx-auto lg:px-[15px] px-0">
         
         {/* 人物分享 + 好書閱讀 區塊 */}
@@ -99,5 +153,17 @@ const Home = () => {
     </PageLayout>
   )
 }
+
+// 每次請求都會在伺服器端執行，隨機選取 5 張圖片
+export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+  const allImages = getAllBlogImages();
+  const randomImages = getRandomImages(allImages, 5);
+  
+  return {
+    props: {
+      randomImages,
+    },
+  };
+};
 
 export default Home
