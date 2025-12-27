@@ -38,12 +38,7 @@ const DaoQinHandbookPage = () => {
                 {/* PDF 翻書閱讀器 */}
                 <PdfFlipbook pdfUrl={pdfUrl} />
                 
-                {/* 提示訊息 */}
-                <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-                    <p className="text-amber-800 text-sm">
-                        📱 <strong>手機用戶提示：</strong> 可用手指左右滑動來翻頁，點擊頁面邊緣也可翻頁。建議使用全螢幕模式獲得最佳閱讀體驗。
-                    </p>
-                </div>
+
             </section>
         </PageLayout>
     );
