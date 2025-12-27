@@ -8,8 +8,9 @@ import HomeNonFeatureArticles from "../src/components/Misc/HomeNonFeatureAricles
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendarDays, faUserCircle, faBookOpen, faBook } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
-import { GetServerSideProps } from "next";
-import { getAllBlogImages, getRandomImages, BlogImage } from "../src/utils/imageUtils";
+import { GetStaticProps } from "next";
+import { getAllBlogImages, BlogImage } from "../src/utils/imageUtils";
+import { useState, useEffect } from "react";
 
 // Swiper 相關
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -35,10 +36,19 @@ const books = [
 ];
 
 interface HomeProps {
-  randomImages: BlogImage[];
+  allImages: BlogImage[];
 }
 
-const Home = ({ randomImages }: HomeProps) => {
+const Home = ({ allImages }: HomeProps) => {
+  // 在客戶端隨機選取圖片
+  const [randomImages, setRandomImages] = useState<BlogImage[]>([]);
+
+  useEffect(() => {
+    // 隨機選取 10 張圖片
+    const shuffled = [...allImages].sort(() => Math.random() - 0.5);
+    setRandomImages(shuffled.slice(0, 10));
+  }, [allImages]);
+
   return (
     <PageLayout home PAGE_SEO={DEFAULT_SEO}>
       <div className='w-full pb-20 mb-10 bg-slate-200 bg-cover bg-top h-[200px]' style={{backgroundImage: 'url(/images/top1.jpg)'}}>
@@ -154,14 +164,13 @@ const Home = ({ randomImages }: HomeProps) => {
   )
 }
 
-// 每次請求都會在伺服器端執行，隨機選取 5 張圖片
-export const getServerSideProps: GetServerSideProps<HomeProps> = async () => {
+// 在 build 時取得所有圖片列表
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
   const allImages = getAllBlogImages();
-  const randomImages = getRandomImages(allImages, 5);
   
   return {
     props: {
-      randomImages,
+      allImages,
     },
   };
 };
