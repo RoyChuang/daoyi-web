@@ -201,10 +201,10 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
               <FontAwesomeIcon icon={faUndo} />
             </button>
           )}
-          {/* 全螢幕 - 只在桌機顯示 */}
+          {/* 全螢幕 */}
           <button
             onClick={toggleFullscreen}
-            className="hidden md:flex w-10 h-10 items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors ml-2"
+            className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors ml-1"
             title={isFullscreen ? '退出全螢幕' : '全螢幕'}
           >
             <FontAwesomeIcon icon={isFullscreen ? faCompress : faExpand} />

@@ -29,8 +29,8 @@ const DaoQinHandbookPage = () => {
                 description="道一關懷協會道親手冊 - 翻書閱讀體驗"
                 {...DEFAULT_SEO}
             />
-            <section className='container px-3 pb-10 pt-6'>
-                <h1 className='text-3xl font-bold py-6 text-[#334155] flex items-center gap-3'>
+            <section className='container px-3 pb-10'>
+                <h1 className='text-xl font-bold pt-6 pb-2 text-[#334155] flex items-center gap-3'>
                     <FontAwesomeIcon icon={faBook} className="text-[#334155]" />
                     道親手冊
                 </h1>
