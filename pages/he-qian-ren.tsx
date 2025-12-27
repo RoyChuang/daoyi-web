@@ -21,7 +21,7 @@ const HeQianRenPage = () => {
                 {/* 主圖 - 戴藍帽近照 */}
                 <div className='mb-8'>
                     <img 
-                        src="/images/he-qian-ren/01-main-hero.jpg" 
+                        src="/images/he-qian-ren/index.jpg" 
                         alt="何紹棠前人" 
                         className='w-full max-w-2xl rounded-lg shadow-lg'
                     />
