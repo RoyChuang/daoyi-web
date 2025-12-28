@@ -1,4 +1,4 @@
-import ArticleCard from "../../components/ArticleCards/ArticleCard";
+import ArticleCardCompact from "../../components/ArticleCards/ArticleCardCompact";
 import { SORTED_ARTICLES_BY_DATE } from "../../../BLOG_CONSTANTS/_ARTICLES_LIST";
 import { useRouter } from "next/router";
 import { PageLayout } from "../../components";
@@ -10,7 +10,7 @@ import { AiFillCaretRight, AiFillCaretLeft } from "react-icons/ai";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBullhorn } from "@fortawesome/free-solid-svg-icons";
 
-const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) => {
+const BlogIndexPage = ({ articlesPerPage = 12 }: { articlesPerPage?: number }) => {
   const router = useRouter();
   const { category, author } = router.query;
   const categoryArticles = SORTED_ARTICLES_BY_DATE.filter(
@@ -70,7 +70,7 @@ const BlogIndexPage = ({ articlesPerPage = 6 }: { articlesPerPage?: number }) =>
         <div className="flex flex-wrap">
           {currentItems
             ? (currentItems as any).map((each: iArticle, i: any) => (
-                <ArticleCard article={each.preview} path={each.path} key={i} />
+                <ArticleCardCompact article={each.preview} path={each.path} key={i} />
               ))
             : null}
         </div>
