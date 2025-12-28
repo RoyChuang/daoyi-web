@@ -143,7 +143,7 @@ const Home = ({ allImages }: HomeProps) => {
                     {/* 書本容器 */}
                     <div 
                       className="
-                        relative w-[100px] h-[140px] 
+                        relative w-[90px] h-[120px] 
                         rounded-r-md rounded-l-sm
                         flex items-center justify-center
                         p-3 cursor-pointer
