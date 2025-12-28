@@ -6,8 +6,14 @@ import Seperator from '../../components/Seperator';
 import ArticleHeader from '../../components/ArticleHeader';
 import Avatar from '../../components/Misc/Avatar';
 import ArticleMoreFromAuthor from '../../components/Misc/ArticleMoreFromAuthor';
+import React from 'react';
 
-const Centered = ({ children }: any) => {
+interface CenteredProps {
+    children: React.ReactNode;
+    heroSlot?: React.ReactNode;
+}
+
+const Centered = ({ children, heroSlot }: CenteredProps) => {
     const ARTICLE_DETAILS = getArticleDetails();
     const author = ARTICLE_DETAILS.preview.author;
     const relatedArticles = SORTED_ARTICLES_BY_DATE.filter((each) => each.preview.author === author);
@@ -15,10 +21,20 @@ const Centered = ({ children }: any) => {
     return (
         <section className={combineClasses(classes.centered_article_wrapper, 'dark:bg-slate-900 dark:text-white')}>
             <div className="container px-0 md:px-[15px] pt-[50px] pb-[50px]">
-                <article className={combineClasses(classes.article_content, 'pb-[30px] px-3 bg-white dark:bg-slate-800 dark:border-none dark:drop-shadow-lg dark:text-white pt-10 md:pt-0 mx-auto font-regular text-lg leading-relaxed')}>
-                    <ArticleHeader ARTICLE_DETAILS={ARTICLE_DETAILS} centered />
-                    {children}
-                </article>
+                {/* 文章主體容器 - Hero + 內容統一包裝 */}
+                <div className="max-w-[1000px] mx-auto overflow-hidden rounded-none md:rounded-[8px] shadow-[0px_0px_15px_0px_rgba(0,0,0,0.15)]">
+                    {/* Hero 首圖區塊 */}
+                    {heroSlot && (
+                        <div className="w-full">
+                            {heroSlot}
+                        </div>
+                    )}
+                    {/* 文章內容區 */}
+                    <article className={combineClasses(classes.article_content, 'pb-[30px] px-3 bg-white dark:bg-slate-800 dark:border-none dark:text-white pt-6 md:pt-8 font-regular text-lg leading-relaxed !max-w-none !rounded-none !shadow-none !border-0')}>
+                        <ArticleHeader ARTICLE_DETAILS={ARTICLE_DETAILS} centered />
+                        {children}
+                    </article>
+                </div>
                 <Seperator />
                 <div className={combineClasses(classes.author_and_more, 'mx-auto')}>
                     <ArticleMoreFromAuthor author={author} relatedArticles={relatedArticles} articleGrid />

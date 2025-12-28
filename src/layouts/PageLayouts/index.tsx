@@ -6,6 +6,7 @@ import { CREATE_SEO_CONFIG, getArticleDetails } from '../../utils/utils';
 import Centered from './BlogCentered';
 import WithSidebar from './BlogWithSidebar';
 import HomeLayout from './HomeLayout';
+import React from 'react';
 
 interface IBlogLayout {
     children: any
@@ -14,9 +15,10 @@ interface IBlogLayout {
     blogcentered?: boolean;
     home?: boolean;
     ads?: string[];
+    heroSlot?: React.ReactNode;
 }
 
-const PageLayout = ({ children, PAGE_SEO, blogwithsidebar = false, blogcentered = false, home = false, ads = [] }: IBlogLayout) => {
+const PageLayout = ({ children, PAGE_SEO, blogwithsidebar = false, blogcentered = false, home = false, ads = [], heroSlot }: IBlogLayout) => {
     const ARTICLE_DETAILS = getArticleDetails();    
     let SEO_CONFIG = {};
     if (ARTICLE_DETAILS && ARTICLE_DETAILS.seo) {
@@ -33,7 +35,7 @@ const PageLayout = ({ children, PAGE_SEO, blogwithsidebar = false, blogcentered 
             <Navbar />
             {
                 blogwithsidebar ? <WithSidebar children={children} ads={ads} /> :
-                    blogcentered ? <Centered children={children} /> :
+                    blogcentered ? <Centered children={children} heroSlot={heroSlot} /> :
                         home ? <HomeLayout children={children} /> :
                             <HomeLayout children={children} />
             }

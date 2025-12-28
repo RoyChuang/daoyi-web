@@ -2,29 +2,153 @@
 import _ from 'lodash';
 import fs from "fs";
 import path from "path";
+import { useState } from 'react';
 
 import { ImageSize } from "../../src/shared/enums";
 import { PageLayout, Text, Image, } from "../../src/components";
 import { getArticleDetailById } from '../../src/utils/utils';
 import { ARTICLES_LIST } from '../../BLOG_CONSTANTS/_ARTICLES_LIST';
 
+// 解析內容，分離課程摘要和感謝名單
+function parseContent(shortIntro: string) {
+  // 嘗試分離感謝名單
+  const thanksPatterns = [
+    /感謝[\s\S]*?(?:慈悲|午餐|班會)[。．\.\s]*$/,
+    /感謝.*$/
+  ];
+  
+  let mainContent = shortIntro;
+  let thanksSection = '';
+  
+  // 尋找最後一個「感謝」開頭的句子作為感謝區塊
+  const thanksMatch = shortIntro.match(/(?:感謝[^感謝]*){1,}$/);
+  if (thanksMatch) {
+    const thanksStart = shortIntro.lastIndexOf(thanksMatch[0]);
+    if (thanksStart > shortIntro.length * 0.5) { // 確保感謝區在內容後半部
+      mainContent = shortIntro.substring(0, thanksStart).trim();
+      thanksSection = thanksMatch[0].trim();
+    }
+  }
+  
+  return { mainContent, thanksSection };
+}
+
+// 格式化內容，增加段落分隔
+function formatContent(content: string) {
+  // 在常見的分段點加入換行
+  return content
+    .replace(/([。！？])\s*(?=[\u4e00-\u9fa5])/g, '$1\n\n')
+    .replace(/([。！？])(?=[「『])/g, '$1\n\n')
+    .replace(/內容[：:]/g, '\n\n**📖 課程內容：**\n\n')
+    .replace(/前言[：:]/g, '\n\n**📝 前言：**\n\n');
+}
+
 function Activities(props: { detail: any; images: any }) {
   const details = JSON.parse(props.detail);
-  const images = props.images;
+  const images = props.images as string[];
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  
+  // 分離首圖和其他圖片
+  const heroImage = images.length > 0 ? images[0] : null;
+  const galleryImages = images.length > 1 ? images.slice(1) : [];
+  
+  // 解析內容
+  const { mainContent, thanksSection } = parseContent(details.shortIntro || '');
+
+  // Hero 首圖區塊 - 透過 heroSlot 傳遞
+  const heroSlot = heroImage ? (
+    <div className="relative w-full">
+      <div className="relative overflow-hidden">
+        <img 
+          src={heroImage} 
+          alt={details.articleTitle}
+          className="w-full h-[300px] md:h-[450px] object-cover"
+        />
+        {/* 圖片數量標籤 */}
+        {images.length > 1 && (
+          <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-lg">
+            📷 {images.length} 張照片
+          </div>
+        )}
+      </div>
+    </div>
+  ) : undefined;
 
   return (
-    <PageLayout blogcentered>
-      <Text p>
-          {details.shortIntro}
-      </Text>
-      <div className="flex flex-wrap">
-        {_.map(images, (image: any, index: number) => {
-          return (
-            <Image className="mt-3 ml-0 rounded-lg overflow-hidden shadow" src={image} alt="nextjs-simple-blog-template" size={ImageSize.MEDIUM} key={index} />
-          )
-        })}
+    <PageLayout blogcentered heroSlot={heroSlot}>
+      {/* 內容區塊 */}
+      <div className="prose prose-lg max-w-none">
+        {/* 主要內容 - 使用引言風格 */}
+        <div className="relative bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl p-6 mb-8 border-l-4 border-blue-500 shadow-sm">
+          <div className="absolute -top-3 left-4 bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-medium">
+            📋 活動紀要
+          </div>
+          <p className="text-gray-700 leading-relaxed text-base md:text-lg mt-2 whitespace-pre-line">
+            {mainContent}
+          </p>
+        </div>
+
+        {/* 感謝名單區塊 */}
+        {thanksSection && (
+          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-5 mb-8 border border-amber-200">
+            <h3 className="flex items-center gap-2 text-amber-800 font-bold text-lg mb-3 mt-0">
+              🙏 感謝名單
+            </h3>
+            <p className="text-amber-900/80 text-sm md:text-base leading-relaxed m-0">
+              {thanksSection}
+            </p>
+          </div>
+        )}
       </div>
 
+      {/* 圖片相簿區塊 */}
+      {galleryImages.length > 0 && (
+        <div className="mt-10">
+          <h3 className="flex items-center gap-2 text-gray-800 font-bold text-xl mb-4">
+            📸 活動照片
+          </h3>
+          <div className={`grid gap-3 ${
+            galleryImages.length === 1 ? 'grid-cols-1' :
+            galleryImages.length === 2 ? 'grid-cols-2' :
+            'grid-cols-2 md:grid-cols-3'
+          }`}>
+            {galleryImages.map((image: string, index: number) => (
+              <div 
+                key={index}
+                className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+                onClick={() => setSelectedImage(image)}
+              >
+                <img 
+                  src={image} 
+                  alt={`活動照片 ${index + 2}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
+      {/* Lightbox 圖片檢視器 */}
+      {selectedImage && (
+        <div 
+          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-pointer"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button 
+            className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors z-10"
+            onClick={() => setSelectedImage(null)}
+          >
+            ✕
+          </button>
+          <img 
+            src={selectedImage} 
+            alt="放大檢視"
+            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          />
+        </div>
+      )}
     </PageLayout>
   );
 }
@@ -54,7 +178,10 @@ export async function getStaticProps(context: { params: { id: string } }) {
   try {
     const imagesDirectory = path.join(process.cwd(), `public/images/blog/${id}`);
     const filenames = fs.readdirSync(imagesDirectory);
-    images = filenames.map(name => path.join(`/images/blog/${id}`, name));
+    // 排序圖片（確保順序一致）
+    images = filenames
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+      .map(name => `/images/blog/${id}/${name}`);
   } catch (error) {
     // 如果圖片目錄不存在，使用空陣列
     images = [];

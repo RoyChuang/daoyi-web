@@ -18,11 +18,11 @@
 }
 
 .articleTitle{
-    font-size: 40px;
-    line-height: 48px;
+    font-size: 28px;
+    line-height: 38px;
 
     @include mobile{
-        font-size: 22px;
+        font-size: 20px;
         line-height: 28px;
     }
 }
