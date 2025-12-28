@@ -6,7 +6,7 @@ import { DEFAULT_SEO } from "../BLOG_CONSTANTS/_BLOG_SETUP";
 import FeaturedArticleSection from "../src/components/Misc/FeaturedArticleSection";
 import HomeNonFeatureArticles from "../src/components/Misc/HomeNonFeatureAricles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faUserCircle, faBookOpen, faBook, faVideo, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays, faUserCircle, faBookOpen, faVideo, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { getFeaturedVideos, getYoutubeThumbnail, getYoutubeWatchUrl } from "../BLOG_CONSTANTS/_VIDEOS_LIST";
 import Link from "next/link";
 import { GetStaticProps } from "next";
@@ -19,13 +19,13 @@ import { Autoplay, Pagination } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
+
 // 書籍資料 - 未來新增書籍只需在這裡加入即可
 const books = [
   {
     id: 1,
     title: "道親手冊",
     href: "/dao-qin-handbook",
-    icon: faBook,
   },
 ];
 
@@ -128,18 +128,41 @@ const Home = ({ allImages }: HomeProps) => {
               <FontAwesomeIcon icon={faBookOpen} className="text-[#334155]" />
               好書閱讀
             </h2>
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-6">
               {books.map((book) => (
                 <Link key={book.id} href={book.href} passHref>
                   <a className="block group">
-                    <div className="bg-white rounded-lg shadow-sm hover:shadow-md transition-all duration-300 border border-gray-100 px-3 py-2 flex items-center gap-2">
-                      {/* 書籍圖示 */}
-                      <div className="w-8 h-8 flex-shrink-0 rounded-full bg-slate-100 flex items-center justify-center">
-                        <FontAwesomeIcon icon={book.icon} className="text-sm text-[#334155] group-hover:scale-110 transition-transform duration-300" />
-                      </div>
-                      <span className="text-sm font-medium text-[#334155] group-hover:text-slate-600 transition-colors duration-300">
+                    {/* 書本容器 */}
+                    <div 
+                      className="
+                        relative w-[100px] h-[140px] 
+                        rounded-r-md rounded-l-sm
+                        flex items-center justify-center
+                        p-3 cursor-pointer
+                        transition-all duration-300 ease-out
+                        group-hover:-translate-x-0.5 group-hover:-translate-y-0.5
+                        bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-800
+                        shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),3px_3px_0px_#064e3b,5px_5px_10px_rgba(0,0,0,0.25)]
+                        group-hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),4px_4px_0px_#064e3b,8px_8px_15px_rgba(0,0,0,0.3)]
+                      "
+                    >
+                      {/* 書名 */}
+                      <div 
+                        className="
+                          text-white text-center text-xs font-bold
+                          leading-tight whitespace-pre-line
+                          border-t border-b border-white/30
+                          py-2 px-1
+                          drop-shadow-md
+                        "
+                      >
                         {book.title}
-                      </span>
+                        {'subtitle' in book && (
+                          <div className="text-[10px] font-normal mt-1 opacity-80">
+                            ({book.subtitle})
+                          </div>
+                        )}
+                      </div>
                     </div>
                   </a>
                 </Link>
