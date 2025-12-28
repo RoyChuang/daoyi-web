@@ -56,9 +56,24 @@ const Home = ({ allImages }: HomeProps) => {
       <div className='w-full pb-20 mb-10 bg-slate-200 bg-cover bg-top h-[200px]' style={{backgroundImage: 'url(/images/top1.jpg)'}}>
       </div>
       
+      {/* Facebook 社團小按鈕 */}
+      <div className="container mx-auto lg:px-[15px] px-3 -mt-32 mb-2 flex">
+        <a 
+          href="https://www.facebook.com/groups/1418391155044562"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300"
+        >
+          <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+          </svg>
+          <span className="text-white font-medium text-sm">道一關懐協會 歡迎加入</span>
+        </a>
+      </div>
+
       {/* 隨機活動照片輪播區塊 */}
       {randomImages && randomImages.length > 0 && (
-        <div className="container mx-auto lg:px-[15px] px-3 -mt-28 mb-8">
+        <div className="container mx-auto lg:px-[15px] px-3 mb-4">
           <div className="bg-white/70 backdrop-blur-md rounded-2xl p-4 shadow-lg border border-white/20">
             <Swiper
               modules={[Autoplay, Pagination]}
@@ -247,6 +262,7 @@ const Home = ({ allImages }: HomeProps) => {
           </h1>
           <HomeNonFeatureArticles />
         </div>
+
       </div>
     </PageLayout>
   )
