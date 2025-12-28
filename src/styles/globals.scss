@@ -119,3 +119,28 @@ hr {
     }
   }
 }
+
+// Swiper 分頁圓點樣式
+.swiper-pagination {
+  position: relative !important;
+  bottom: 0 !important;
+  margin-top: 12px;
+  
+  .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #94a3b8; // slate-400
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      opacity: 1;
+    }
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #3b82f6; // blue-500
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
