@@ -20,8 +20,16 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 
+// 書籍資料型別定義
+interface Book {
+  id: number;
+  title: string;
+  href: string;
+  subtitle?: string;  // 可選的副標題
+}
+
 // 書籍資料 - 未來新增書籍只需在這裡加入即可
-const books = [
+const books: Book[] = [
   {
     id: 1,
     title: "道親手冊",
