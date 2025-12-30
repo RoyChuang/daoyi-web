@@ -9,6 +9,13 @@ import { PageLayout, Text, Image, } from "../../src/components";
 import { getArticleDetailById } from '../../src/utils/utils';
 import { ARTICLES_LIST } from '../../BLOG_CONSTANTS/_ARTICLES_LIST';
 
+// Swiper 相關
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation, Pagination } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
 // 解析內容，分離課程摘要和感謝名單
 function parseContent(shortIntro: string) {
   // 嘗試分離感謝名單
@@ -48,29 +55,40 @@ function Activities(props: { detail: any; images: any }) {
   const images = props.images as string[];
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
   
-  // 分離首圖和其他圖片
-  const heroImage = images.length > 0 ? images[0] : null;
+  // 分離首圖和其他圖片（用於下方相簿區塊）
   const galleryImages = images.length > 1 ? images.slice(1) : [];
   
   // 解析內容
   const { mainContent, thanksSection } = parseContent(details.shortIntro || '');
 
-  // Hero 首圖區塊 - 透過 heroSlot 傳遞
-  const heroSlot = heroImage ? (
-    <div className="relative w-full">
-      <div className="relative overflow-hidden">
-        <img 
-          src={heroImage} 
-          alt={details.articleTitle}
-          className="w-full h-[300px] md:h-[450px] object-cover"
-        />
-        {/* 圖片數量標籤 */}
-        {images.length > 1 && (
-          <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1.5 rounded-full text-sm font-medium text-gray-700 shadow-lg">
-            📷 {images.length} 張照片
-          </div>
-        )}
-      </div>
+  // Hero 首圖區塊 - 使用 Swiper 輪播所有照片
+  const heroSlot = images.length > 0 ? (
+    <div className="relative w-full blog-hero-swiper">
+      <Swiper
+        modules={[Navigation, Pagination]}
+        spaceBetween={0}
+        slidesPerView={1}
+        navigation={true}
+        pagination={{ 
+          clickable: true,
+          type: 'fraction'  // 顯示 1/7 格式
+        }}
+        loop={images.length > 1}
+        className="w-full"
+      >
+        {images.map((image, index) => (
+          <SwiperSlide key={index}>
+            <div className="relative">
+              <img 
+                src={image} 
+                alt={`${details.articleTitle} - ${index + 1}`}
+                className="w-full h-[300px] md:h-[450px] object-cover object-top cursor-pointer"
+                onClick={() => setSelectedImage(image)}
+              />
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </div>
   ) : undefined;
 

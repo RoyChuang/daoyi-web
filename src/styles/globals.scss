@@ -144,3 +144,89 @@ hr {
     transform: scale(1.2);
   }
 }
+
+// Blog 頁面 Hero Swiper 樣式
+.blog-hero-swiper {
+  .swiper {
+    overflow: hidden;
+    border-radius: 0;
+  }
+
+  // 導航箭頭
+  .swiper-button-prev,
+  .swiper-button-next {
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+
+    &::after {
+      font-size: 18px;
+      font-weight: bold;
+      color: #374151; // gray-700
+    }
+
+    &:hover {
+      background: #fff;
+      transform: scale(1.1);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  .swiper-button-prev {
+    left: 16px;
+  }
+
+  .swiper-button-next {
+    right: 16px;
+  }
+
+  // 分頁 (1/7 格式)
+  .swiper-pagination {
+    position: absolute !important;
+    bottom: 16px !important;
+    left: 50% !important;
+    transform: translateX(-50%);
+    width: auto !important;
+    margin-top: 0;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(4px);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #374151;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  // 手機版調整
+  @media (max-width: 640px) {
+    .swiper-button-prev,
+    .swiper-button-next {
+      width: 36px;
+      height: 36px;
+
+      &::after {
+        font-size: 14px;
+      }
+    }
+
+    .swiper-button-prev {
+      left: 8px;
+    }
+
+    .swiper-button-next {
+      right: 8px;
+    }
+
+    .swiper-pagination {
+      left: 50% !important;
+      transform: translateX(-50%);
+      bottom: 12px !important;
+      padding: 4px 10px;
+      font-size: 12px;
+    }
+  }
+}
