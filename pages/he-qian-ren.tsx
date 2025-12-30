@@ -189,7 +189,7 @@ const HeQianRenPage = () => {
                             className='w-full max-w-xl rounded-lg shadow-md'
                         />
                         <figcaption className='text-sm text-gray-600 mt-2 max-w-xl'>
-                            中馬萬松佛堂開壇時吳前人慈悲：「沒有妙一就無道，沒有道一就無妙，一上加一等於三，信不信？請參此意。」
+                            中馬萬松佛堂開壇時吳前人慈悲：「沒有妙一就無道「一」，沒有道一就無妙「一」，一上加一等於三，信不信？請參此意。」
                         </figcaption>
                     </figure>
 
