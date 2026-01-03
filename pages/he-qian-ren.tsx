@@ -1,12 +1,55 @@
 import { PageLayout } from '../src/components';
+import { useState } from 'react';
 import { DEFAULT_SEO } from '../BLOG_CONSTANTS/_BLOG_SETUP';
 import { NextSeo } from 'next-seo';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCompactDisc } from "@fortawesome/free-solid-svg-icons";
+import { faCompactDisc, faImages } from "@fortawesome/free-solid-svg-icons";
+import { TEMPLE_PHOTOS } from '../BLOG_CONSTANTS/_TEMPLE_PHOTOS';
+import { getCloudinaryUrl } from '../src/utils/cloudinary';
+
+// Swiper 相關
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, Pagination, Navigation } from 'swiper';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
 
 const HeQianRenPage = () => {
+    const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
     return (
-        <PageLayout home>
+        <>
+            <style jsx global>{`
+                .temple-photo-swiper .swiper-button-next,
+                .temple-photo-swiper .swiper-button-prev {
+                    background: white;
+                    width: 45px;
+                    height: 45px;
+                    border-radius: 50%;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    transition: all 0.3s ease;
+                }
+                .temple-photo-swiper .swiper-button-next:hover,
+                .temple-photo-swiper .swiper-button-prev:hover {
+                    background: #f8fafc;
+                    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+                    transform: scale(1.1);
+                }
+                .temple-photo-swiper .swiper-button-next:after,
+                .temple-photo-swiper .swiper-button-prev:after {
+                    font-size: 18px;
+                    color: #334155;
+                    font-weight: bold;
+                }
+                .temple-photo-swiper .swiper-pagination-progressbar {
+                    background: rgba(0, 0, 0, 0.1);
+                    height: 4px;
+                    bottom: 0;
+                }
+                .temple-photo-swiper .swiper-pagination-progressbar-fill {
+                    background: #3b82f6;
+                }
+            `}</style>
+            <PageLayout home>
             <NextSeo
                 title="何前人專輯 | 社團法人新北市道一關懷協會"
                 description="好學不倦，筆耕不輟 – 何紹棠前人"
@@ -25,6 +68,65 @@ const HeQianRenPage = () => {
                         alt="何紹棠前人" 
                         className='w-full max-w-2xl rounded-lg shadow-lg'
                     />
+                </div>
+
+                {/* 佛堂照片輪播區塊 */}
+                <div className='my-8 p-6 bg-slate-50 rounded-xl'>
+                    <h3 className='text-2xl font-bold text-[#334155] mb-4 flex items-center gap-3'>
+                        <FontAwesomeIcon icon={faImages} className="text-[#334155]" />
+                        歷年珍貴照片
+                    </h3>
+                    <p className='text-gray-600 mb-6'>
+                        何前人一生為道務奔波,足跡遍及台灣、新加坡、馬來西亞、泰國、柬埔寨等地,以下是歷年珍貴照片記錄。
+                    </p>
+                    <Swiper
+                        modules={[Autoplay, Pagination, Navigation]}
+                        spaceBetween={20}
+                        slidesPerView={1}
+                        breakpoints={{
+                            640: { slidesPerView: 2 },
+                            768: { slidesPerView: 3 },
+                            1024: { slidesPerView: 4 },
+                        }}
+                        autoplay={{
+                            delay: 3500,
+                            disableOnInteraction: false,
+                        }}
+                        pagination={{
+                            type: 'progressbar',
+                        }}
+                        navigation={true}
+                        loop={true}
+                        className="temple-photo-swiper pb-8"
+                    >
+                        {TEMPLE_PHOTOS.map((photo, index) => (
+                            <SwiperSlide key={index}>
+                                <div className="group cursor-pointer" onClick={() => setSelectedPhoto(index)}>
+                                    <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                                        <img
+                                            src={getCloudinaryUrl(photo.publicId, {
+                                                width: 600,
+                                                height: 400,
+                                                crop: 'fit',
+                                                quality: 'auto',
+                                                format: 'auto',
+                                            })}
+                                            alt={photo.title}
+                                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </div>
+                                    <div className="mt-3">
+                                        <h4 className="font-semibold text-gray-800 text-sm line-clamp-1">
+                                            {photo.title}
+                                        </h4>
+                                        {photo.date && (
+                                            <p className="text-xs text-gray-500 mt-1">{photo.date}</p>
+                                        )}
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 </div>
 
                 {/* 標題區 */}
@@ -204,7 +306,53 @@ const HeQianRenPage = () => {
                     </div>
                 </article>
             </section>
+
+            {/* 燈箱效果 - 點擊放大照片 */}
+            {selectedPhoto !== null && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4"
+                    onClick={() => setSelectedPhoto(null)}
+                >
+                    <div className="relative max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
+                        {/* 關閉按鈕 */}
+                        <button
+                            className="absolute -top-12 right-0 text-white text-4xl font-bold hover:text-gray-300 transition-colors z-10"
+                            onClick={() => setSelectedPhoto(null)}
+                        >
+                            ×
+                        </button>
+                        
+                        {/* 大圖 */}
+                        <img
+                            src={getCloudinaryUrl(TEMPLE_PHOTOS[selectedPhoto].publicId, {
+                                width: 1920,
+                                quality: 'auto',
+                                format: 'auto',
+                            })}
+                            alt={TEMPLE_PHOTOS[selectedPhoto].title}
+                            className="w-full h-auto rounded-lg shadow-2xl"
+                        />
+                        
+                        {/* 照片資訊 */}
+                        <div className="text-white text-center mt-4 bg-black bg-opacity-50 p-4 rounded-lg">
+                            <h3 className="text-2xl font-bold">
+                                {TEMPLE_PHOTOS[selectedPhoto].title}
+                            </h3>
+                            {TEMPLE_PHOTOS[selectedPhoto].date && (
+                                <p className="text-gray-300 mt-2 text-lg">
+                                    {TEMPLE_PHOTOS[selectedPhoto].date}
+                                </p>
+                            )}
+                            <p className="text-gray-400 text-sm mt-2">
+                                {selectedPhoto + 1} / {TEMPLE_PHOTOS.length}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            )}
+
         </PageLayout>
+        </>
     );
 };
 
