@@ -116,9 +116,14 @@ const HeQianRenPage = () => {
                                         />
                                     </div>
                                     <div className="mt-3">
-                                        <h4 className="font-semibold text-gray-800 text-sm line-clamp-1">
-                                            {photo.title}
-                                        </h4>
+                                        <div className="flex items-center gap-2">
+                                            <span className="inline-block bg-blue-500 text-white text-xs px-2 py-0.5 rounded font-semibold">
+                                                {photo.order}
+                                            </span>
+                                            <h4 className="font-semibold text-gray-800 text-sm line-clamp-1 flex-1">
+                                                {photo.title}
+                                            </h4>
+                                        </div>
                                         {photo.date && (
                                             <p className="text-xs text-gray-500 mt-1">{photo.date}</p>
                                         )}
