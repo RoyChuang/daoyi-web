@@ -18,7 +18,7 @@ const HeQianRenPage = () => {
     const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
     return (
         <>
-            <style jsx global>{`
+            <style dangerouslySetInnerHTML={{__html: `
                 .temple-photo-swiper .swiper-button-next,
                 .temple-photo-swiper .swiper-button-prev {
                     background: white;
@@ -48,7 +48,7 @@ const HeQianRenPage = () => {
                 .temple-photo-swiper .swiper-pagination-progressbar-fill {
                     background: #3b82f6;
                 }
-            `}</style>
+            `}} />
             <PageLayout home>
             <NextSeo
                 title="何前人專輯 | 社團法人新北市道一關懷協會"
