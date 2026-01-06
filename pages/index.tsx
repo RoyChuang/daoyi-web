@@ -194,13 +194,13 @@ const Home = ({ allImages }: HomeProps) => {
           </div>
         </div>
 
-        {/* 影音分享區塊 - 加上背景 */}
+        {/* 聖樂影音區塊 - 加上背景 */}
         <div className="bg-slate-50 -mx-3 lg:-mx-[15px] px-3 lg:px-[15px] py-8 mb-0">
           <div className="container mx-auto">
             <div className="flex items-center justify-between mb-4">
               <h2 className='text-2xl font-bold text-[#334155] flex items-center gap-3'>
                 <FontAwesomeIcon icon={faVideo} className="text-[#334155]" />
-                影音分享
+                聖樂影音
               </h2>
               <Link href="/video" passHref>
                 <a className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors group">

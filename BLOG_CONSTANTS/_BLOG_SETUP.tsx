@@ -78,7 +78,7 @@ export const PRIMARY_NAV: iNavSetup = {
             icon: <FontAwesomeIcon icon={faHome} />
         },
         {
-            label: '影音分享',
+            label: '聖樂影音',
             path: '/video',
             icon: <FontAwesomeIcon icon={faVideo} />
         },
@@ -144,7 +144,7 @@ export const PRIMARY_NAV: iNavSetup = {
             icon: <FontAwesomeIcon icon={faHome} />
         },
         {
-            label: '影音分享',
+            label: '聖樂影音',
             path: '/video',
             icon: <FontAwesomeIcon icon={faVideo} />
         },
