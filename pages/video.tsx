@@ -151,11 +151,12 @@ const VideoPage = () => {
                         {/* YouTube iframe */}
                         <iframe
                             className="w-full h-full"
-                            src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=1`}
+                            src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0&modestbranding=1`}
                             title="YouTube video player"
                             frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowFullScreen
+                            referrerPolicy="strict-origin-when-cross-origin"
                         />
                     </div>
                 </div>
