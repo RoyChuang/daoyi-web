@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCompactDisc, faImages } from "@fortawesome/free-solid-svg-icons";
 import { TEMPLE_PHOTOS } from '../BLOG_CONSTANTS/_TEMPLE_PHOTOS';
 import { getCloudinaryUrl } from '../src/utils/cloudinary';
+import VideoThumbnail from '../src/components/VideoThumbnail';
 
 // Swiper 相關
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,6 +17,22 @@ import 'swiper/css/navigation';
 
 const HeQianRenPage = () => {
     const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
+    // 影片 modal 狀態
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+    const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
+
+    // 開啟影片 modal
+    const openVideoModal = (videoId: string) => {
+        setCurrentVideoId(videoId);
+        setIsVideoModalOpen(true);
+    };
+
+    // 關閉影片 modal
+    const closeVideoModal = () => {
+        setIsVideoModalOpen(false);
+        setCurrentVideoId(null);
+    };
+
     return (
         <>
             <style dangerouslySetInnerHTML={{__html: `
@@ -61,13 +78,31 @@ const HeQianRenPage = () => {
                     何前人專輯
                 </h1>
                 
-                {/* 主圖 - 戴藍帽近照 */}
-                <div className='mb-8'>
-                    <img 
-                        src="/images/he-qian-ren/index.jpg" 
-                        alt="何紹棠前人" 
-                        className='w-full max-w-2xl rounded-lg shadow-lg'
-                    />
+                {/* 主圖 + 影片區域 */}
+                <div className='mb-8 flex flex-col lg:flex-row gap-6'>
+                    {/* 左側：主圖 */}
+                    <div className='flex-shrink-0'>
+                        <img 
+                            src="/images/he-qian-ren/index.jpg" 
+                            alt="何紹棠前人" 
+                            className='w-full max-w-2xl rounded-lg shadow-lg'
+                        />
+                    </div>
+
+                    {/* 右側：兩個影片 */}
+                    <div className='flex flex-col gap-3 w-full max-w-sm lg:max-w-none lg:w-64'>
+                        <h3 className='text-sm font-bold text-[#334155]'>相關影片</h3>
+                        <VideoThumbnail
+                            videoId="C4Jsi-Q66dM"
+                            title="一家人(追思何前人)"
+                            onClick={() => openVideoModal("C4Jsi-Q66dM")}
+                        />
+                        <VideoThumbnail
+                            videoId="cJtZ7SaScmY"
+                            title="前人的手"
+                            onClick={() => openVideoModal("cJtZ7SaScmY")}
+                        />
+                    </div>
                 </div>
 
                 {/* 佛堂照片輪播區塊 */}
@@ -352,6 +387,41 @@ const HeQianRenPage = () => {
                                 {selectedPhoto + 1} / {TEMPLE_PHOTOS.length}
                             </p>
                         </div>
+                    </div>
+                </div>
+            )}
+
+            {/* 影片播放 Modal */}
+            {isVideoModalOpen && currentVideoId && (
+                <div 
+                    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                    onClick={closeVideoModal}
+                >
+                    <div 
+                        className="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* 關閉按鈕 */}
+                        <button
+                            onClick={closeVideoModal}
+                            className="absolute top-2 right-2 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-colors duration-200"
+                            aria-label="關閉影片"
+                        >
+                            <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        
+                        {/* YouTube iframe */}
+                        <iframe
+                            className="w-full h-full"
+                            src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=1&rel=0&modestbranding=1`}
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowFullScreen
+                            referrerPolicy="strict-origin-when-cross-origin"
+                        />
                     </div>
                 </div>
             )}
