@@ -5,9 +5,10 @@ import { SORTED_ARTICLES_BY_DATE } from '../BLOG_CONSTANTS/_ARTICLES_LIST';
 import { DEFAULT_SEO } from "../BLOG_CONSTANTS/_BLOG_SETUP";
 import FeaturedArticleSection from "../src/components/Misc/FeaturedArticleSection";
 import HomeNonFeatureArticles from "../src/components/Misc/HomeNonFeatureAricles";
+import VideoThumbnail from "../src/components/VideoThumbnail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faUserCircle, faBookOpen, faVideo, faPlay } from "@fortawesome/free-solid-svg-icons";
-import { getFeaturedVideos, getYoutubeThumbnail, getYoutubeWatchUrl } from "../BLOG_CONSTANTS/_VIDEOS_LIST";
+import { faCalendarDays, faUserCircle, faBookOpen, faVideo } from "@fortawesome/free-solid-svg-icons";
+import { getFeaturedVideos } from "../BLOG_CONSTANTS/_VIDEOS_LIST";
 import Link from "next/link";
 import { GetStaticProps } from "next";
 import { getAllBlogImages, BlogImage } from "../src/utils/imageUtils";
@@ -243,30 +244,11 @@ const Home = ({ allImages }: HomeProps) => {
             >
               {getFeaturedVideos().map((video) => (
                 <SwiperSlide key={video.id}>
-                  <button 
+                  <VideoThumbnail
+                    videoId={video.id}
+                    title={video.title}
                     onClick={() => openVideoModal(video.id)}
-                    className="group relative block rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 w-full"
-                  >
-                    <div className="aspect-video w-full">
-                      <img 
-                        src={getYoutubeThumbnail(video.id, 'medium')} 
-                        alt={video.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-                      />
-                    </div>
-                    {/* 播放按鈕 */}
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="w-10 h-10 rounded-full bg-red-600/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                        <FontAwesomeIcon icon={faPlay} className="text-white text-sm ml-0.5" />
-                      </div>
-                    </div>
-                    {/* 影片標題 - 底部 */}
-                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 pt-6">
-                      <p className="text-white text-xs font-medium line-clamp-2 text-left">
-                        {video.title}
-                      </p>
-                    </div>
-                  </button>
+                  />
                 </SwiperSlide>
               ))}
             </Swiper>

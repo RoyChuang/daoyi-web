@@ -2,10 +2,11 @@ import { PageLayout } from '../src/components';
 import { DEFAULT_SEO } from '../BLOG_CONSTANTS/_BLOG_SETUP';
 import { NextSeo } from 'next-seo';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVideo, faMusic, faTimes, faPlay } from "@fortawesome/free-solid-svg-icons";
-import { VIDEOS, getYoutubeThumbnail } from '../BLOG_CONSTANTS/_VIDEOS_LIST';
+import { faVideo, faMusic, faTimes } from "@fortawesome/free-solid-svg-icons";
+import { VIDEOS } from '../BLOG_CONSTANTS/_VIDEOS_LIST';
 import { SHEET_MUSIC_LIST, SheetMusic } from '../BLOG_CONSTANTS/_SHEET_MUSIC';
 import { getCloudinaryUrl } from '../src/utils/cloudinary';
+import VideoThumbnail from '../src/components/VideoThumbnail';
 import { useState, useEffect } from 'react';
 
 const VideoPage = () => {
@@ -91,28 +92,12 @@ const VideoPage = () => {
                 {activeTab === 'videos' && (
                     <div className='py-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                         {VIDEOS.map((video) => (
-                            <div key={video.id} className='group'>
-                                <button
-                                    onClick={() => openVideoModal(video.id)}
-                                    className='relative aspect-video w-full rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300'
-                                >
-                                    <img
-                                        src={getYoutubeThumbnail(video.id, 'medium')}
-                                        alt={video.title}
-                                        className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
-                                    />
-                                    {/* 播放按鈕 */}
-                                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors duration-300">
-                                        <div className="w-12 h-12 rounded-full bg-red-600/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                                            <FontAwesomeIcon icon={faPlay} className="text-white text-lg ml-0.5" />
-                                        </div>
-                                    </div>
-                                </button>
-                                {/* 影片標題 */}
-                                <h3 className="mt-2 text-sm font-medium text-gray-800 line-clamp-2 px-1">
-                                    {video.title}
-                                </h3>
-                            </div>
+                            <VideoThumbnail
+                                key={video.id}
+                                videoId={video.id}
+                                title={video.title}
+                                onClick={() => openVideoModal(video.id)}
+                            />
                         ))}
                     </div>
                 )}
