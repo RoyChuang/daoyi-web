@@ -44,12 +44,27 @@ interface HomeProps {
 const Home = ({ allImages }: HomeProps) => {
   // 在客戶端隨機選取圖片
   const [randomImages, setRandomImages] = useState<BlogImage[]>([]);
+  // 影片 modal 狀態
+  const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+  const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
 
   useEffect(() => {
     // 隨機選取 10 張圖片
     const shuffled = [...allImages].sort(() => Math.random() - 0.5);
     setRandomImages(shuffled.slice(0, 10));
   }, [allImages]);
+
+  // 開啟影片 modal
+  const openVideoModal = (videoId: string) => {
+    setCurrentVideoId(videoId);
+    setIsVideoModalOpen(true);
+  };
+
+  // 關閉影片 modal
+  const closeVideoModal = () => {
+    setIsVideoModalOpen(false);
+    setCurrentVideoId(null);
+  };
 
   return (
     <PageLayout home PAGE_SEO={DEFAULT_SEO}>
@@ -228,11 +243,9 @@ const Home = ({ allImages }: HomeProps) => {
             >
               {getFeaturedVideos().map((video) => (
                 <SwiperSlide key={video.id}>
-                  <a 
-                    href={getYoutubeWatchUrl(video.id)}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative block rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                  <button 
+                    onClick={() => openVideoModal(video.id)}
+                    className="group relative block rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300 w-full"
                   >
                     <div className="aspect-video w-full">
                       <img 
@@ -247,7 +260,13 @@ const Home = ({ allImages }: HomeProps) => {
                         <FontAwesomeIcon icon={faPlay} className="text-white text-sm ml-0.5" />
                       </div>
                     </div>
-                  </a>
+                    {/* 影片標題 - 底部 */}
+                    <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2 pt-6">
+                      <p className="text-white text-xs font-medium line-clamp-2 text-left">
+                        {video.title}
+                      </p>
+                    </div>
+                  </button>
                 </SwiperSlide>
               ))}
             </Swiper>
@@ -264,6 +283,40 @@ const Home = ({ allImages }: HomeProps) => {
         </div>
 
       </div>
+
+      {/* 影片播放 Modal */}
+      {isVideoModalOpen && currentVideoId && (
+        <div 
+          className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+          onClick={closeVideoModal}
+        >
+          <div 
+            className="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* 關閉按鈕 */}
+            <button
+              onClick={closeVideoModal}
+              className="absolute top-2 right-2 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-colors duration-200"
+              aria-label="關閉影片"
+            >
+              <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            
+            {/* YouTube iframe */}
+            <iframe
+              className="w-full h-full"
+              src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=1`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      )}
     </PageLayout>
   )
 }

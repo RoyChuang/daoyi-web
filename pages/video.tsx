@@ -2,8 +2,8 @@ import { PageLayout } from '../src/components';
 import { DEFAULT_SEO } from '../BLOG_CONSTANTS/_BLOG_SETUP';
 import { NextSeo } from 'next-seo';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faVideo, faMusic, faTimes } from "@fortawesome/free-solid-svg-icons";
-import { VIDEOS, getYoutubeEmbedUrl } from '../BLOG_CONSTANTS/_VIDEOS_LIST';
+import { faVideo, faMusic, faTimes, faPlay } from "@fortawesome/free-solid-svg-icons";
+import { VIDEOS, getYoutubeThumbnail } from '../BLOG_CONSTANTS/_VIDEOS_LIST';
 import { SHEET_MUSIC_LIST, SheetMusic } from '../BLOG_CONSTANTS/_SHEET_MUSIC';
 import { getCloudinaryUrl } from '../src/utils/cloudinary';
 import { useState, useEffect } from 'react';
@@ -11,12 +11,28 @@ import { useState, useEffect } from 'react';
 const VideoPage = () => {
     const [activeTab, setActiveTab] = useState<'videos' | 'sheets'>('videos');
     const [selectedSheet, setSelectedSheet] = useState<SheetMusic | null>(null);
+    // 影片 modal 狀態
+    const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
+    const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
+
+    // 開啟影片 modal
+    const openVideoModal = (videoId: string) => {
+        setCurrentVideoId(videoId);
+        setIsVideoModalOpen(true);
+    };
+
+    // 關閉影片 modal
+    const closeVideoModal = () => {
+        setIsVideoModalOpen(false);
+        setCurrentVideoId(null);
+    };
 
     // ESC 鍵關閉燈箱
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
             if (e.key === 'Escape') {
                 setSelectedSheet(null);
+                closeVideoModal();
             }
         };
         window.addEventListener('keydown', handleEsc);
@@ -25,12 +41,12 @@ const VideoPage = () => {
 
     // 防止背景滾動
     useEffect(() => {
-        if (selectedSheet) {
+        if (selectedSheet || isVideoModalOpen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = 'unset';
         }
-    }, [selectedSheet]);
+    }, [selectedSheet, isVideoModalOpen]);
 
     return (
         <PageLayout home>
@@ -71,20 +87,31 @@ const VideoPage = () => {
                     </button>
                 </div>
 
-                {/* 影音內容 */}
+                {/* 影音內容 - 改為縮圖網格 */}
                 {activeTab === 'videos' && (
-                    <div className='py-5 grid grid-cols-1 lg:grid-cols-2 gap-6'>
+                    <div className='py-5 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4'>
                         {VIDEOS.map((video) => (
-                            <div key={video.id} className='aspect-video w-full rounded-xl overflow-hidden shadow-lg'>
-                                <iframe
-                                    className='w-full h-full'
-                                    src={getYoutubeEmbedUrl(video.id)}
-                                    title={video.title}
-                                    frameBorder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    referrerPolicy="strict-origin-when-cross-origin"
-                                    allowFullScreen
-                                ></iframe>
+                            <div key={video.id} className='group'>
+                                <button
+                                    onClick={() => openVideoModal(video.id)}
+                                    className='relative aspect-video w-full rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300'
+                                >
+                                    <img
+                                        src={getYoutubeThumbnail(video.id, 'medium')}
+                                        alt={video.title}
+                                        className='w-full h-full object-cover group-hover:scale-105 transition-transform duration-300'
+                                    />
+                                    {/* 播放按鈕 */}
+                                    <div className="absolute inset-0 flex items-center justify-center bg-black/20 group-hover:bg-black/30 transition-colors duration-300">
+                                        <div className="w-12 h-12 rounded-full bg-red-600/90 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                                            <FontAwesomeIcon icon={faPlay} className="text-white text-lg ml-0.5" />
+                                        </div>
+                                    </div>
+                                </button>
+                                {/* 影片標題 */}
+                                <h3 className="mt-2 text-sm font-medium text-gray-800 line-clamp-2 px-1">
+                                    {video.title}
+                                </h3>
                             </div>
                         ))}
                     </div>
@@ -115,7 +142,41 @@ const VideoPage = () => {
                 )}
             </section>
 
-            {/* 燈箱 Modal */}
+            {/* 影片播放 Modal */}
+            {isVideoModalOpen && currentVideoId && (
+                <div 
+                    className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+                    onClick={closeVideoModal}
+                >
+                    <div 
+                        className="relative w-full max-w-4xl aspect-video bg-black rounded-lg overflow-hidden"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        {/* 關閉按鈕 */}
+                        <button
+                            onClick={closeVideoModal}
+                            className="absolute top-2 right-2 z-10 w-10 h-10 bg-white/90 hover:bg-white rounded-full flex items-center justify-center transition-colors duration-200"
+                            aria-label="關閉影片"
+                        >
+                            <svg className="w-6 h-6 text-gray-800" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+                        
+                        {/* YouTube iframe */}
+                        <iframe
+                            className="w-full h-full"
+                            src={`https://www.youtube.com/embed/${currentVideoId}?autoplay=1`}
+                            title="YouTube video player"
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        />
+                    </div>
+                </div>
+            )}
+
+            {/* 樂譜燈箱 Modal */}
             {selectedSheet && (
                 <div 
                     className='fixed inset-0 bg-black bg-opacity-90 z-50 flex flex-col items-center justify-center p-4'

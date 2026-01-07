@@ -10,6 +10,24 @@ export interface Video {
 // YouTube 影片列表
 export const VIDEOS: Video[] = [
   {
+    id: "C4Jsi-Q66dM",
+    title: "一家人(追思何前人)",
+    description: "一家人(追思何前人)",
+    featured: true,
+  },
+  {
+    id: "135eVc2YFtc",
+    title: "牧羊人",
+    description: "牧羊人",
+    featured: true,
+  },
+  {
+    id: "cJtZ7SaScmY",
+    title: "前人的手",
+    description: "前人的手",
+    featured: true,
+  },
+  {
     id: "QefFeDgybhs",
     title: "善歌丨但願丨活佛師尊 慈訓丨白陽小徒兒",
     description: "活佛師尊慈訓善歌",
