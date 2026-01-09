@@ -16,6 +16,82 @@ import { TransformWrapper, TransformComponent, ReactZoomPanPinchRef } from 'reac
 // 設定 PDF.js worker
 pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
 
+// IndexedDB 快取工具
+const DB_NAME = 'pdf_cache_db';
+const STORE_NAME = 'pdf_pages';
+const DB_VERSION = 1;
+
+const openDB = (): Promise<IDBDatabase> => {
+  return new Promise((resolve, reject) => {
+    const request = indexedDB.open(DB_NAME, DB_VERSION);
+    
+    request.onerror = () => reject(request.error);
+    request.onsuccess = () => resolve(request.result);
+    
+    request.onupgradeneeded = (event) => {
+      const db = (event.target as IDBOpenDBRequest).result;
+      if (!db.objectStoreNames.contains(STORE_NAME)) {
+        db.createObjectStore(STORE_NAME, { keyPath: 'url' });
+      }
+    };
+  });
+};
+
+const getCachedPDF = async (url: string): Promise<{ pages: string[], totalPages: number } | null> => {
+  try {
+    const db = await openDB();
+    const transaction = db.transaction(STORE_NAME, 'readonly');
+    const store = transaction.objectStore(STORE_NAME);
+    
+    return new Promise((resolve, reject) => {
+      const request = store.get(url);
+      request.onsuccess = () => {
+        const result = request.result;
+        if (result) {
+          // 檢查快取是否過期（7天）
+          const cacheAge = Date.now() - result.timestamp;
+          const maxAge = 7 * 24 * 60 * 60 * 1000;
+          if (cacheAge < maxAge) {
+            resolve({ pages: result.pages, totalPages: result.totalPages });
+          } else {
+            resolve(null);
+          }
+        } else {
+          resolve(null);
+        }
+      };
+      request.onerror = () => reject(request.error);
+    });
+  } catch (error) {
+    console.warn('無法讀取快取:', error);
+    return null;
+  }
+};
+
+const cachePDF = async (url: string, pages: string[], totalPages: number): Promise<void> => {
+  try {
+    const db = await openDB();
+    const transaction = db.transaction(STORE_NAME, 'readwrite');
+    const store = transaction.objectStore(STORE_NAME);
+    
+    const data = {
+      url,
+      pages,
+      totalPages,
+      timestamp: Date.now()
+    };
+    
+    store.put(data);
+    
+    return new Promise((resolve, reject) => {
+      transaction.oncomplete = () => resolve();
+      transaction.onerror = () => reject(transaction.error);
+    });
+  } catch (error) {
+    console.warn('無法儲存快取:', error);
+  }
+};
+
 interface PdfFlipbookProps {
   pdfUrl: string;
   className?: string;
@@ -32,13 +108,25 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const transformRef = useRef<ReactZoomPanPinchRef>(null);
 
-  // 載入 PDF 並轉換成圖片
+  // 載入 PDF 並轉換成圖片（使用 IndexedDB 快取）
   useEffect(() => {
     const loadPdf = async () => {
       try {
         setLoading(true);
         setError(null);
 
+        // 嘗試從 IndexedDB 讀取快取
+        const cached = await getCachedPDF(pdfUrl);
+        
+        if (cached) {
+          console.log('✅ 從快取載入 PDF');
+          setPages(cached.pages);
+          setTotalPages(cached.totalPages);
+          setLoading(false);
+          return;
+        }
+
+        console.log('📥 下載並轉換 PDF...');
         const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
         const numPages = pdf.numPages;
         setTotalPages(numPages);
@@ -64,6 +152,11 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
         }
 
         setPages(pageImages);
+        
+        // 儲存到 IndexedDB
+        await cachePDF(pdfUrl, pageImages, numPages);
+        console.log('💾 PDF 已快取到 IndexedDB');
+        
         setLoading(false);
       } catch (err) {
         console.error('PDF 載入錯誤:', err);

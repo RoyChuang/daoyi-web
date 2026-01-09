@@ -27,6 +27,8 @@ interface Book {
   title: string;
   href: string;
   subtitle?: string;  // 可選的副標題
+  bgGradient?: string;  // 背景漸層色
+  shadowColor?: string;  // 陰影顏色
 }
 
 // 書籍資料 - 未來新增書籍只需在這裡加入即可
@@ -35,6 +37,15 @@ const books: Book[] = [
     id: 1,
     title: "道親手冊",
     href: "/dao-qin-handbook",
+    bgGradient: "from-emerald-800 via-emerald-700 to-emerald-800",
+    shadowColor: "#064e3b",
+  },
+  {
+    id: 2,
+    title: "道學心德",
+    href: "/daomind",
+    bgGradient: "from-red-900 via-red-800 to-red-900",
+    shadowColor: "#7f1d1d",
   },
 ];
 
@@ -173,17 +184,24 @@ const Home = ({ allImages }: HomeProps) => {
                   <a className="block group">
                     {/* 書本容器 */}
                     <div 
-                      className="
+                      className={`
                         relative w-[90px] h-[120px] 
                         rounded-r-md rounded-l-sm
                         flex items-center justify-center
                         p-3 cursor-pointer
                         transition-all duration-300 ease-out
                         group-hover:-translate-x-0.5 group-hover:-translate-y-0.5
-                        bg-gradient-to-r from-emerald-800 via-emerald-700 to-emerald-800
-                        shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),3px_3px_0px_#064e3b,5px_5px_10px_rgba(0,0,0,0.25)]
-                        group-hover:shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1),4px_4px_0px_#064e3b,8px_8px_15px_rgba(0,0,0,0.3)]
-                      "
+                        bg-gradient-to-r ${book.bgGradient || 'from-emerald-800 via-emerald-700 to-emerald-800'}
+                      `}
+                      style={{
+                        boxShadow: `inset 0 0 0 1px rgba(255,255,255,0.1), 3px 3px 0px ${book.shadowColor || '#064e3b'}, 5px 5px 10px rgba(0,0,0,0.25)`
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.boxShadow = `inset 0 0 0 1px rgba(255,255,255,0.1), 4px 4px 0px ${book.shadowColor || '#064e3b'}, 8px 8px 15px rgba(0,0,0,0.3)`;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.boxShadow = `inset 0 0 0 1px rgba(255,255,255,0.1), 3px 3px 0px ${book.shadowColor || '#064e3b'}, 5px 5px 10px rgba(0,0,0,0.25)`;
+                      }}
                     >
                       {/* 書名 */}
                       <div 
