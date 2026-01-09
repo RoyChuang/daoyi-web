@@ -19,8 +19,12 @@ const PdfFlipbook = dynamic(
 );
 
 const DaomindPage = () => {
-    // GitHub CDN URL（不佔用 Azure 流量）
-    const pdfUrl = "https://raw.githubusercontent.com/RoyChuang/daoyi-web/main/public/pdf/daomind.pdf";
+    // 根據環境選擇 PDF 來源
+    // 開發環境：使用本地路徑
+    // 生產環境：使用 GitHub CDN（不佔 Azure 流量）
+    const pdfUrl = process.env.NODE_ENV === 'production'
+        ? "https://raw.githubusercontent.com/RoyChuang/daoyi-web/main/public/pdf/daomind.pdf"
+        : "/pdf/daomind.pdf";
 
     return (
         <PageLayout home>
