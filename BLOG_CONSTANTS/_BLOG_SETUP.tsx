@@ -102,6 +102,10 @@ export const PRIMARY_NAV: iNavSetup = {
                         {
                             label: '道親手冊',
                             path: '/dao-qin-handbook'
+                        },
+                        {
+                            label: '道學心德',
+                            path: '/daomind'
                         }
                     ]
                 },
@@ -168,6 +172,10 @@ export const PRIMARY_NAV: iNavSetup = {
                         {
                             label: '道親手冊',
                             path: '/dao-qin-handbook'
+                        },
+                        {
+                            label: '道學心德',
+                            path: '/daomind'
                         }
                     ]
                 },
