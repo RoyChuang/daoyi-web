@@ -100,11 +100,15 @@ interface PdfFlipbookProps {
 const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
   const [pages, setPages] = useState<string[]>([]);
   const [loading, setLoading] = useState(true);
+  const [loadingProgress, setLoadingProgress] = useState(0); // 載入進度 (0-100)
+  const [loadingStatus, setLoadingStatus] = useState(''); // 載入狀態訊息
   const [error, setError] = useState<string | null>(null);
   const [currentPage, setCurrentPage] = useState(0);
   const [totalPages, setTotalPages] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [scale, setScale] = useState(1);
+  const [pageInput, setPageInput] = useState(''); // 頁碼輸入框
+  const [showPageInput, setShowPageInput] = useState(false); // 是否顯示輸入框
   const containerRef = useRef<HTMLDivElement>(null);
   const transformRef = useRef<ReactZoomPanPinchRef>(null);
 
@@ -114,12 +118,16 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
       try {
         setLoading(true);
         setError(null);
+        setLoadingProgress(0);
+        setLoadingStatus('檢查快取...');
 
         // 嘗試從 IndexedDB 讀取快取
         const cached = await getCachedPDF(pdfUrl);
         
         if (cached) {
           console.log('✅ 從快取載入 PDF');
+          setLoadingStatus('從快取載入完成');
+          setLoadingProgress(100);
           setPages(cached.pages);
           setTotalPages(cached.totalPages);
           setLoading(false);
@@ -127,13 +135,36 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
         }
 
         console.log('📥 下載並轉換 PDF...');
-        const pdf = await pdfjsLib.getDocument(pdfUrl).promise;
+        setLoadingStatus('正在下載 PDF...');
+        
+        // 使用帶進度追蹤的方式載入 PDF
+        const loadingTask = pdfjsLib.getDocument(pdfUrl);
+        
+        // 標記下載是否完成
+        let downloadComplete = false;
+        
+        // 監聽下載進度
+        loadingTask.onProgress = (progressData: { loaded: number; total: number }) => {
+          if (progressData.total > 0 && !downloadComplete) {
+            const downloadProgress = Math.round((progressData.loaded / progressData.total) * 30); // 下載佔 30%
+            setLoadingProgress(downloadProgress);
+            setLoadingStatus(`下載中... ${Math.round((progressData.loaded / progressData.total) * 100)}%`);
+          }
+        };
+        
+        const pdf = await loadingTask.promise;
+        downloadComplete = true; // 標記下載完成
+        
         const numPages = pdf.numPages;
         setTotalPages(numPages);
+        setLoadingProgress(30);
+        setLoadingStatus('下載完成，開始轉換頁面...');
 
         const pageImages: string[] = [];
 
         for (let i = 1; i <= numPages; i++) {
+          setLoadingStatus(`轉換頁面: ${i} / ${numPages}`);
+          
           const page = await pdf.getPage(i);
           const pdfScale = 2; // 高解析度
           const viewport = page.getViewport({ scale: pdfScale });
@@ -149,15 +180,27 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
           }).promise;
 
           pageImages.push(canvas.toDataURL('image/jpeg', 0.9));
+          
+          // 更新進度 (30% 下載 + 60% 轉換 + 10% 快取)
+          const conversionProgress = 30 + Math.round((i / numPages) * 60);
+          setLoadingProgress(conversionProgress);
         }
 
         setPages(pageImages);
+        setLoadingProgress(90);
+        setLoadingStatus('正在儲存快取...');
         
         // 儲存到 IndexedDB
         await cachePDF(pdfUrl, pageImages, numPages);
         console.log('💾 PDF 已快取到 IndexedDB');
         
-        setLoading(false);
+        setLoadingProgress(100);
+        setLoadingStatus('載入完成！');
+        
+        // 短暫延遲後關閉載入畫面
+        setTimeout(() => {
+          setLoading(false);
+        }, 300);
       } catch (err) {
         console.error('PDF 載入錯誤:', err);
         setError('無法載入 PDF 檔案');
@@ -182,6 +225,47 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
       setCurrentPage(currentPage + 1);
       // 重置縮放
       transformRef.current?.resetTransform();
+    }
+  };
+
+  // 跳轉到指定頁面
+  const goToPage = (pageNum: number) => {
+    const targetPage = pageNum - 1; // 轉換為 0-based index
+    if (targetPage >= 0 && targetPage < totalPages) {
+      setCurrentPage(targetPage);
+      // 重置縮放
+      transformRef.current?.resetTransform();
+      setShowPageInput(false);
+      setPageInput('');
+    }
+  };
+
+  // 處理頁碼輸入
+  const handlePageInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    // 只允許數字
+    if (value === '' || /^\d+$/.test(value)) {
+      setPageInput(value);
+    }
+  };
+
+  // 處理頁碼輸入提交
+  const handlePageInputSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const pageNum = parseInt(pageInput);
+    if (!isNaN(pageNum)) {
+      goToPage(pageNum);
+    }
+  };
+
+  // 處理頁碼輸入框失焦
+  const handlePageInputBlur = () => {
+    const pageNum = parseInt(pageInput);
+    if (!isNaN(pageNum)) {
+      goToPage(pageNum);
+    } else {
+      setShowPageInput(false);
+      setPageInput('');
     }
   };
 
@@ -220,10 +304,46 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
 
   if (loading) {
     return (
-      <div className="flex flex-col items-center justify-center py-20">
-        <FontAwesomeIcon icon={faSpinner} className="text-4xl text-blue-500 animate-spin mb-4" />
-        <p className="text-gray-600">正在載入 PDF...</p>
-        <p className="text-gray-400 text-sm mt-2">首次載入可能需要一些時間</p>
+      <div className="flex flex-col items-center justify-center py-20 px-4">
+        {/* 載入圖示 */}
+        <div className="relative mb-6">
+          <FontAwesomeIcon 
+            icon={faSpinner} 
+            className="text-5xl text-blue-500 animate-spin" 
+          />
+          {/* 進度百分比 */}
+          <div className="absolute inset-0 flex items-center justify-center">
+            <span className="text-xs font-bold text-blue-600 mt-1">
+              {loadingProgress}%
+            </span>
+          </div>
+        </div>
+        
+        {/* 進度條 */}
+        <div className="w-full max-w-md mb-4">
+          <div className="bg-gray-200 rounded-full h-3 overflow-hidden shadow-inner">
+            <div 
+              className="bg-gradient-to-r from-blue-500 to-blue-600 h-full rounded-full transition-all duration-300 ease-out relative overflow-hidden"
+              style={{ width: `${loadingProgress}%` }}
+            >
+              {/* 動畫光澤效果 */}
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent animate-shimmer"></div>
+            </div>
+          </div>
+        </div>
+        
+        {/* 狀態訊息 */}
+        <p className="text-gray-700 font-medium text-center mb-2">
+          {loadingStatus || '正在載入 PDF...'}
+        </p>
+        
+        {/* 提示訊息 */}
+        {loadingProgress < 30 && (
+          <p className="text-gray-400 text-sm text-center">
+            首次載入可能需要一些時間
+          </p>
+        )}
+        
       </div>
     );
   }
@@ -239,11 +359,11 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
   return (
     <div 
       ref={containerRef}
-      className={`${className} ${isFullscreen ? 'fixed inset-0 z-50 bg-gray-900 flex flex-col' : 'rounded-lg overflow-hidden shadow-lg'}`}
+      className={`${className} ${isFullscreen ? 'fixed inset-0 z-50 bg-gray-900 flex flex-col' : 'rounded-lg overflow-hidden shadow-lg relative'}`}
     >
       {/* 控制列 */}
-      <div className="flex items-center justify-between px-3 py-2 md:px-4 md:py-3 bg-gradient-to-r from-slate-700 to-slate-800 text-white">
-        {/* 左側：翻頁控制 */}
+      <div className="flex items-center justify-between px-3 py-2 md:px-4 md:py-3 bg-gradient-to-r from-slate-700 to-slate-800 text-white shadow-lg">
+        {/* 左側:翻頁控制 */}
         <div className="flex items-center gap-1 md:gap-2">
           <button
             onClick={goToPrevPage}
@@ -253,9 +373,34 @@ const PdfFlipbook = ({ pdfUrl, className = '' }: PdfFlipbookProps) => {
           >
             <FontAwesomeIcon icon={faChevronLeft} />
           </button>
-          <span className="text-sm font-medium min-w-[60px] md:min-w-[80px] text-center">
-            {currentPage + 1} / {totalPages}
-          </span>
+          
+          {/* 頁碼顯示/輸入 */}
+          {!showPageInput ? (
+            <button
+              onClick={() => {
+                setShowPageInput(true);
+                setPageInput((currentPage + 1).toString());
+              }}
+              className="text-sm font-medium min-w-[60px] md:min-w-[80px] text-center bg-white/10 hover:bg-white/20 rounded px-2 py-1 transition-colors cursor-pointer"
+              title="點擊輸入頁碼"
+            >
+              {currentPage + 1} / {totalPages}
+            </button>
+          ) : (
+            <form onSubmit={handlePageInputSubmit} className="flex items-center gap-1">
+              <input
+                type="text"
+                value={pageInput}
+                onChange={handlePageInputChange}
+                onBlur={handlePageInputBlur}
+                autoFocus
+                className="w-12 md:w-14 text-sm font-medium text-center bg-white text-gray-900 rounded px-1 py-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                placeholder={`1-${totalPages}`}
+              />
+              <span className="text-sm font-medium">/ {totalPages}</span>
+            </form>
+          )}
+          
           <button
             onClick={goToNextPage}
             className="w-9 h-9 md:w-10 md:h-10 flex items-center justify-center bg-white/20 hover:bg-white/30 rounded-full transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
