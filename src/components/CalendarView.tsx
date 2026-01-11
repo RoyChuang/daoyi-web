@@ -52,7 +52,7 @@ const CalendarView = ({ events, year, month }: CalendarViewProps) => {
     const colors = getEventTypeColor(event.resource.type);
     return {
       style: {
-        backgroundColor: colors.badge.replace('bg-', '').replace('-500', ''),
+        backgroundColor: colors.color,
         borderRadius: '4px',
         opacity: 0.9,
         color: 'white',

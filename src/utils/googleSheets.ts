@@ -174,13 +174,19 @@ function parseCalendarCSV(csvText: string): CalendarEvent[] {
       
       if (centerClass) {
         title = centerClass;
-        type = '班會';
+        // 優先檢查特定班會名稱
+        if (centerClass.includes('古坑')) type = '古坑';
+        else if (centerClass.includes('玄懋')) type = '玄懋';
+        else if (centerClass.includes('道一')) type = '道一';
+        else if (centerClass.includes('青世代')) type = '青世代';
+        else type = '班會';
       } else if (work) {
         title = work;
         // 根據工作內容判斷類型
         if (work.includes('守壇')) type = '守壇';
         else if (work.includes('拜年')) type = '拜年';
         else if (work.includes('辭歲') || work.includes('迎歲')) type = '傳統節日';
+        else if (work.includes('總壇輪值') || work.includes('輪值')) type = '總壇輪值';
         else if (work.includes('班會')) type = '班會';
       }
       
