@@ -84,7 +84,7 @@ const Home = ({ allImages }: HomeProps) => {
       </div>
       
       {/* Facebook 社團小按鈕 */}
-      <div className="container mx-auto lg:px-[15px] px-3 -mt-32 mb-2 flex">
+      <div className="container mx-auto lg:px-[15px] px-3 -mt-32 mb-2 flex gap-3">
         <a 
           href="https://www.facebook.com/groups/1418391155044562"
           target="_blank"
@@ -96,6 +96,13 @@ const Home = ({ allImages }: HomeProps) => {
           </svg>
           <span className="text-white font-medium text-sm">道一關懐協會 歡迎加入</span>
         </a>
+        
+        <Link href="/calendar" passHref>
+          <a className="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300">
+            <FontAwesomeIcon icon={faCalendarDays} className="text-white" />
+            <span className="text-white font-medium text-sm">查看行事曆</span>
+          </a>
+        </Link>
       </div>
 
       {/* 隨機活動照片輪播區塊 */}

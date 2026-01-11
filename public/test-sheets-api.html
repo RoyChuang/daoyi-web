@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>測試 Google Sheets CSV API</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 20px;
+      }
+      button {
+        background: #4caf50;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      button:hover {
+        background: #45a049;
+      }
+      #output {
+        margin-top: 20px;
+        padding: 15px;
+        background: #f5f5f5;
+        border-radius: 4px;
+        white-space: pre-wrap;
+        font-family: monospace;
+        max-height: 600px;
+        overflow-y: auto;
+      }
+      .success {
+        color: green;
+      }
+      .error {
+        color: red;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>測試 Google Sheets CSV API</h1>
+    <p>這個頁面會測試從 Google Sheets 讀取 CSV 資料</p>
+
+    <button onclick="testAPI()">測試讀取資料</button>
+
+    <div id="output">點擊按鈕開始測試...</div>
+
+    <script>
+      const SPREADSHEET_ID = "1n6Dc0nq-4A7RZjdgG5_nzsYMK9KevNhht6w-5_zz2pU";
+      const GID = "78728578"; // 行事曆分頁
+
+      async function testAPI() {
+        const output = document.getElementById("output");
+        output.innerHTML = "正在讀取資料...\n";
+
+        try {
+          const url = `https://docs.google.com/spreadsheets/d/${SPREADSHEET_ID}/export?format=csv&gid=${GID}`;
+          output.innerHTML += `\n📍 API URL: ${url}\n\n`;
+
+          const response = await fetch(url);
+
+          if (!response.ok) {
+            throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+          }
+
+          const csvText = await response.text();
+
+          output.innerHTML += `✅ 成功讀取資料!\n`;
+          output.innerHTML += `📊 資料長度: ${csvText.length} 字元\n\n`;
+          output.innerHTML += `--- CSV 內容 (前 2000 字元) ---\n`;
+          output.innerHTML += csvText.substring(0, 2000);
+          output.innerHTML += `\n\n--- 分行顯示 (前 20 行) ---\n`;
+
+          const lines = csvText.split("\n");
+          output.innerHTML += `總行數: ${lines.length}\n\n`;
+
+          lines.slice(0, 20).forEach((line, i) => {
+            output.innerHTML += `第 ${i} 行: ${line}\n`;
+          });
+        } catch (error) {
+          output.innerHTML += `\n❌ 錯誤: ${error.message}\n`;
+          console.error("Error:", error);
+        }
+      }
+    </script>
+  </body>
+</html>

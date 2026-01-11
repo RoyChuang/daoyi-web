@@ -2,7 +2,7 @@ import { LogoType, NavbarType } from "../src/shared/enums";
 import { IAuthor, iNavSetup, iSEO } from "../src/shared/interfaces";
 import { AiFillGithub, AiOutlineTwitter, AiFillLinkedin, AiFillInstagram, AiFillFacebook } from "react-icons/ai";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome, faVideo, faNewspaper, faUsers, faHandHoldingHeart, faBook, faBullhorn, faScroll, faSitemap, faCompactDisc } from "@fortawesome/free-solid-svg-icons";
+import { faHome, faVideo, faNewspaper, faUsers, faHandHoldingHeart, faBook, faBullhorn, faScroll, faSitemap, faCompactDisc, faCalendarDays } from "@fortawesome/free-solid-svg-icons";
 
 /**
  * EXAMPLE AUTHOR
@@ -83,6 +83,11 @@ export const PRIMARY_NAV: iNavSetup = {
             icon: <FontAwesomeIcon icon={faVideo} />
         },
         {
+            label: '行事曆',
+            path: '/calendar',
+            icon: <FontAwesomeIcon icon={faCalendarDays} />
+        },
+        {
             label: '何前人專輯',
             path: '/he-qian-ren',
             icon: <FontAwesomeIcon icon={faCompactDisc} />
@@ -151,6 +156,11 @@ export const PRIMARY_NAV: iNavSetup = {
             label: '聖樂影音',
             path: '/video',
             icon: <FontAwesomeIcon icon={faVideo} />
+        },
+        {
+            label: '行事曆',
+            path: '/calendar',
+            icon: <FontAwesomeIcon icon={faCalendarDays} />
         },
         {
             label: '何前人專輯',
