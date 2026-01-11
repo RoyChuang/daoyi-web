@@ -64,7 +64,7 @@ export async function fetchCalendarFromGoogleSheets(
  * 解析行事曆 CSV 資料 (新格式)
  * 
  * 新格式結構:
- * - 第1行: 國曆 (日期)
+ * - 第1行: 日期 (2026/1/17 或 1/17)
  * - 第2行: 星期
  * - 第3行: 農曆
  * - 第4行: 中心班會
@@ -84,7 +84,7 @@ function parseCalendarCSV(csvText: string): CalendarEvent[] {
     console.log('📊 前 10 行:', rows.slice(0, 10).map((row, i) => `第 ${i} 行: ${row.slice(0, 8).join(' | ')}`));
     
     // 找到各個欄位的索引
-    let dateRowIndex = -1;      // 國曆
+    let dateRowIndex = -1;      // 日期/國曆
     let weekdayRowIndex = -1;   // 星期
     let lunarRowIndex = -1;     // 農曆
     let centerClassRowIndex = -1; // 中心班會
@@ -95,7 +95,7 @@ function parseCalendarCSV(csvText: string): CalendarEvent[] {
     for (let i = 0; i < Math.min(rows.length, 20); i++) {
       const firstCell = rows[i][0]?.trim() || '';
       
-      if (firstCell === '國曆' || firstCell.includes('國曆')) {
+      if (firstCell === '日期' || firstCell === '國曆' || firstCell.includes('日期') || firstCell.includes('國曆')) {
         dateRowIndex = i;
       } else if (firstCell === '星期' || firstCell.includes('星期')) {
         weekdayRowIndex = i;
@@ -113,7 +113,7 @@ function parseCalendarCSV(csvText: string): CalendarEvent[] {
     }
     
     console.log('📍 欄位索引:', {
-      國曆: dateRowIndex,
+      日期: dateRowIndex,
       星期: weekdayRowIndex,
       農曆: lunarRowIndex,
       中心班會: centerClassRowIndex,
@@ -123,7 +123,7 @@ function parseCalendarCSV(csvText: string): CalendarEvent[] {
     });
     
     if (dateRowIndex === -1) {
-      console.warn('❌ 找不到「國曆」行');
+      console.warn('❌ 找不到「日期」或「國曆」行');
       return events;
     }
     
@@ -142,12 +142,27 @@ function parseCalendarCSV(csvText: string): CalendarEvent[] {
     // 注意: 同一天可能有多欄 (例如 1/18 有兩欄)
     for (let col = 1; col < dateRow.length; col++) {
       const dateStr = dateRow[col]?.trim();
-      if (!dateStr || !/^\d{1,2}\/\d{1,2}$/.test(dateStr)) continue;
+      if (!dateStr) continue;
       
-      // 解析日期
+      // 解析日期 (支援兩種格式: "2026/1/17" 或 "1/17")
+      let year = 2026;
+      let month = 0;
+      let day = 0;
+      
       const dateParts = dateStr.split('/');
-      const month = parseInt(dateParts[0]);
-      const day = parseInt(dateParts[1]);
+      if (dateParts.length === 3) {
+        // 格式: 2026/1/17
+        year = parseInt(dateParts[0]);
+        month = parseInt(dateParts[1]);
+        day = parseInt(dateParts[2]);
+      } else if (dateParts.length === 2) {
+        // 格式: 1/17
+        month = parseInt(dateParts[0]);
+        day = parseInt(dateParts[1]);
+      } else {
+        continue;
+      }
+      
       if (!month || !day || isNaN(month) || isNaN(day)) continue;
       
       // 取得活動標題 (優先: 中心班會 > 工作)
@@ -188,7 +203,6 @@ function parseCalendarCSV(csvText: string): CalendarEvent[] {
       }
       
       // 建立事件
-      const year = 2026;
       const isoDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
       
       events.push({
