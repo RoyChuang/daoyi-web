@@ -63,50 +63,49 @@ const CalendarPage = ({ allEvents }: CalendarPageProps) => {
   return (
     <PageLayout PAGE_SEO={DEFAULT_SEO}>
       <div className="container mx-auto px-4 py-8">
-        {/* 標題和導航 */}
+        {/* 標題 */}
         <div className="mb-6">
-          <div className="flex items-center justify-between mb-4">
-            <h1 className="text-3xl font-bold text-[#334155] flex items-center gap-3">
-              <FontAwesomeIcon icon={faCalendarDays} className="text-blue-600" />
-              行事曆
-            </h1>
-            
-            {/* 月份導航 */}
-            <div className="flex items-center gap-4">
-              <button
-                onClick={goToPreviousMonth}
-                className="w-10 h-10 flex items-center justify-center bg-white hover:bg-gray-100 rounded-full shadow-md transition-colors"
-                title="上一個月"
-              >
-                <FontAwesomeIcon icon={faChevronLeft} className="text-gray-600" />
-              </button>
-
-              <div className="text-center min-w-[140px]">
-                <div className="text-xl font-bold text-gray-900">
-                  {currentYear} 年 {monthNames[currentMonth - 1]}
-                </div>
-              </div>
-
-              <button
-                onClick={goToNextMonth}
-                className="w-10 h-10 flex items-center justify-center bg-white hover:bg-gray-100 rounded-full shadow-md transition-colors"
-                title="下一個月"
-              >
-                <FontAwesomeIcon icon={faChevronRight} className="text-gray-600" />
-              </button>
-
-              <button
-                onClick={goToToday}
-                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg shadow-md transition-colors font-medium"
-              >
-                今天
-              </button>
-            </div>
-          </div>
-
+          <h1 className="text-3xl font-bold text-[#334155] flex items-center gap-3 mb-2">
+            <FontAwesomeIcon icon={faCalendarDays} className="text-blue-600" />
+            行事曆
+          </h1>
           <p className="text-gray-600">
             查看協會的活動安排與重要日期
           </p>
+        </div>
+
+        {/* 月份導航 */}
+        <div className="mb-6 bg-white rounded-lg shadow-md p-4">
+          <div className="flex items-center justify-between gap-2">
+            <button
+              onClick={goToPreviousMonth}
+              className="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors flex-shrink-0"
+              title="上一個月"
+            >
+              <FontAwesomeIcon icon={faChevronLeft} className="text-gray-600" />
+            </button>
+
+            <div className="text-center flex-1">
+              <div className="text-xl font-bold text-gray-900">
+                {currentYear} 年 {monthNames[currentMonth - 1]}
+              </div>
+            </div>
+
+            <button
+              onClick={goToNextMonth}
+              className="w-10 h-10 flex items-center justify-center bg-gray-100 hover:bg-gray-200 rounded-full transition-colors flex-shrink-0"
+              title="下一個月"
+            >
+              <FontAwesomeIcon icon={faChevronRight} className="text-gray-600" />
+            </button>
+
+            <button
+              onClick={goToToday}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-medium text-sm flex-shrink-0"
+            >
+              今天
+            </button>
+          </div>
         </div>
 
         {/* 月曆視圖 */}
