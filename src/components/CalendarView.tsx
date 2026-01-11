@@ -106,6 +106,7 @@ const CalendarView = ({ events, year, month }: CalendarViewProps) => {
           toolbar={false} // 隱藏工具列
           eventPropGetter={eventStyleGetter}
           onSelectEvent={handleSelectEvent}
+          popup
           messages={messages}
         />
       </div>
