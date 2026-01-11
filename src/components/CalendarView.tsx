@@ -192,7 +192,7 @@ const CalendarView = ({ events, year, month }: CalendarViewProps) => {
         </div>
       )}
 
-      <style jsx global>{`
+      <style dangerouslySetInnerHTML={{__html: `
         .rbc-calendar {
           font-family: inherit;
         }
@@ -229,7 +229,7 @@ const CalendarView = ({ events, year, month }: CalendarViewProps) => {
         .rbc-month-row + .rbc-month-row {
           border-top: 1px solid #e2e8f0;
         }
-      `}</style>
+      `}} />
     </div>
   );
 };
