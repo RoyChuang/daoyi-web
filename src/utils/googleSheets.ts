@@ -23,7 +23,7 @@ export interface CalendarEvent {
  */
 export async function fetchCalendarFromGoogleSheets(
   spreadsheetId: string,
-  gid: string = '78728578' // 行事曆分頁的 GID
+  gid: string = '1575785136' // 新的行事曆分頁 GID
 ): Promise<CalendarEvent[]> {
   try {
     // 使用 Google Sheets CSV Export API
@@ -61,116 +61,143 @@ export async function fetchCalendarFromGoogleSheets(
  * 第七列: 時間
  */
 /**
- * 解析行事曆 CSV 資料
+ * 解析行事曆 CSV 資料 (新格式)
+ * 
+ * 新格式結構:
+ * - 第1行: 國曆 (日期)
+ * - 第2行: 星期
+ * - 第3行: 農曆
+ * - 第4行: 中心班會
+ * - 第5行: 講師
+ * - 第6行: 工作
+ * - 第7行: 地點
+ * 
+ * 活動標題優先順序: 中心班會 > 工作
  */
 function parseCalendarCSV(csvText: string): CalendarEvent[] {
   const events: CalendarEvent[] = [];
   
   try {
-    // 先將整個 CSV 解析成二維陣列
     const rows = parseCSV(csvText);
     
     console.log('📊 CSV 總行數:', rows.length);
-    console.log('📊 前 10 行:', rows.slice(0, 10).map((row, i) => `第 ${i} 行: ${row.slice(0, 5).join(' | ')}`));
+    console.log('📊 前 10 行:', rows.slice(0, 10).map((row, i) => `第 ${i} 行: ${row.slice(0, 8).join(' | ')}`));
     
-    // 找到「國曆」開頭的行
-    let dateRowIndex = -1;
+    // 找到各個欄位的索引
+    let dateRowIndex = -1;      // 國曆
+    let weekdayRowIndex = -1;   // 星期
+    let lunarRowIndex = -1;     // 農曆
+    let centerClassRowIndex = -1; // 中心班會
+    let teacherRowIndex = -1;   // 講師
+    let workRowIndex = -1;      // 工作
+    let locationRowIndex = -1;  // 地點
+    
     for (let i = 0; i < Math.min(rows.length, 20); i++) {
       const firstCell = rows[i][0]?.trim() || '';
-      if (firstCell.includes('國曆') || firstCell.includes('国历') || firstCell === '國曆') {
+      
+      if (firstCell === '國曆' || firstCell.includes('國曆')) {
         dateRowIndex = i;
-        console.log('✅ 找到「國曆」標題行,索引:', dateRowIndex);
-        break;
+      } else if (firstCell === '星期' || firstCell.includes('星期')) {
+        weekdayRowIndex = i;
+      } else if (firstCell === '農曆' || firstCell.includes('農曆')) {
+        lunarRowIndex = i;
+      } else if (firstCell === '中心班會' || firstCell.includes('中心班會')) {
+        centerClassRowIndex = i;
+      } else if (firstCell === '講師' || firstCell.includes('講師')) {
+        teacherRowIndex = i;
+      } else if (firstCell === '工作') {
+        workRowIndex = i;
+      } else if (firstCell === '地點' || firstCell.includes('地點')) {
+        locationRowIndex = i;
       }
     }
     
+    console.log('📍 欄位索引:', {
+      國曆: dateRowIndex,
+      星期: weekdayRowIndex,
+      農曆: lunarRowIndex,
+      中心班會: centerClassRowIndex,
+      講師: teacherRowIndex,
+      工作: workRowIndex,
+      地點: locationRowIndex
+    });
+    
     if (dateRowIndex === -1) {
-      console.warn('❌ 找不到「國曆」標題行');
+      console.warn('❌ 找不到「國曆」行');
       return events;
     }
     
-    // 讀取各行
-    // 「國曆」這一行本身就包含日期資料!
-    // 索引 0: 國曆, 2/16, 2/17, 2/18, ... (第一欄是標題,後面是日期)
-    // 索引 1: 星期, 一, 二, 三, ...
-    // 索引 2: 農曆, 除夕, 初一, 初二, ...
-    // 索引 3: 工作, 辭歲迎歲, 守壇, 守壇, ...
-    // 索引 4: 地點, , 道一中心, 道一中心, ...
-    // 索引 5: 時間, , 早上八點, 晚上六點, ...
+    const dateRow = rows[dateRowIndex] || [];
+    const centerClassRow = centerClassRowIndex >= 0 ? rows[centerClassRowIndex] : [];
+    const teacherRow = teacherRowIndex >= 0 ? rows[teacherRowIndex] : [];
+    const workRow = workRowIndex >= 0 ? rows[workRowIndex] : [];
+    const locationRow = locationRowIndex >= 0 ? rows[locationRowIndex] : [];
+    const lunarRow = lunarRowIndex >= 0 ? rows[lunarRowIndex] : [];
     
-    const dateRow = rows[dateRowIndex] || [];          // 國曆 (包含日期)
-    const weekdayRow = rows[dateRowIndex + 1] || [];   // 星期
-    const lunarRow = rows[dateRowIndex + 2] || [];     // 農曆
-    const workRow = rows[dateRowIndex + 3] || [];      // 工作
-    const locationRow = rows[dateRowIndex + 4] || [];  // 地點
-    const timeRow = rows[dateRowIndex + 5] || [];      // 時間
+    console.log('📅 日期行:', dateRow.slice(0, 15));
+    console.log('📅 中心班會:', centerClassRow.slice(0, 15));
+    console.log('📅 工作:', workRow.slice(0, 15));
     
-    console.log('📅 日期行:', dateRow.slice(0, 10));
-    console.log('📅 農曆行:', lunarRow.slice(0, 10));
-    console.log('📅 工作行:', workRow.slice(0, 10));
-    
-    // 從第二欄開始處理 (第一欄是標題)
+    // 處理每一欄 (每一個日期)
+    // 注意: 同一天可能有多欄 (例如 1/18 有兩欄)
     for (let col = 1; col < dateRow.length; col++) {
       const dateStr = dateRow[col]?.trim();
-      if (!dateStr) continue;
+      if (!dateStr || !/^\d{1,2}\/\d{1,2}$/.test(dateStr)) continue;
       
-      // 解析日期 (格式: "2/16")
+      // 解析日期
       const dateParts = dateStr.split('/');
-      if (dateParts.length !== 2) continue;
-      
       const month = parseInt(dateParts[0]);
       const day = parseInt(dateParts[1]);
       if (!month || !day || isNaN(month) || isNaN(day)) continue;
       
-      // 取得各項資訊
-      const lunar = lunarRow[col]?.trim() || '';
-      const work = workRow[col]?.trim() || '';
-      const location = locationRow[col]?.trim() || '';
-      const time = timeRow[col]?.trim() || '';
+      // 取得活動標題 (優先: 中心班會 > 工作)
+      let title = '';
+      let type = '其他';
       
-      // 如果有農曆或工作內容,就建立事件
-      if (lunar || work) {
-        const year = 2026;
-        const isoDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
-        
-        let title = '';
-        let type = '其他';
-        let description = '';
-        
-        if (work) {
-          title = work;
-          if (work.includes('守壇')) type = '守壇';
-          else if (work.includes('拜年')) type = '拜年';
-          else if (work.includes('醉歲') || work.includes('迎歲')) type = '傳統節日';
-          else if (work.includes('班會')) type = '班會';
-          
-          if (lunar) description = `農曆: ${lunar}`;
-        } else if (lunar) {
-          title = lunar;
-          if (lunar.includes('除夕') || lunar.includes('初一') || lunar.includes('初二') || 
-              lunar.includes('初三') || lunar.includes('初四')) {
-            type = '傳統節日';
-          }
-        }
-        
-        if (!title) continue;
-        
-        const details = [];
-        if (time) details.push(`時間: ${time}`);
-        if (location) details.push(`地點: ${location}`);
-        if (details.length > 0) {
-          description = description ? `${description}\n${details.join(' | ')}` : details.join(' | ');
-        }
-        
-        events.push({
-          date: isoDate,
-          title,
-          type,
-          description: description || undefined,
-          location: location || undefined,
-          time: time || undefined,
-        });
+      const centerClass = centerClassRow[col]?.trim() || '';
+      const work = workRow[col]?.trim() || '';
+      
+      if (centerClass) {
+        title = centerClass;
+        type = '班會';
+      } else if (work) {
+        title = work;
+        // 根據工作內容判斷類型
+        if (work.includes('守壇')) type = '守壇';
+        else if (work.includes('拜年')) type = '拜年';
+        else if (work.includes('辭歲') || work.includes('迎歲')) type = '傳統節日';
+        else if (work.includes('班會')) type = '班會';
       }
+      
+      // 如果沒有標題,跳過
+      if (!title) continue;
+      
+      // 取得其他資訊
+      const teacher = teacherRow[col]?.trim() || '';
+      const location = locationRow[col]?.trim() || '';
+      const lunar = lunarRow[col]?.trim() || '';
+      
+      // 建立描述
+      let description = '';
+      const details = [];
+      if (lunar) details.push(`農曆: ${lunar}`);
+      if (teacher) details.push(`講師: ${teacher}`);
+      if (location) details.push(`地點: ${location}`);
+      if (details.length > 0) {
+        description = details.join('\n');
+      }
+      
+      // 建立事件
+      const year = 2026;
+      const isoDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      
+      events.push({
+        date: isoDate,
+        title,
+        type,
+        description: description || undefined,
+        location: location || undefined,
+      });
     }
     
     console.log(`📅 解析到 ${events.length} 個活動`);

@@ -92,7 +92,7 @@ const CalendarView = ({ events, year, month }: CalendarViewProps) => {
 
   return (
     <div className="bg-white rounded-xl shadow-md p-4 md:p-6 border border-gray-100">
-      <div className="calendar-container" style={{ height: 'auto', minHeight: '500px' }}>
+      <div className="calendar-container" style={{ height: '600px' }}>
         <Calendar
           localizer={localizer}
           events={calendarEvents}

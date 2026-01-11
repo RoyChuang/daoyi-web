@@ -65,11 +65,11 @@ const CalendarPage = ({ allEvents }: CalendarPageProps) => {
       <div className="container mx-auto px-4 py-8">
         {/* 標題 */}
         <div className="mb-6">
-          <h1 className="text-3xl font-bold text-[#334155] flex items-center gap-3 mb-2">
-            <FontAwesomeIcon icon={faCalendarDays} className="text-blue-600" />
+          <h1 className="text-2xl md:text-3xl font-bold text-[#334155] mb-2">
+            <FontAwesomeIcon icon={faCalendarDays} className="text-blue-600 mr-2" />
             行事曆
           </h1>
-          <p className="text-gray-600">
+          <p className="text-gray-600 text-sm md:text-base">
             查看協會的活動安排與重要日期
           </p>
         </div>

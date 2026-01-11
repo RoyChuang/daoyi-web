@@ -11,6 +11,9 @@ export const CALENDAR_SPREADSHEET_ID = '1n6Dc0nq-4A7RZjdgG5_nzsYMK9KevNhht6w-5_z
 // 工作表名稱
 export const CALENDAR_SHEET_NAME = '行事曆';
 
+// 工作表 GID (新格式)
+export const CALENDAR_SHEET_GID = '1575785136';
+
 /**
  * 活動類型與顏色對應
  * 根據試算表中的活動類型定義
