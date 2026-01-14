@@ -39,6 +39,48 @@ export const VIDEOS: Video[] = [
     description: "聖賢腳步善歌",
     featured: true,
   },
+  {
+    id: "uq0RaaAzLPw",
+    title: "佛燈管弦樂",
+    description: "佛燈管弦樂",
+    featured: true,
+  },
+  {
+    id: "-GFIbU221JI",
+    title: "但願&總壇開壇",
+    description: "但願&總壇開壇",
+    featured: true,
+  },
+  {
+    id: "jX5xsE0ZwT0",
+    title: "盼望",
+    description: "盼望",
+    featured: true,
+  },
+  {
+    id: "RO8OA8zV6L8",
+    title: "我愿",
+    description: "我愿",
+    featured: true,
+  },
+  {
+    id: "C58QZakIDOw",
+    title: "重光興毅第二章節管絃樂",
+    description: "重光興毅第二章節管絃樂",
+    featured: true,
+  },
+  {
+    id: "XPHEUjVAIsc",
+    title: "上天賜福給咱",
+    description: "上天賜福給咱",
+    featured: true,
+  },
+  {
+    id: "3YMYF8MRIrw",
+    title: "敬拜老母娘-101年壬辰新春",
+    description: "敬拜老母娘-101年壬辰新春",
+    featured: true,
+  },
   // 新增影片範例：
   // {
   //   id: "VIDEO_ID_HERE",
