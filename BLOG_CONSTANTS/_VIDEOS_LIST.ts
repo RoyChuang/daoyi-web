@@ -81,6 +81,18 @@ export const VIDEOS: Video[] = [
     description: "敬拜老母娘-101年壬辰新春",
     featured: true,
   },
+  {
+    id: "dS14sujsbNY",
+    title: "佛燈-97年興毅總壇開壇",
+    description: "佛燈-97年興毅總壇開壇",
+    featured: true,
+  },
+  {
+    id: "BteslcYCb-Q",
+    title: "但願活佛師尊慈訓(壇主版)",
+    description: "但願活佛師尊慈訓(壇主版)",
+    featured: true,
+  },
   // 新增影片範例：
   // {
   //   id: "VIDEO_ID_HERE",
