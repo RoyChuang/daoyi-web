@@ -135,7 +135,7 @@ const Home = ({ allImages }: HomeProps) => {
                       <img 
                         src={image.src} 
                         alt={`活動照片 ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
+                        className="w-full h-full object-cover object-[50%_15%] hover:scale-105 transition-transform duration-300"
                       />
                     </a>
                   </Link>
@@ -164,7 +164,7 @@ const Home = ({ allImages }: HomeProps) => {
                     <img 
                       src="/images/he-qian-ren/index.jpg" 
                       alt="何紹棠前人" 
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="w-full h-full object-cover object-[50%_15%] group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                   <div className="p-3 flex flex-col justify-center">

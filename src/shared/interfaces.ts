@@ -24,6 +24,7 @@ export interface iArticle {
   featureArticle?: boolean;
   preview: IArticleHeaderData;
   seo?: iSEO;
+  images?: string[];
 }
 
 export interface iSEO {

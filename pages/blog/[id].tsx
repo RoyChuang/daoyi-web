@@ -8,6 +8,7 @@ import { ImageSize } from "../../src/shared/enums";
 import { PageLayout, Text, Image, } from "../../src/components";
 import { getArticleDetailById } from '../../src/utils/utils';
 import { ARTICLES_LIST } from '../../BLOG_CONSTANTS/_ARTICLES_LIST';
+import { getCloudinaryUrl } from '../../src/utils/cloudinary';
 
 // Swiper 相關
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,29 +17,6 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-// 解析內容，分離課程摘要和感謝名單
-function parseContent(shortIntro: string) {
-  // 嘗試分離感謝名單
-  const thanksPatterns = [
-    /感謝[\s\S]*?(?:慈悲|午餐|班會)[。．\.\s]*$/,
-    /感謝.*$/
-  ];
-  
-  let mainContent = shortIntro;
-  let thanksSection = '';
-  
-  // 尋找最後一個「感謝」開頭的句子作為感謝區塊
-  const thanksMatch = shortIntro.match(/(?:感謝[^感謝]*){1,}$/);
-  if (thanksMatch) {
-    const thanksStart = shortIntro.lastIndexOf(thanksMatch[0]);
-    if (thanksStart > shortIntro.length * 0.5) { // 確保感謝區在內容後半部
-      mainContent = shortIntro.substring(0, thanksStart).trim();
-      thanksSection = thanksMatch[0].trim();
-    }
-  }
-  
-  return { mainContent, thanksSection };
-}
 
 // 格式化內容，增加段落分隔
 function formatContent(content: string) {
@@ -58,8 +36,8 @@ function Activities(props: { detail: any; images: any }) {
   // 分離首圖和其他圖片（用於下方相簿區塊）
   const galleryImages = images.length > 1 ? images.slice(1) : [];
   
-  // 解析內容
-  const { mainContent, thanksSection } = parseContent(details.shortIntro || '');
+  // 直接使用完整內容
+  const mainContent = details.shortIntro || '';
 
   // Hero 首圖區塊 - 使用 Swiper 輪播所有照片
   const heroSlot = images.length > 0 ? (
@@ -106,17 +84,6 @@ function Activities(props: { detail: any; images: any }) {
           </p>
         </div>
 
-        {/* 感謝名單區塊 */}
-        {thanksSection && (
-          <div className="bg-gradient-to-br from-amber-50 to-orange-50 rounded-xl p-5 mb-8 border border-amber-200">
-            <h3 className="flex items-center gap-2 text-amber-800 font-bold text-lg mb-3 mt-0">
-              🙏 感謝名單
-            </h3>
-            <p className="text-amber-900/80 text-sm md:text-base leading-relaxed m-0">
-              {thanksSection}
-            </p>
-          </div>
-        )}
       </div>
 
       {/* 圖片相簿區塊 */}
@@ -193,16 +160,31 @@ export async function getStaticProps(context: { params: { id: string } }) {
   let detail = JSON.stringify(ARTICLE_DETAILS?.preview || {});
 
   let images: string[] = [];
-  try {
-    const imagesDirectory = path.join(process.cwd(), `public/images/blog/${id}`);
-    const filenames = fs.readdirSync(imagesDirectory);
-    // 排序圖片（確保順序一致）
-    images = filenames
-      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-      .map(name => `/images/blog/${id}/${name}`);
-  } catch (error) {
-    // 如果圖片目錄不存在，使用空陣列
-    images = [];
+  if (ARTICLE_DETAILS?.images && ARTICLE_DETAILS.images.length > 0) {
+    // 如果文章有自定義圖片列表 (Cloudinary)，直接使用
+    images = ARTICLE_DETAILS.images.map(id => getCloudinaryUrl(id));
+  } else {
+    try {
+      const imagesDirectory = path.join(process.cwd(), `public/images/blog/${id}`);
+      const filenames = fs.readdirSync(imagesDirectory);
+      // 排序圖片（確保順序一致）
+      images = filenames
+        .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+        .map(name => `/images/blog/${id}/${name}`);
+    } catch (error) {
+      // 如果圖片目錄不存在，使用空陣列
+      images = [];
+    }
+  }
+
+  // 處理 thumbnail 路徑
+  if (ARTICLE_DETAILS?.preview.thumbnail && !ARTICLE_DETAILS.preview.thumbnail.startsWith('/') && !ARTICLE_DETAILS.preview.thumbnail.startsWith('http')) {
+      const p = ARTICLE_DETAILS.preview;
+      const updatedPreview = {
+          ...p,
+          thumbnail: getCloudinaryUrl(p.thumbnail)
+      };
+      detail = JSON.stringify(updatedPreview);
   }
 
   return {

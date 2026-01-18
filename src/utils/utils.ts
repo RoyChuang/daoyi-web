@@ -6,6 +6,7 @@ import { iArticle, iSEO } from "../shared/interfaces";
 import { WEBSITE_NAME, WEBSITE_URL } from "../../BLOG_CONSTANTS/_BLOG_SETUP";
 import { MOCK_ARTICLES_LIST } from "../constants/mocks";
 import { GAEvent } from "../../google";
+import { getCloudinaryUrl } from "./cloudinary";
 
 // env
 const env = process.env.NODE_ENV;
@@ -150,7 +151,20 @@ export const transformPath = (path = ""): string => {
  * @returns string
  */
 export const transformImagePaths = (path = ""): string => {
-  return path.replace("/public", "");
+  if (!path) return "";
+  // 如果已經是完整的網址，直接回傳
+  if (path.startsWith("http")) {
+    return path;
+  }
+  // 如果是本地路徑，移除 /public
+  if (path.startsWith("/public")) {
+    return path.replace("/public", "");
+  }
+  // 如果不以 / 開頭且看起來不像本地路徑 (含 .)，則視為 Cloudinary ID
+  if (!path.startsWith("/") && !path.includes(".")) {
+    return getCloudinaryUrl(path);
+  }
+  return path;
 };
 
 /**
@@ -182,13 +196,12 @@ export const CREATE_SEO_CONFIG = (PAGE_SEO: iSEO) => {
   const keywords = PAGE_SEO?.keywords || ARTICLE_DETAILS?.preview?.tags;
   const ogUrl = `${LOCAL_URL}${LOCAL_PATH}`;
 
-  const ogImage = PAGE_SEO.ogImage
-    ? `${LOCAL_URL}${transformImagePaths(PAGE_SEO?.ogImage)}`
-    : `${LOCAL_URL}${
-        ARTICLE_DETAILS?.preview.thumbnail
-          ? transformImagePaths(ARTICLE_DETAILS?.preview.thumbnail)
-          : null
-      }`;
+  const ogImageRaw = PAGE_SEO.ogImage || ARTICLE_DETAILS?.preview.thumbnail;
+  const transformedOgImage = ogImageRaw ? transformImagePaths(ogImageRaw) : null;
+  
+  const ogImage = transformedOgImage 
+    ? (transformedOgImage.startsWith("http") ? transformedOgImage : `${LOCAL_URL}${transformedOgImage}`)
+    : null;
 
   const twitterHandle = PAGE_SEO?.twitterHandle || "";
   const author = ARTICLE_DETAILS

@@ -23,7 +23,8 @@ const ArticleCardCompact = ({ article, path }: IProp) => {
       : "";
 
   const imgLoader = ({ src, width, quality }: any) => {
-    return `${origin}${src}?w=${width}&q=${quality || 75}`;
+    if (src.startsWith('http')) return src;
+    return `${origin}${src.startsWith('/') ? src : '/' + src}?w=${width}&q=${quality || 75}`;
   };
 
   return (
@@ -41,6 +42,7 @@ const ArticleCardCompact = ({ article, path }: IProp) => {
             layout="fill"
             quality={80}
             objectFit="cover"
+            objectPosition="center 15%"
             loader={imgLoader}
             className="group-hover:scale-105 transition-transform duration-300"
           />

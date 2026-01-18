@@ -48,7 +48,7 @@ const FeaturedArticle = ({ article, path }: IProp) => {
                     {/* style={{ background: `url(${transformImagePaths(article.thumbnail)})` }} */}
                     <img
                         src={transformImagePaths(article.thumbnail)} alt={article.articleTitle}
-                        className="w-full h-full object-cover" />
+                        className="w-full h-full object-cover object-[50%_15%]" />
                 </div>
             </div>
         </>
