@@ -197,11 +197,11 @@ export const CREATE_SEO_CONFIG = (PAGE_SEO: iSEO) => {
   const ogUrl = `${LOCAL_URL}${LOCAL_PATH}`;
 
   const ogImageRaw = PAGE_SEO.ogImage || ARTICLE_DETAILS?.preview.thumbnail;
-  const transformedOgImage = ogImageRaw ? transformImagePaths(ogImageRaw) : null;
+  const transformedOgImage = ogImageRaw ? transformImagePaths(ogImageRaw) : undefined;
   
   const ogImage = transformedOgImage 
     ? (transformedOgImage.startsWith("http") ? transformedOgImage : `${LOCAL_URL}${transformedOgImage}`)
-    : null;
+    : undefined;
 
   const twitterHandle = PAGE_SEO?.twitterHandle || "";
   const author = ARTICLE_DETAILS
@@ -228,7 +228,7 @@ export const CREATE_SEO_CONFIG = (PAGE_SEO: iSEO) => {
     additionalMetaTags: [
       {
         property: "keywords",
-        content: keywords,
+        content: keywords || "",
       },
       {
         property: "al:web:url",
@@ -240,14 +240,14 @@ export const CREATE_SEO_CONFIG = (PAGE_SEO: iSEO) => {
       locale: "en_IN",
       url: ogUrl,
       site_name: WEBSITE_NAME,
-      images: [
+      images: ogImage ? [
         {
           url: ogImage,
           width: 1200,
           height: 630,
           alt: title,
         },
-      ],
+      ] : [],
     },
     twitter: {
       handle: twitterHandle,
