@@ -34,12 +34,6 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "xeBZjbmTlv0",
-    title: "聖賢腳步 - 柳烱堯",
-    description: "聖賢腳步善歌",
-    featured: true,
-  },
-  {
     id: "uq0RaaAzLPw",
     title: "佛燈管弦樂",
     description: "佛燈管弦樂",
@@ -93,6 +87,19 @@ export const VIDEOS: Video[] = [
     description: "但願活佛師尊慈訓(壇主版)",
     featured: true,
   },
+  {
+    id: "5n-KHboTMHM",
+    title: "前後相隨",
+    description: "前後相隨",
+    featured: true,
+  },
+  {
+    id: "cQwy0orXSIg",
+    title: "東山之歌",
+    description: "東山之歌",
+    featured: true,
+  },
+
   // 新增影片範例：
   // {
   //   id: "VIDEO_ID_HERE",
