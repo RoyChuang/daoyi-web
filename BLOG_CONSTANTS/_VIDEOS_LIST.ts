@@ -82,7 +82,7 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "BteslcYCb-Q",
+    id: "H3_gVW6p02M",
     title: "但願活佛師尊慈訓(壇主版)",
     description: "但願活佛師尊慈訓(壇主版)",
     featured: true,
