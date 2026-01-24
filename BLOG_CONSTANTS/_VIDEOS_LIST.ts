@@ -10,21 +10,39 @@ export interface Video {
 // YouTube 影片列表
 export const VIDEOS: Video[] = [
   {
-    id: "C4Jsi-Q66dM",
-    title: "一家人(追思何前人)",
-    description: "一家人(追思何前人)",
-    featured: true,
-  },
-  {
     id: "135eVc2YFtc",
     title: "牧羊人",
     description: "牧羊人",
     featured: true,
   },
   {
+    id: "C4Jsi-Q66dM",
+    title: "一家人(追思何前人)",
+    description: "一家人(追思何前人)",
+    featured: true,
+  },
+  {
     id: "cJtZ7SaScmY",
     title: "前人的手",
     description: "前人的手",
+    featured: true,
+  },
+  {
+    id: "R91BihX-h1A",
+    title: "但願活佛師尊慈訓(壇主版)",
+    description: "但願活佛師尊慈訓(壇主版)",
+    featured: true,
+  },
+  {
+    id: "RO8OA8zV6L8",
+    title: "我愿",
+    description: "我愿",
+    featured: true,
+  },
+  {
+    id: "-GFIbU221JI",
+    title: "但願&總壇開壇",
+    description: "但願&總壇開壇",
     featured: true,
   },
   {
@@ -40,21 +58,9 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "-GFIbU221JI",
-    title: "但願&總壇開壇",
-    description: "但願&總壇開壇",
-    featured: true,
-  },
-  {
     id: "jX5xsE0ZwT0",
     title: "盼望",
     description: "盼望",
-    featured: true,
-  },
-  {
-    id: "RO8OA8zV6L8",
-    title: "我愿",
-    description: "我愿",
     featured: true,
   },
   {
@@ -79,12 +85,6 @@ export const VIDEOS: Video[] = [
     id: "dS14sujsbNY",
     title: "佛燈-97年興毅總壇開壇",
     description: "佛燈-97年興毅總壇開壇",
-    featured: true,
-  },
-  {
-    id: "H3_gVW6p02M",
-    title: "但願活佛師尊慈訓(壇主版)",
-    description: "但願活佛師尊慈訓(壇主版)",
     featured: true,
   },
   {
