@@ -32,6 +32,41 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 export const ARTICLES_LIST: iArticle[] = [
   {
+    id: '260125',
+    path: "/blog/260125",
+    preview: {
+      author: RUPALI,
+      date: "01-25-2026",
+      articleTitle: "道一樹林佛堂「年終悔過班」：由佛規悔己過",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "daoyi-web/blog/20260125/1",
+      shortIntro:
+        "道一樹林佛堂「年終悔過班」，邀請楊登詠講師慈悲成全，題目：「由佛規悔己過」。感謝陳點傳師慈悲：「一年來大家修辦盡責，難免都會一些有意無意的過失，今天剛好年終最後一次的班會，可以藉著悔過班立愿改過懺悔」。感謝何點傳師慈悲：「以前從何前人帶領我們修辦道、吳老前人慈悲賜堂名『道一』聖道院以來，大家共修同辦都很精進，前人精神留在我們心中，希望同修能學習前人修辦精神而更佳精進修道」。課程內容：我們求道立了十條大愿，其中遵守佛規是修道天道弟子必須做到的，今天從「十五佛規」來檢視我們的過錯，藉此懺悔改過。行道謹以十五條佛規為重，堅心牢守，勤守佛規，以理為首。畢班後感謝點傳師𧶽果。感謝廚務陳太太、洪太太、吳太太、王太太、莊太太等前賢準備豐盛午餐！",
+      category: "道一",
+    },
+    seo: {
+      keywords: "社團法人新北市道一關懷協會",
+      ogImage: "daoyi-web/blog/20260125/1",
+    },
+    images: [
+      "daoyi-web/blog/20260125/1",
+      "daoyi-web/blog/20260125/2",
+      "daoyi-web/blog/20260125/3",
+      "daoyi-web/blog/20260125/4",
+      "daoyi-web/blog/20260125/5",
+      "daoyi-web/blog/20260125/6",
+      "daoyi-web/blog/20260125/7",
+      "daoyi-web/blog/20260125/8",
+      "daoyi-web/blog/20260125/9",
+      "daoyi-web/blog/20260125/10",
+      "daoyi-web/blog/20260125/11",
+      "daoyi-web/blog/20260125/12",
+      "daoyi-web/blog/20260125/13",
+      "daoyi-web/blog/20260125/14",
+      "daoyi-web/blog/20260125/15",
+    ]
+  },
+  {
     id: '260117',
     path: "/blog/260117",
     preview: {
