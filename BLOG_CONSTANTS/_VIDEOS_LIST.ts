@@ -40,7 +40,7 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "Xqzx0boyZNI",
+    id: "ETKObF6rHaE",
     title: "佛燈（泰國壇主)",
     description: "佛燈（泰國壇主)",
     featured: true,
