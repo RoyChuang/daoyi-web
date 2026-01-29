@@ -88,6 +88,12 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
+    id: "dS14sujsbNY",
+    title: "佛燈-97年興毅總壇開壇",
+    description: "佛燈-97年興毅總壇開壇",
+    featured: true,
+  },
+  {
     id: "5n-KHboTMHM",
     title: "前後相隨",
     description: "前後相隨",
