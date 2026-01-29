@@ -23,8 +23,8 @@ export const VIDEOS: Video[] = [
   },
   {
     id: "cJtZ7SaScmY",
-    title: "前人的手",
-    description: "前人的手",
+    title: "前人的手(道一公共佛堂)",
+    description: "前人的手(道一公共佛堂)",
     featured: true,
   },
   {
@@ -35,8 +35,14 @@ export const VIDEOS: Video[] = [
   },
   {
     id: "kW90YSbwEU8",
-    title: "我愿",
-    description: "我愿",
+    title: "我愿（何前人)",
+    description: "我愿（何前人)",
+    featured: true,
+  },
+  {
+    id: "Xqzx0boyZNI",
+    title: "佛燈（泰國壇主)",
+    description: "佛燈（泰國壇主)",
     featured: true,
   },
   {
@@ -85,12 +91,6 @@ export const VIDEOS: Video[] = [
     id: "3YMYF8MRIrw",
     title: "敬拜老母娘-101年壬辰新春",
     description: "敬拜老母娘-101年壬辰新春",
-    featured: true,
-  },
-  {
-    id: "Xqzx0boyZNI",
-    title: "佛燈",
-    description: "佛燈",
     featured: true,
   },
   {
