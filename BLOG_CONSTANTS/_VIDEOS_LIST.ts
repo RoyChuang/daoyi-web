@@ -40,6 +40,12 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
+    id: "RO8OA8zV6L8",
+    title: "我愿(合唱團版)",
+    description: "我愿(合唱團版)",
+    featured: true,
+  },
+  {
     id: "-GFIbU221JI",
     title: "但願&總壇開壇",
     description: "但願&總壇開壇",
@@ -88,9 +94,9 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "dS14sujsbNY",
-    title: "佛燈-97年興毅總壇開壇",
-    description: "佛燈-97年興毅總壇開壇",
+    id: "66a5qz76U1o",
+    title: "佛燈(合唱團版)",
+    description: "佛燈(合唱團版)",
     featured: true,
   },
   {
