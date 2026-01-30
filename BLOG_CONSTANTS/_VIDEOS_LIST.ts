@@ -46,6 +46,12 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
+    id: "D27UF2Zj23k",
+    title: "敬拜老母娘(海外壇主)",
+    description: "敬拜老母娘(海外壇主)",
+    featured: true,
+  },
+  {
     id: "RO8OA8zV6L8",
     title: "我愿(合唱團版)",
     description: "我愿(合唱團版)",

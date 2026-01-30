@@ -7,7 +7,7 @@ import FeaturedArticleSection from "../src/components/Misc/FeaturedArticleSectio
 import HomeNonFeatureArticles from "../src/components/Misc/HomeNonFeatureAricles";
 import VideoThumbnail from "../src/components/VideoThumbnail";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCalendarDays, faUserCircle, faBookOpen, faVideo } from "@fortawesome/free-solid-svg-icons";
+import { faCalendarDays, faUserCircle, faBookOpen, faVideo, faScroll } from "@fortawesome/free-solid-svg-icons";
 import { getFeaturedVideos } from "../BLOG_CONSTANTS/_VIDEOS_LIST";
 import Link from "next/link";
 import { GetStaticProps } from "next";
@@ -46,6 +46,26 @@ const books: Book[] = [
     href: "/daomind",
     bgGradient: "from-red-900 via-red-800 to-red-900",
     shadowColor: "#7f1d1d",
+  },
+];
+
+// 拾穗集資料
+const gleanings = [
+  {
+    id: 'ho',
+    name: '何紹棠 前人',
+    title: '生平事蹟',
+    image: 'daoyi-web/gleanings/ho',
+    color: 'from-amber-50 to-orange-100',
+    titleColor: 'text-orange-900',
+  },
+  {
+    id: 'lin',
+    name: '林月珠 壇主',
+    title: '生平事蹟',
+    image: 'daoyi-web/gleanings/lin',
+    color: 'from-emerald-50 to-teal-100',
+    titleColor: 'text-teal-900',
   },
 ];
 
@@ -234,6 +254,63 @@ const Home = ({ allImages }: HomeProps) => {
             </div>
           </div>
         </div>
+
+        {/* 拾穗集 - 生平事蹟 區塊 */}
+        <div className="mb-10 px-3">
+          <h2 className='w-full mb-6 text-2xl font-bold text-[#334155] flex items-center gap-3'>
+            <div className="w-10 h-10 bg-amber-100 rounded-full flex items-center justify-center">
+              <FontAwesomeIcon icon={faScroll} className="text-amber-700" size="sm" />
+            </div>
+            拾穗集
+          </h2>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {gleanings.map((person) => (
+              <a 
+                key={person.id}
+                href={`/gleanings-viewer?img=${person.image}&title=${encodeURIComponent(person.name + ' ' + person.title)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative block overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100"
+              >
+                <div className="flex aspect-[16/9] md:aspect-[21/9]">
+                  {/* 圖左：文字內容 */}
+                  <div className={`w-1/2 p-6 flex flex-col justify-center bg-gradient-to-br ${person.color} transition-colors duration-500`}>
+                    <span className="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Gleaning Collection</span>
+                    <h3 className={`text-xl md:text-2xl font-black ${person.titleColor} mb-1 transition-transform duration-500 group-hover:scale-105 origin-left`}>
+                      {person.name}
+                    </h3>
+                    <p className={`text-sm md:text-base font-medium ${person.titleColor} opacity-80 mb-4`}>
+                      {person.title}
+                    </p>
+                    
+                    <div className="flex items-center gap-2 group-hover:translate-x-2 transition-transform duration-300">
+                      <span className={`text-sm font-bold ${person.titleColor}`}>查看全文</span>
+                      <svg className={`w-4 h-4 ${person.titleColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7-7 7" />
+                      </svg>
+                    </div>
+                  </div>
+                  
+                  {/* 圖右：圖片預覽 */}
+                  <div className="w-1/2 relative overflow-hidden">
+                    <img 
+                      src={`https://res.cloudinary.com/dklwgtmj2/image/upload/c_fill,g_north,h_600,w_400/f_auto,q_auto/${person.image}`}
+                      alt={person.name}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-110"
+                    />
+                    {/* 裝飾線條 */}
+                    <div className="absolute inset-0 bg-gradient-to-r from-black/5 to-transparent"></div>
+                  </div>
+                </div>
+                
+                {/* 懸浮效果裝飾 */}
+                <div className="absolute bottom-0 left-0 h-1 bg-gradient-to-r from-amber-500 to-orange-500 w-0 group-hover:w-full transition-all duration-500"></div>
+              </a>
+            ))}
+          </div>
+        </div>
+
 
         {/* 聖樂影音區塊 - 加上背景 */}
         <div className="bg-slate-50 -mx-3 lg:-mx-[15px] px-3 lg:px-[15px] py-8 mb-0">
