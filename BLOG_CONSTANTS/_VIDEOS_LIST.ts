@@ -40,15 +40,15 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "ETKObF6rHaE",
+    id: "Iz9mLKLF-uw",
     title: "佛燈（泰國壇主)",
     description: "佛燈（泰國壇主)",
     featured: true,
   },
   {
     id: "D27UF2Zj23k",
-    title: "敬拜老母娘(海外壇主)",
-    description: "敬拜老母娘(海外壇主)",
+    title: "敬拜老母娘(馬來西亞壇主道親)",
+    description: "敬拜老母娘(馬來西亞壇主道親)",
     featured: true,
   },
   {
