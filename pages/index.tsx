@@ -273,27 +273,17 @@ const Home = ({ allImages }: HomeProps) => {
                 rel="noopener noreferrer"
                 className="group relative block overflow-hidden rounded-2xl bg-white shadow-md hover:shadow-2xl transition-all duration-500 border border-gray-100"
               >
-                <div className="flex aspect-[16/9] md:aspect-[21/9]">
+                <div className="flex aspect-[21/9] md:aspect-[4/1]">
                   {/* 圖左：文字內容 */}
-                  <div className={`w-1/2 p-6 flex flex-col justify-center bg-gradient-to-br ${person.color} transition-colors duration-500`}>
-                    <span className="text-xs font-bold uppercase tracking-wider opacity-60 mb-2">Gleaning Collection</span>
-                    <h3 className={`text-xl md:text-2xl font-black ${person.titleColor} mb-1 transition-transform duration-500 group-hover:scale-105 origin-left`}>
+                  <div className={`w-[35%] p-6 flex flex-col justify-center bg-gradient-to-br ${person.color} transition-colors duration-500`}>
+                    <span className="text-[10px] font-bold uppercase tracking-widest opacity-60 mb-2">Gleaning Collection</span>
+                    <h3 className={`text-lg md:text-xl font-bold ${person.titleColor} transition-transform duration-500 group-hover:scale-105 origin-left leading-tight`}>
                       {person.name}
                     </h3>
-                    <p className={`text-sm md:text-base font-medium ${person.titleColor} opacity-80 mb-4`}>
-                      {person.title}
-                    </p>
-                    
-                    <div className="flex items-center gap-2 group-hover:translate-x-2 transition-transform duration-300">
-                      <span className={`text-sm font-bold ${person.titleColor}`}>查看全文</span>
-                      <svg className={`w-4 h-4 ${person.titleColor}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M14 5l7 7-7 7" />
-                      </svg>
-                    </div>
                   </div>
                   
                   {/* 圖右：圖片預覽 */}
-                  <div className="w-1/2 relative overflow-hidden">
+                  <div className="w-[65%] relative overflow-hidden">
                     <img 
                       src={`https://res.cloudinary.com/dklwgtmj2/image/upload/c_fill,g_north,h_600,w_400/f_auto,q_auto/${person.image}`}
                       alt={person.name}
