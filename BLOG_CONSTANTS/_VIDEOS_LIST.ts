@@ -52,6 +52,12 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
+    id: "K_C9ca-MnWg",
+    title: "盼望（新加坡佛堂)",
+    description: "盼望（新加坡佛堂)",
+    featured: true,
+  },
+  {
     id: "RO8OA8zV6L8",
     title: "我愿(合唱團版)",
     description: "我愿(合唱團版)",
