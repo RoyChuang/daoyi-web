@@ -53,8 +53,8 @@ export const VIDEOS: Video[] = [
   },
   {
     id: "K_C9ca-MnWg",
-    title: "盼望（新加坡佛堂)",
-    description: "盼望（新加坡佛堂)",
+    title: "盼望（新加坡壇主與佛堂)",
+    description: "盼望（新加坡壇主與佛堂)",
     featured: true,
   },
   {
