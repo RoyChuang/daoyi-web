@@ -46,12 +46,6 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "D27UF2Zj23k",
-    title: "敬拜老母娘(馬來西亞壇主道親)",
-    description: "敬拜老母娘(馬來西亞壇主道親)",
-    featured: true,
-  },
-  {
     id: "K_C9ca-MnWg",
     title: "盼望（新加坡壇主與佛堂)",
     description: "盼望（新加坡壇主與佛堂)",
