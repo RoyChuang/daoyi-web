@@ -59,8 +59,8 @@ export const VIDEOS: Video[] = [
   },
   {
     id: "YP1YGh446jY",
-    title: "前後相隨(馬來西亞訪問)",
-    description: "前後相隨(馬來西亞訪問)",
+    title: "前後相隨(探訪何前人足跡)",
+    description: "前後相隨(探訪何前人足跡)",
     featured: true,
   },
   {
