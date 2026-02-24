@@ -28,7 +28,7 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "R91BihX-h1A",
+    id: "RzTmZESMNx8",
     title: "但願活佛師尊慈訓(壇主版)",
     description: "但願活佛師尊慈訓(壇主版)",
     featured: true,
@@ -52,9 +52,15 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "xCJ75ivWJlI",
+    id: "hR2SpgW7UEA",
     title: "敬拜老母娘(馬來西亞壇主與佛堂)",
     description: "敬拜老母娘(馬來西亞壇主與佛堂)",
+    featured: true,
+  },
+  {
+    id: "YP1YGh446jY",
+    title: "前後相隨(馬來西亞訪問)",
+    description: "前後相隨(馬來西亞訪問)",
     featured: true,
   },
   {
