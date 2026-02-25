@@ -32,6 +32,44 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 export const ARTICLES_LIST: iArticle[] = [
   {
+    id: '260204',
+    path: "/blog/260204",
+    preview: {
+      author: RUPALI,
+      date: "02-04-2026",
+      articleTitle: "馬來西亞道務：大腳山幼兒集團結緣與北海佛堂開班",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "daoyi-web/blog/20260204/1",
+      shortIntro:
+        "20260204 今日顏經理和何經理慈悲與馬來西亞秘書Lisa、蘇講等前賢拜訪大腳山Dragonfly 幼兒連鎖集團老板Eunice老師（去年求道了），她每年都會對九皇齋消費130包以上咖哩麵給教職員，並做些財施，去年九皇齋帶動10位老師和其母親女兒等10多人來當義工，真是令人感動。晚上在北海佛堂開班，結班後晚獻香並用點心。",
+      category: "道務活動",
+    },
+    seo: {
+      keywords: "社團法人新北市道一關懷協會",
+      ogImage: "daoyi-web/blog/20260204/1",
+    },
+    images: [
+      "daoyi-web/blog/20260204/1",
+      "daoyi-web/blog/20260204/2",
+      "daoyi-web/blog/20260204/3",
+      "daoyi-web/blog/20260204/4",
+      "daoyi-web/blog/20260204/5",
+      "daoyi-web/blog/20260204/6",
+      "daoyi-web/blog/20260204/7",
+      "daoyi-web/blog/20260204/8",
+      "daoyi-web/blog/20260204/9",
+      "daoyi-web/blog/20260204/10",
+      "daoyi-web/blog/20260204/11",
+      "daoyi-web/blog/20260204/12",
+      "daoyi-web/blog/20260204/13",
+      "daoyi-web/blog/20260204/14",
+      "daoyi-web/blog/20260204/15",
+      "daoyi-web/blog/20260204/16",
+      "daoyi-web/blog/20260204/17",
+      "daoyi-web/blog/20260204/18",
+    ]
+  },
+  {
     id: '260220',
     path: "/blog/260220",
     preview: {
