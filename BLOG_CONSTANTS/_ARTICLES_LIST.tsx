@@ -32,6 +32,76 @@ import { MAYUR, RUPALI } from "./_BLOG_SETUP";
 // clear this article list and add your own
 export const ARTICLES_LIST: iArticle[] = [
   {
+    id: '260220',
+    path: "/blog/260220",
+    preview: {
+      author: RUPALI,
+      date: "02-20-2026",
+      articleTitle: "道一、府城兩單位新春團拜：賀禧馬年、道務宏展",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "daoyi-web/blog/20260220/1",
+      shortIntro:
+        "20260220 今日道一、府城兩單位道親在總壇舉行新春團拜！ 感謝何點傳師慈悲賀禧：新年快樂、「馬年」馬上道務宏展；感謝黃點傳師慈悲與道親同修互道恭喜拜年，二位點傳師並發紅包和賀卡。祝福大家新年快樂。",
+      category: "道一",
+    },
+    seo: {
+      keywords: "社團法人新北市道一關懷協會",
+      ogImage: "daoyi-web/blog/20260220/1",
+    },
+    images: [
+      "daoyi-web/blog/20260220/1",
+      "daoyi-web/blog/20260220/2",
+      "daoyi-web/blog/20260220/3",
+      "daoyi-web/blog/20260220/4",
+      "daoyi-web/blog/20260220/5",
+      "daoyi-web/blog/20260220/6",
+      "daoyi-web/blog/20260220/7",
+      "daoyi-web/blog/20260220/8",
+      "daoyi-web/blog/20260220/9",
+      "daoyi-web/blog/20260220/10",
+      "daoyi-web/blog/20260220/11",
+      "daoyi-web/blog/20260220/12",
+      "daoyi-web/blog/20260220/13",
+      "daoyi-web/blog/20260220/14",
+      "daoyi-web/blog/20260220/15",
+      "daoyi-web/blog/20260220/16",
+      "daoyi-web/blog/20260220/17",
+      "daoyi-web/blog/20260220/18",
+    ]
+  },
+  {
+    id: '260222',
+    path: "/blog/260222",
+    preview: {
+      author: RUPALI,
+      date: "02-22-2026",
+      articleTitle: "大年初六興毅忠信泰國道親「道一聖道院」（萬緣佛堂）新春團拜",
+      tags: "社團法人新北市道一關懷協會",
+      thumbnail: "daoyi-web/blog/20260222/1",
+      shortIntro:
+        "20260222 大年初六興毅忠信泰國道親在「道一聖道院」（萬緣佛堂）舉行新春團拜，活動精彩、道氣滿滿好熱鬧！本陳領導點傳與本社團何理事長受邀參加。陳領導點傳傳師在致詞中：祝福大家新年快樂、馬年都幸福、龍馬飛騰、新的一年祝大家道務宏展、聖凡皆如意。感謝諸位道親出席參加活！",
+      category: "道一",
+    },
+    seo: {
+      keywords: "社團法人新北市道一關懷協會",
+      ogImage: "daoyi-web/blog/20260222/1",
+    },
+    images: [
+      "daoyi-web/blog/20260222/1",
+      "daoyi-web/blog/20260222/2",
+      "daoyi-web/blog/20260222/3",
+      "daoyi-web/blog/20260222/4",
+      "daoyi-web/blog/20260222/5",
+      "daoyi-web/blog/20260222/6",
+      "daoyi-web/blog/20260222/7",
+      "daoyi-web/blog/20260222/8",
+      "daoyi-web/blog/20260222/9",
+      "daoyi-web/blog/20260222/10",
+      "daoyi-web/blog/20260222/11",
+      "daoyi-web/blog/20260222/12",
+    ]
+  },
+  {
     id: '260125',
     path: "/blog/260125",
     preview: {
