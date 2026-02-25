@@ -13,6 +13,9 @@ import Link from "next/link";
 import { GetStaticProps } from "next";
 import { getAllBlogImages, BlogImage } from "../src/utils/imageUtils";
 import { useState, useEffect } from "react";
+import { getCloudinaryUrl } from "../src/utils/cloudinary";
+import { iArticle } from "../src/shared/interfaces";
+import { ARTICLES_LIST } from "../BLOG_CONSTANTS/_ARTICLES_LIST";
 
 // Swiper 相關
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -398,7 +401,30 @@ const Home = ({ allImages }: HomeProps) => {
 
 // 在 build 時取得所有圖片列表
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
-  const allImages = getAllBlogImages();
+  // 1. 取得本機圖片
+  const localImages = getAllBlogImages();
+  
+  // 2. 從 ARTICLES_LIST 取得 Cloudinary 圖片
+  const cloudinaryImages: BlogImage[] = [];
+  ARTICLES_LIST.forEach((article: iArticle) => {
+    if (article.images && article.images.length > 0) {
+      article.images.forEach((id: string) => {
+        cloudinaryImages.push({
+          src: getCloudinaryUrl(id, { width: 600, height: 400, crop: 'fill' }),
+          blogPath: article.path
+        });
+      });
+    } else if (article.preview.thumbnail && !article.preview.thumbnail.startsWith('/')) {
+        // 如果沒有 images 數組但 thumbnail 是 Cloudinary ID
+        cloudinaryImages.push({
+            src: getCloudinaryUrl(article.preview.thumbnail, { width: 600, height: 400, crop: 'fill' }),
+            blogPath: article.path
+        });
+    }
+  });
+
+  // 合併所有圖片
+  const allImages = [...localImages, ...cloudinaryImages];
   
   return {
     props: {
