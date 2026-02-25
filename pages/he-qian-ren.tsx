@@ -93,6 +93,11 @@ const HeQianRenPage = () => {
                     <div className='flex flex-col gap-3 w-full max-w-sm lg:max-w-none lg:w-64'>
                         <h3 className='text-sm font-bold text-[#334155]'>相關影片</h3>
                         <VideoThumbnail
+                            videoId="LmekUzeZQTo"
+                            title="何紹棠前人成道十五週年（生平簡介）"
+                            onClick={() => openVideoModal("LmekUzeZQTo")}
+                        />
+                        <VideoThumbnail
                             videoId="C4Jsi-Q66dM"
                             title="一家人(追思何前人)"
                             onClick={() => openVideoModal("C4Jsi-Q66dM")}
