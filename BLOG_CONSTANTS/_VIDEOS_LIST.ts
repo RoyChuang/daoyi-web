@@ -16,6 +16,12 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
+    id: "WjpnezefGJI",
+    title: "泰國道親與何前人的回憶",
+    description: "泰國道親與何前人的回憶",
+    featured: true,
+  },
+  {
     id: "135eVc2YFtc",
     title: "牧羊人",
     description: "牧羊人",
