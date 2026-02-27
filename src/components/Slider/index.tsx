@@ -23,7 +23,21 @@ const Slider = ({ images, className }: { images: string[], className?: string })
             {
                 images.map((each, i) => (
                     <SwiperSlide className={classes.slide} key={i}>
-                        <img src={transformImagePaths(each)}  alt='' width="100%" className={'block cursor-grab object-cover object-[50%_15%] h-full w-full'} />
+                        <div className={classes.slide_inner}>
+                            {/* 模糊背景層：放大填滿，製造景深感 */}
+                            <img
+                                src={transformImagePaths(each)}
+                                alt=''
+                                className={classes.bg_blur}
+                                aria-hidden="true"
+                            />
+                            {/* 主圖層：維持原比例顯示，不裁切 */}
+                            <img
+                                src={transformImagePaths(each)}
+                                alt=''
+                                className={classes.main_img}
+                            />
+                        </div>
                     </SwiperSlide>
                 ))
             }

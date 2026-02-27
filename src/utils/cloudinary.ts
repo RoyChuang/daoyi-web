@@ -18,6 +18,7 @@ export function getCloudinaryUrl(
     width?: number;
     height?: number;
     crop?: 'fill' | 'fit' | 'scale' | 'crop' | 'thumb';
+    gravity?: 'auto' | 'faces' | 'center' | 'north' | 'south';
     quality?: number | 'auto';
     format?: 'auto' | 'jpg' | 'png' | 'webp';
   }
@@ -26,6 +27,7 @@ export function getCloudinaryUrl(
     width,
     height,
     crop = 'fill',
+    gravity,
     quality = 'auto',
     format = 'auto',
   } = options || {};
@@ -36,6 +38,7 @@ export function getCloudinaryUrl(
   if (width) transformations.push(`w_${width}`);
   if (height) transformations.push(`h_${height}`);
   if (crop) transformations.push(`c_${crop}`);
+  if (gravity) transformations.push(`g_${gravity}`);
   if (quality) transformations.push(`q_${quality}`);
   if (format) transformations.push(`f_${format}`);
 
@@ -45,6 +48,38 @@ export function getCloudinaryUrl(
 
   // 生成完整 URL
   return `https://res.cloudinary.com/${CLOUD_NAME}/image/upload/${transformString}/${publicId}`;
+}
+
+/**
+ * 生成卡片縮圖 URL（使用 g_auto 智慧主體偵測裁切）
+ * 必須指定目標寬高，Cloudinary 才會真正在伺服器端做對應裁切
+ * @param publicId - 圖片的 public ID
+ * @param width - 卡片寬度（px）
+ * @param height - 卡片高度（px）
+ */
+export function getCardThumbnailUrl(
+  publicId: string,
+  width: number = 800,
+  height: number = 400
+): string {
+  return getCloudinaryUrl(publicId, {
+    width,
+    height,
+    crop: 'fill',
+    gravity: 'auto',  // Cloudinary AI 自動偵測主體位置
+    quality: 'auto',
+    format: 'auto',
+  });
+}
+
+/** 首頁「近期活動」卡片縮圖 (h-[140px] 容器) */
+export function getCompactCardThumbnailUrl(publicId: string): string {
+  return getCardThumbnailUrl(publicId, 800, 280);
+}
+
+/** 文章列表卡片縮圖 (h-[200px] 容器) */
+export function getRegularCardThumbnailUrl(publicId: string): string {
+  return getCardThumbnailUrl(publicId, 800, 400);
 }
 
 /**

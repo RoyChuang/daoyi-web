@@ -3,6 +3,7 @@ import { IArticleHeaderData } from "../../shared/interfaces";
 import {
   combineClasses,
   transformImagePaths,
+  transformThumbnailPath,
   transformPath,
 } from "../../utils/utils";
 import classes from "./ArticleCard.module.scss";
@@ -41,12 +42,12 @@ const ArticleCard = ({ article, path }: IProp) => {
         <div>
           <div className={"overflow-hidden h-[200px] relative"}>
             <Image
-              src={transformImagePaths(article.thumbnail)}
+              src={transformThumbnailPath(article.thumbnail, 'regular')}
               alt={article.articleTitle}
               layout="fill"
               quality={100}
               objectFit="cover"
-              objectPosition="center 15%"
+              objectPosition="center center"
               loader={imgLoader}
             />
           </div>

@@ -56,12 +56,23 @@ function Activities(props: { detail: any; images: any }) {
       >
         {images.map((image, index) => (
           <SwiperSlide key={index}>
-            <div className="relative">
-              <img 
-                src={image} 
+            {/* 固定高度容器，支援直立 & 橫向圖 */}
+            <div
+              className="relative w-full h-[300px] md:h-[450px] overflow-hidden bg-slate-900 cursor-pointer"
+              onClick={() => setSelectedImage(image)}
+            >
+              {/* 底層：模糊放大背景，填滿空白區域 */}
+              <img
+                src={image}
+                alt=""
+                aria-hidden="true"
+                className="absolute inset-0 w-full h-full object-cover scale-110 blur-[18px] brightness-50 pointer-events-none select-none"
+              />
+              {/* 上層：主圖完整顯示，不裁切 */}
+              <img
+                src={image}
                 alt={`${details.articleTitle} - ${index + 1}`}
-                className="w-full h-[300px] md:h-[450px] object-cover object-top cursor-pointer"
-                onClick={() => setSelectedImage(image)}
+                className="absolute inset-0 m-auto w-full h-full object-contain"
               />
             </div>
           </SwiperSlide>

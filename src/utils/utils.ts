@@ -6,7 +6,7 @@ import { iArticle, iSEO } from "../shared/interfaces";
 import { WEBSITE_NAME, WEBSITE_URL } from "../../BLOG_CONSTANTS/_BLOG_SETUP";
 import { MOCK_ARTICLES_LIST } from "../constants/mocks";
 import { GAEvent } from "../../google";
-import { getCloudinaryUrl } from "./cloudinary";
+import { getCloudinaryUrl, getCompactCardThumbnailUrl, getRegularCardThumbnailUrl } from "./cloudinary";
 
 // env
 const env = process.env.NODE_ENV;
@@ -163,6 +163,25 @@ export const transformImagePaths = (path = ""): string => {
   // 如果不以 / 開頭且看起來不像本地路徑 (含 .)，則視為 Cloudinary ID
   if (!path.startsWith("/") && !path.includes(".")) {
     return getCloudinaryUrl(path);
+  }
+  return path;
+};
+
+/**
+ * 專給卡片縮圖用 - 對 Cloudinary 圖片使用 g_auto 智慧裁切
+ * @param path
+ * @param variant - 'compact' (h-140px) | 'regular' (h-200px)
+ * @returns string
+ */
+export const transformThumbnailPath = (path = "", variant: 'compact' | 'regular' = 'compact'): string => {
+  if (!path) return "";
+  if (path.startsWith("http")) return path;
+  if (path.startsWith("/public")) return path.replace("/public", "");
+  // Cloudinary ID 使用方主體偵測裁切，並指定目標尺寸
+  if (!path.startsWith("/") && !path.includes(".")) {
+    return variant === 'compact'
+      ? getCompactCardThumbnailUrl(path)   // 800×280 （h-140px 卡片）
+      : getRegularCardThumbnailUrl(path);  // 800×400 （h-200px 卡片）
   }
   return path;
 };

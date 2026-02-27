@@ -3,6 +3,7 @@ import { IArticleHeaderData } from "../../shared/interfaces";
 import {
   combineClasses,
   transformImagePaths,
+  transformThumbnailPath,
   transformPath,
 } from "../../utils/utils";
 import Image from "next/image";
@@ -37,12 +38,12 @@ const ArticleCardCompact = ({ article, path }: IProp) => {
         {/* 圖片區塊 */}
         <div className="overflow-hidden h-[140px] relative">
           <Image
-            src={transformImagePaths(article.thumbnail)}
+            src={transformThumbnailPath(article.thumbnail, 'compact')}
             alt={article.articleTitle}
             layout="fill"
             quality={80}
             objectFit="cover"
-            objectPosition="center 15%"
+            objectPosition="center center"
             loader={imgLoader}
             className="group-hover:scale-105 transition-transform duration-300"
           />
