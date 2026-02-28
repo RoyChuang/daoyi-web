@@ -70,6 +70,12 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
+    id: "EH5y4H4qZYs",
+    title: "東山之歌(忠信傳習步天梯)",
+    description: "東山之歌(忠信傳習步天梯)",
+    featured: true,
+  },
+  {
     id: "Qy2AcBxV8Eg",
     title: "前後相隨(探訪何前人足跡)",
     description: "前後相隨(探訪何前人足跡)",
