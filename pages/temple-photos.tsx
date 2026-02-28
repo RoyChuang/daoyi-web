@@ -8,6 +8,7 @@ import { DEFAULT_SEO } from "../BLOG_CONSTANTS/_BLOG_SETUP";
 import { TEMPLE_PHOTOS } from "../BLOG_CONSTANTS/_TEMPLE_PHOTOS";
 import { getCloudinaryUrl, getThumbnailUrl } from "../src/utils/cloudinary";
 import { useState } from "react";
+import ImageLightbox from "../src/components/ImageLightbox";
 
 // Swiper 相關
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,7 +18,12 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 const TemplePhotos = () => {
-  const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  // 預先產好所有圖片 URL 和資訊
+  const lightboxImages = TEMPLE_PHOTOS.map(p => getCloudinaryUrl(p.publicId, { width: 1920, quality: 'auto', format: 'auto' }));
+  const lightboxTitles = TEMPLE_PHOTOS.map(p => p.title);
+  const lightboxDates  = TEMPLE_PHOTOS.map(p => p.date || '');
 
   return (
     <PageLayout PAGE_SEO={{
@@ -59,7 +65,7 @@ const TemplePhotos = () => {
               <SwiperSlide key={index}>
                 <div 
                   className="cursor-pointer group"
-                  onClick={() => setSelectedPhoto(index)}
+                  onClick={() => setLightboxIndex(index)}
                 >
                   <div className="aspect-video rounded-lg overflow-hidden shadow-lg">
                     <img
@@ -94,7 +100,7 @@ const TemplePhotos = () => {
               <div
                 key={index}
                 className="cursor-pointer group"
-                onClick={() => setSelectedPhoto(index)}
+                onClick={() => setLightboxIndex(index)}
               >
                 <div className="aspect-square rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow">
                   <img
@@ -116,40 +122,15 @@ const TemplePhotos = () => {
           </div>
         </div>
 
-        {/* 燈箱效果 (點擊放大) */}
-        {selectedPhoto !== null && (
-          <div
-            className="fixed inset-0 bg-black bg-opacity-90 z-50 flex items-center justify-center p-4"
-            onClick={() => setSelectedPhoto(null)}
-          >
-            <div className="relative max-w-6xl w-full">
-              <button
-                className="absolute top-4 right-4 text-white text-4xl font-bold hover:text-gray-300 z-10"
-                onClick={() => setSelectedPhoto(null)}
-              >
-                ×
-              </button>
-              <img
-                src={getCloudinaryUrl(TEMPLE_PHOTOS[selectedPhoto].publicId, {
-                  width: 1920,
-                  quality: 'auto',
-                  format: 'auto',
-                })}
-                alt={TEMPLE_PHOTOS[selectedPhoto].title}
-                className="w-full h-auto rounded-lg"
-              />
-              <div className="text-white text-center mt-4">
-                <h3 className="text-2xl font-bold">
-                  {TEMPLE_PHOTOS[selectedPhoto].title}
-                </h3>
-                {TEMPLE_PHOTOS[selectedPhoto].date && (
-                  <p className="text-gray-300 mt-2">
-                    {TEMPLE_PHOTOS[selectedPhoto].date}
-                  </p>
-                )}
-              </div>
-            </div>
-          </div>
+        {/* 共用 ImageLightbox */}
+        {lightboxIndex !== null && (
+          <ImageLightbox
+            images={lightboxImages}
+            initialIndex={lightboxIndex}
+            onClose={() => setLightboxIndex(null)}
+            titles={lightboxTitles}
+            dates={lightboxDates}
+          />
         )}
       </div>
     </PageLayout>

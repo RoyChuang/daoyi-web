@@ -7,6 +7,7 @@ import { faCompactDisc, faImages } from "@fortawesome/free-solid-svg-icons";
 import { TEMPLE_PHOTOS } from '../BLOG_CONSTANTS/_TEMPLE_PHOTOS';
 import { getCloudinaryUrl } from '../src/utils/cloudinary';
 import VideoThumbnail from '../src/components/VideoThumbnail';
+import ImageLightbox from '../src/components/ImageLightbox';
 
 // Swiper 相關
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -16,7 +17,7 @@ import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
 const HeQianRenPage = () => {
-    const [selectedPhoto, setSelectedPhoto] = useState<number | null>(null);
+    const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
     // 影片 modal 狀態
     const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
     const [currentVideoId, setCurrentVideoId] = useState<string | null>(null);
@@ -32,6 +33,11 @@ const HeQianRenPage = () => {
         setIsVideoModalOpen(false);
         setCurrentVideoId(null);
     };
+
+    // 預先產好 lightbox 所有資料
+    const lightboxImages = TEMPLE_PHOTOS.map(p => getCloudinaryUrl(p.publicId, { width: 1920, quality: 'auto', format: 'auto' }));
+    const lightboxTitles = TEMPLE_PHOTOS.map(p => p.title);
+    const lightboxDates  = TEMPLE_PHOTOS.map(p => p.date || '');
 
     return (
         <>
@@ -146,7 +152,7 @@ const HeQianRenPage = () => {
                     >
                         {TEMPLE_PHOTOS.map((photo, index) => (
                             <SwiperSlide key={index}>
-                                <div className="group cursor-pointer" onClick={() => setSelectedPhoto(index)}>
+                                <div className="group cursor-pointer" onClick={() => setLightboxIndex(index)}>
                                     <div className="aspect-[4/3] rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
                                         <img
                                             src={getCloudinaryUrl(photo.publicId, {
@@ -357,48 +363,15 @@ const HeQianRenPage = () => {
                 </article>
             </section>
 
-            {/* 燈箱效果 - 點擊放大照片 */}
-            {selectedPhoto !== null && (
-                <div
-                    className="fixed inset-0 bg-black bg-opacity-95 z-50 flex items-center justify-center p-4"
-                    onClick={() => setSelectedPhoto(null)}
-                >
-                    <div className="relative max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
-                        {/* 關閉按鈕 */}
-                        <button
-                            className="absolute -top-12 right-0 text-white text-4xl font-bold hover:text-gray-300 transition-colors z-10"
-                            onClick={() => setSelectedPhoto(null)}
-                        >
-                            ×
-                        </button>
-                        
-                        {/* 大圖 */}
-                        <img
-                            src={getCloudinaryUrl(TEMPLE_PHOTOS[selectedPhoto].publicId, {
-                                width: 1920,
-                                quality: 'auto',
-                                format: 'auto',
-                            })}
-                            alt={TEMPLE_PHOTOS[selectedPhoto].title}
-                            className="w-full h-auto rounded-lg shadow-2xl"
-                        />
-                        
-                        {/* 照片資訊 */}
-                        <div className="text-white text-center mt-4 bg-black bg-opacity-50 p-4 rounded-lg">
-                            <h3 className="text-2xl font-bold">
-                                {TEMPLE_PHOTOS[selectedPhoto].title}
-                            </h3>
-                            {TEMPLE_PHOTOS[selectedPhoto].date && (
-                                <p className="text-gray-300 mt-2 text-lg">
-                                    {TEMPLE_PHOTOS[selectedPhoto].date}
-                                </p>
-                            )}
-                            <p className="text-gray-400 text-sm mt-2">
-                                {selectedPhoto + 1} / {TEMPLE_PHOTOS.length}
-                            </p>
-                        </div>
-                    </div>
-                </div>
+            {/* 共用 ImageLightbox */}
+            {lightboxIndex !== null && (
+                <ImageLightbox
+                    images={lightboxImages}
+                    initialIndex={lightboxIndex}
+                    onClose={() => setLightboxIndex(null)}
+                    titles={lightboxTitles}
+                    dates={lightboxDates}
+                />
             )}
 
             {/* 影片播放 Modal */}

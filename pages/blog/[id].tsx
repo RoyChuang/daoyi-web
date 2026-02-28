@@ -9,6 +9,7 @@ import { PageLayout, Text, Image, } from "../../src/components";
 import { getArticleDetailById } from '../../src/utils/utils';
 import { ARTICLES_LIST } from '../../BLOG_CONSTANTS/_ARTICLES_LIST';
 import { getCloudinaryUrl } from '../../src/utils/cloudinary';
+import ImageLightbox from '../../src/components/ImageLightbox';
 
 // Swiper 相關
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -31,7 +32,7 @@ function formatContent(content: string) {
 function Activities(props: { detail: any; images: any }) {
   const details = JSON.parse(props.detail);
   const images = props.images as string[];
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
   
   // 分離首圖和其他圖片（用於下方相簿區塊）
   const galleryImages = images.length > 1 ? images.slice(1) : [];
@@ -59,7 +60,7 @@ function Activities(props: { detail: any; images: any }) {
             {/* 固定高度容器，支援直立 & 橫向圖 */}
             <div
               className="relative w-full h-[300px] md:h-[450px] overflow-hidden bg-slate-900 cursor-pointer"
-              onClick={() => setSelectedImage(image)}
+              onClick={() => setLightboxIndex(index)}
             >
               {/* 底層：模糊放大背景，填滿空白區域 */}
               <img
@@ -112,7 +113,7 @@ function Activities(props: { detail: any; images: any }) {
               <div 
                 key={index}
                 className="relative aspect-[4/3] rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-                onClick={() => setSelectedImage(image)}
+                onClick={() => setLightboxIndex(index + 1)}
               >
                 <img 
                   src={image} 
@@ -125,25 +126,13 @@ function Activities(props: { detail: any; images: any }) {
         </div>
       )}
 
-      {/* Lightbox 圖片檢視器 */}
-      {selectedImage && (
-        <div 
-          className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4 cursor-pointer"
-          onClick={() => setSelectedImage(null)}
-        >
-          <button 
-            className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors z-10"
-            onClick={() => setSelectedImage(null)}
-          >
-            ✕
-          </button>
-          <img 
-            src={selectedImage} 
-            alt="放大檢視"
-            className="max-w-full max-h-[90vh] object-contain rounded-lg shadow-2xl"
-            onClick={(e) => e.stopPropagation()}
-          />
-        </div>
+      {/* 共用 ImageLightbox */}
+      {lightboxIndex !== null && (
+        <ImageLightbox
+          images={images}
+          initialIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
       )}
     </PageLayout>
   );
