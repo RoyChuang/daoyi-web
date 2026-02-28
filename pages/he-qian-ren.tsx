@@ -108,9 +108,9 @@ const HeQianRenPage = () => {
                             onClick={() => openVideoModal("C4Jsi-Q66dM")}
                         />
                         <VideoThumbnail
-                            videoId="cJtZ7SaScmY"
+                            videoId="VX2cAMm4hNg"
                             title="前人的手"
-                            onClick={() => openVideoModal("cJtZ7SaScmY")}
+                            onClick={() => openVideoModal("VX2cAMm4hNg")}
                         />
                     </div>
                 </div>
