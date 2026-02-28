@@ -34,7 +34,7 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "cJtZ7SaScmY",
+    id: "VX2cAMm4hNg",
     title: "前人的手(道一公共佛堂)",
     description: "前人的手(道一公共佛堂)",
     featured: true,
@@ -70,7 +70,7 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
-    id: "YP1YGh446jY",
+    id: "Qy2AcBxV8Eg",
     title: "前後相隨(探訪何前人足跡)",
     description: "前後相隨(探訪何前人足跡)",
     featured: true,
