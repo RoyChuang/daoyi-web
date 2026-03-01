@@ -86,38 +86,60 @@ const HeQianRenPage = () => {
                 
                 {/* 主圖 + 影片區域 */}
                 <div className='mb-8 flex flex-col lg:flex-row gap-6'>
-                    {/* 左側：主圖 */}
-                    <div className='flex-shrink-0'>
+                    {/* 左側：主圖，固定高度 */}
+                    <div className='flex-shrink-0 lg:w-[480px] self-stretch'>
                         <img 
                             src="/images/he-qian-ren/index.jpg" 
                             alt="何紹棠前人" 
-                            className='w-full max-w-2xl rounded-lg shadow-lg'
+                            className='w-full h-full min-h-[300px] object-cover object-top rounded-lg shadow-lg'
                         />
                     </div>
 
-                    {/* 右側：兩個影片 */}
-                    <div className='flex flex-col gap-3 w-full max-w-sm lg:max-w-none lg:w-64'>
-                        <h3 className='text-sm font-bold text-[#334155]'>相關影片</h3>
-                        <VideoThumbnail
-                            videoId="LmekUzeZQTo"
-                            title="何紹棠前人成道十五週年（生平簡介）"
-                            onClick={() => openVideoModal("LmekUzeZQTo")}
-                        />
-                        <VideoThumbnail
-                            videoId="WjpnezefGJI"
-                            title="泰國道親與何前人的回憶"
-                            onClick={() => openVideoModal("WjpnezefGJI")}
-                        />
-                        <VideoThumbnail
-                            videoId="C4Jsi-Q66dM"
-                            title="一家人(追思何前人)"
-                            onClick={() => openVideoModal("C4Jsi-Q66dM")}
-                        />
-                        <VideoThumbnail
-                            videoId="VX2cAMm4hNg"
-                            title="前人的手"
-                            onClick={() => openVideoModal("VX2cAMm4hNg")}
-                        />
+                    {/* 右側：2 欄影片格子 */}
+                    <div className='flex-1 min-w-0'>
+                        <h3 className='text-sm font-bold text-[#334155] mb-3'>相關影片</h3>
+                        <div className='grid grid-cols-2 gap-3'>
+                            <VideoThumbnail
+                                videoId="LmekUzeZQTo"
+                                title="何紹棠前人成道十五週年（生平簡介）"
+                                onClick={() => openVideoModal("LmekUzeZQTo")}
+                            />
+                            <VideoThumbnail
+                                videoId="WjpnezefGJI"
+                                title="泰國道親與何前人的回憶"
+                                onClick={() => openVideoModal("WjpnezefGJI")}
+                            />
+                            <VideoThumbnail
+                                videoId="C4Jsi-Q66dM"
+                                title="一家人(追思何前人)"
+                                onClick={() => openVideoModal("C4Jsi-Q66dM")}
+                            />
+                            <VideoThumbnail
+                                videoId="VX2cAMm4hNg"
+                                title="前人的手"
+                                onClick={() => openVideoModal("VX2cAMm4hNg")}
+                            />
+                            <VideoThumbnail
+                                videoId="mbt-wibGjnA"
+                                title="太極無上混元真經 上 何前人慈悲釋解"
+                                onClick={() => openVideoModal("mbt-wibGjnA")}
+                            />
+                            <VideoThumbnail
+                                videoId="JKU0oUguKVg"
+                                title="太極無上混元真經 下 何前人慈悲釋解"
+                                onClick={() => openVideoModal("JKU0oUguKVg")}
+                            />
+                            <VideoThumbnail
+                                videoId="lxwEekKnapY"
+                                title="同心同德整體成就 何前人慈悲勉勵 上"
+                                onClick={() => openVideoModal("lxwEekKnapY")}
+                            />
+                            <VideoThumbnail
+                                videoId="DMqDAijSJZM"
+                                title="同心同德整體成就 何前人慈悲勉勵 下"
+                                onClick={() => openVideoModal("DMqDAijSJZM")}
+                            />
+                        </div>
                     </div>
                 </div>
 

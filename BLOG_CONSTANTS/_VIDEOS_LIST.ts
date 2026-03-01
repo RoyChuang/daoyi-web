@@ -147,6 +147,36 @@ export const VIDEOS: Video[] = [
     description: "東山之歌",
     featured: true,
   },
+  {
+    id: "mbt-wibGjnA",
+    title: "太極無上混元真經 上 何前人慈悲釋解",
+    description: "太極無上混元真經 上 何前人慈悲釋解",
+    featured: true,
+  },
+  {
+    id: "JKU0oUguKVg",
+    title: "太極無上混元真經 下 何前人慈悲釋解",
+    description: "太極無上混元真經 下 何前人慈悲釋解",
+    featured: true,
+  },
+  {
+    id: "lxwEekKnapY",
+    title: "同心同德整體成就 何前人慈悲勉勵 上",
+    description: "同心同德整體成就 何前人慈悲勉勵 上",
+    featured: true,
+  },
+  {
+    id: "DMqDAijSJZM",
+    title: "同心同德整體成就 何前人慈悲勉勵 下",
+    description: "同心同德整體成就 何前人慈悲勉勵 下",
+    featured: true,
+  },
+  {
+    id: "WnQrRzPH2iM",
+    title: "感恩道親誠心設壇了愿修行",
+    description: "感恩道親誠心設壇了愿修行",
+    featured: true,
+  },
 
   // 新增影片範例：
   // {
