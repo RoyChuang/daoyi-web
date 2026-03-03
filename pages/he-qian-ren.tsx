@@ -105,6 +105,11 @@ const HeQianRenPage = () => {
                                 onClick={() => openVideoModal("LmekUzeZQTo")}
                             />
                             <VideoThumbnail
+                                videoId="idryyhle4qo"
+                                title="新加坡道親對何前人的印象和回憶"
+                                onClick={() => openVideoModal("idryyhle4qo")}
+                            />
+                            <VideoThumbnail
                                 videoId="yF-2gqoF0pc"
                                 title="马来西亚道亲对何前人的印象"
                                 onClick={() => openVideoModal("yF-2gqoF0pc")}
