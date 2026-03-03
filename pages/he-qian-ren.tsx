@@ -105,9 +105,9 @@ const HeQianRenPage = () => {
                                 onClick={() => openVideoModal("LmekUzeZQTo")}
                             />
                             <VideoThumbnail
-                                videoId="WjpnezefGJI"
+                                videoId="7PpZYcpwrao"
                                 title="泰國道親與何前人的回憶"
-                                onClick={() => openVideoModal("WjpnezefGJI")}
+                                onClick={() => openVideoModal("7PpZYcpwrao")}
                             />
                             <VideoThumbnail
                                 videoId="C4Jsi-Q66dM"
