@@ -64,6 +64,12 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
+    id: "NTkzq7P5w-A",
+    title: "《我愿》鋼琴伴奏齊唱歌詞版",
+    description: "《我愿》鋼琴伴奏齊唱歌詞版",
+    featured: true,
+  },
+  {
     id: "Iz9mLKLF-uw",
     title: "佛燈（泰國壇主)",
     description: "佛燈（泰國壇主)",

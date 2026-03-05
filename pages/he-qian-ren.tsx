@@ -130,6 +130,16 @@ const HeQianRenPage = () => {
                                 onClick={() => openVideoModal("VX2cAMm4hNg")}
                             />
                             <VideoThumbnail
+                                videoId="kW90YSbwEU8"
+                                title="我愿（何前人)"
+                                onClick={() => openVideoModal("kW90YSbwEU8")}
+                            />
+                            <VideoThumbnail
+                                videoId="NTkzq7P5w-A"
+                                title="《我愿》鋼琴伴奏齊唱歌詞版"
+                                onClick={() => openVideoModal("NTkzq7P5w-A")}
+                            />
+                            <VideoThumbnail
                                 videoId="mbt-wibGjnA"
                                 title="太極無上混元真經 上 何前人慈悲釋解"
                                 onClick={() => openVideoModal("mbt-wibGjnA")}
