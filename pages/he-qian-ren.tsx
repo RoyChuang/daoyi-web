@@ -120,19 +120,29 @@ const HeQianRenPage = () => {
                                 onClick={() => openVideoModal("7PpZYcpwrao")}
                             />
                             <VideoThumbnail
+                                videoId="Lui8lF1-i50"
+                                title="新加坡道親洪榮海壇主和廖順利壇主對何前人的印象和回憶"
+                                onClick={() => openVideoModal("Lui8lF1-i50")}
+                            />
+                            <VideoThumbnail
+                                videoId="a-yFMbe6lg8"
+                                title="北海姚太對何前人的回憶"
+                                onClick={() => openVideoModal("a-yFMbe6lg8")}
+                            />
+                            <VideoThumbnail
                                 videoId="C4Jsi-Q66dM"
                                 title="一家人(追思何前人)"
                                 onClick={() => openVideoModal("C4Jsi-Q66dM")}
                             />
                             <VideoThumbnail
-                                videoId="VX2cAMm4hNg"
+                                videoId="SYkTeTjXMsw"
                                 title="前人的手"
-                                onClick={() => openVideoModal("VX2cAMm4hNg")}
+                                onClick={() => openVideoModal("SYkTeTjXMsw")}
                             />
                             <VideoThumbnail
-                                videoId="kW90YSbwEU8"
+                                videoId="7zZQIhH11UE"
                                 title="我愿（何前人)"
-                                onClick={() => openVideoModal("kW90YSbwEU8")}
+                                onClick={() => openVideoModal("7zZQIhH11UE")}
                             />
                             <VideoThumbnail
                                 videoId="NTkzq7P5w-A"
