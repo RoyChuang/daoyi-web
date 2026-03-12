@@ -34,6 +34,18 @@ export const VIDEOS: Video[] = [
     featured: true,
   },
   {
+    id: "Lui8lF1-i50",
+    title: "新加坡道親洪榮海壇主和廖順利壇主對何前人的印象和回憶",
+    description: "新加坡道親洪榮海壇主和廖順利壇主對何前人的印象和回憶",
+    featured: true,
+  },
+  {
+    id: "a-yFMbe6lg8",
+    title: "北海姚太對何前人的回憶",
+    description: "北海姚太對何前人的回憶",
+    featured: true,
+  },
+  {
     id: "135eVc2YFtc",
     title: "牧羊人",
     description: "牧羊人",
