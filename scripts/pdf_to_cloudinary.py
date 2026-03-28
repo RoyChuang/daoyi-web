@@ -11,11 +11,14 @@ import sys
 import tempfile
 from pathlib import Path
 
-# Cloudinary 設定
+# Cloudinary 設定（從 .env.local 讀取，不寫死在程式碼裡）
+from dotenv import load_dotenv
+load_dotenv(dotenv_path=Path(__file__).parent.parent / ".env.local")
+
 cloudinary.config(
-    cloud_name="dklwgtmj2",
-    api_key="499387135334112",
-    api_secret="sWBPeYakUK_N1uKdDwK-LVJQaVg",
+    cloud_name=os.environ["CLOUDINARY_CLOUD_NAME"],
+    api_key=os.environ["CLOUDINARY_API_KEY"],
+    api_secret=os.environ["CLOUDINARY_API_SECRET"],
 )
 
 # PDF 檔案與對應的 Cloudinary 資料夾名稱
