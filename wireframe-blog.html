@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>部落格首頁 Wireframe — 道一關懷協會</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f5f0e8;
+    font-family: 'Courier New', monospace;
+    padding: 40px 20px;
+    color: #2a2a2a;
+  }
+
+  /* Sketch canvas */
+  .canvas {
+    max-width: 900px;
+    margin: 0 auto;
+    background: #fdfaf4;
+    border: 2px solid #333;
+    padding: 40px;
+    box-shadow: 4px 4px 0 #333, 8px 8px 0 #aaa;
+    position: relative;
+  }
+
+  /* Title */
+  .wireframe-title {
+    text-align: center;
+    font-size: 13px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 32px;
+    border-bottom: 1px dashed #bbb;
+    padding-bottom: 12px;
+  }
+
+  /* Sketch line style */
+  .sketch-box {
+    border: 1.5px solid #333;
+    position: relative;
+    background: #fff;
+  }
+
+  .sketch-box::before, .sketch-box::after {
+    content: '';
+    position: absolute;
+    background: #333;
+  }
+
+  /* Rough border effect */
+  .rough {
+    border: 1.5px solid #444;
+    border-radius: 1px;
+    position: relative;
+    box-shadow: 1px 1px 0 #bbb;
+  }
+
+  /* Section label */
+  .label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    margin-bottom: 6px;
+    display: block;
+  }
+
+  /* Annotation */
+  .note {
+    font-size: 11px;
+    color: #e67e22;
+    position: absolute;
+    font-style: italic;
+    white-space: nowrap;
+  }
+
+  /* Text placeholder lines */
+  .text-line {
+    height: 8px;
+    background: #ddd;
+    border-radius: 2px;
+    margin-bottom: 6px;
+  }
+
+  .text-line.short { width: 60%; }
+  .text-line.med { width: 80%; }
+  .text-line.long { width: 95%; }
+  .text-line.title { height: 12px; background: #aaa; width: 85%; }
+  .text-line.dark { background: #bbb; }
+
+  /* Image placeholder */
+  .img-placeholder {
+    background: #e8e8e8;
+    border: 1.5px solid #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #aaa;
+    font-size: 11px;
+    letter-spacing: 1px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .img-placeholder::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      to bottom right,
+      transparent calc(50% - 0.5px),
+      #ccc calc(50% - 0.5px),
+      #ccc calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    );
+  }
+
+  .img-placeholder::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: linear-gradient(
+      to top right,
+      transparent calc(50% - 0.5px),
+      #ccc calc(50% - 0.5px),
+      #ccc calc(50% + 0.5px),
+      transparent calc(50% + 0.5px)
+    );
+  }
+
+  .img-label {
+    position: relative;
+    z-index: 1;
+    font-size: 10px;
+    color: #999;
+    letter-spacing: 1px;
+  }
+
+  /* Tag pill */
+  .tag-pill {
+    display: inline-block;
+    border: 1px solid #999;
+    border-radius: 20px;
+    padding: 2px 10px;
+    font-size: 10px;
+    color: #777;
+    margin-right: 4px;
+  }
+
+  /* Button */
+  .btn-sketch {
+    border: 1.5px solid #444;
+    padding: 8px 20px;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: inline-block;
+    cursor: pointer;
+    background: #fff;
+  }
+
+  .btn-sketch.filled {
+    background: #333;
+    color: #fff;
+  }
+
+  /* Category tabs */
+  .tab {
+    display: inline-block;
+    padding: 7px 16px;
+    font-size: 11px;
+    border: 1px solid #ccc;
+    margin-right: 4px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    color: #666;
+    background: #fff;
+  }
+
+  .tab.active {
+    border: 1.5px solid #333;
+    background: #333;
+    color: #fff;
+    font-weight: bold;
+  }
+
+  /* Pagination */
+  .page-num {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    line-height: 30px;
+    text-align: center;
+    font-size: 12px;
+    margin: 0 2px;
+    color: #666;
+  }
+  .page-num.active {
+    border: 1.5px solid #333;
+    background: #333;
+    color: #fff;
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px dashed #ccc;
+    margin: 20px 0;
+  }
+
+  /* Arrow annotation */
+  .arrow-note {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #e67e22;
+    font-style: italic;
+    margin-top: 4px;
+  }
+
+  .arrow-note::before {
+    content: '→';
+    font-style: normal;
+  }
+
+  /* Section spacing */
+  .section { margin-bottom: 24px; }
+
+  /* Grid helpers */
+  .grid-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+  /* Sticky note effect for annotations */
+  .sticky {
+    background: #fffacd;
+    border: 1px solid #e0d88a;
+    padding: 8px 12px;
+    font-size: 11px;
+    color: #7a6600;
+    font-style: italic;
+    box-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    max-width: 200px;
+    line-height: 1.5;
+  }
+
+  /* Heading bar */
+  .section-heading {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #444;
+    border-left: 3px solid #333;
+    padding-left: 8px;
+    margin-bottom: 12px;
+  }
+
+  .featured-badge {
+    display: inline-block;
+    background: #333;
+    color: #fff;
+    font-size: 9px;
+    padding: 2px 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+  }
+
+  .search-bar {
+    border: 1.5px solid #444;
+    display: flex;
+    align-items: center;
+    padding: 8px 14px;
+    gap: 10px;
+    background: #fff;
+  }
+
+  .search-icon {
+    color: #999;
+    font-size: 14px;
+  }
+
+  .search-placeholder {
+    height: 8px;
+    background: #e0e0e0;
+    width: 160px;
+    border-radius: 2px;
+  }
+
+  .search-btn {
+    margin-left: auto;
+    font-size: 10px;
+    color: #888;
+    border: 1px solid #ccc;
+    padding: 2px 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+  <div class="wireframe-title">Blog Index Page — Wireframe Sketch v1</div>
+
+  <!-- ROW 0: search + filter -->
+  <div class="section" style="display:flex; align-items:flex-start; gap:20px; flex-wrap:wrap;">
+    <div style="flex:1; min-width:200px;">
+      <span class="label">搜尋列</span>
+      <div class="search-bar">
+        <span class="search-icon">⌕</span>
+        <div class="search-placeholder"></div>
+        <div class="search-btn">搜尋</div>
+      </div>
+    </div>
+    <div style="flex:2; min-width:300px;">
+      <span class="label">分類篩選 tabs</span>
+      <div>
+        <div class="tab active">全部</div>
+        <div class="tab">道一經典</div>
+        <div class="tab">活動紀實</div>
+        <div class="tab">社團課程</div>
+        <div class="tab">組織公告</div>
+      </div>
+      <div class="arrow-note">點擊切換，URL 帶 ?category= 參數</div>
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ROW 1: Featured article (large) -->
+  <div class="section">
+    <div class="section-heading">精選文章 — Featured</div>
+    <div class="rough" style="display:grid; grid-template-columns:1.4fr 1fr; gap:0; overflow:hidden;">
+      <!-- left: big image -->
+      <div class="img-placeholder" style="height:260px;">
+        <span class="img-label">封面圖 16:9</span>
+      </div>
+      <!-- right: content -->
+      <div style="padding:24px; display:flex; flex-direction:column; justify-content:center; gap:10px;">
+        <div class="featured-badge">精選</div>
+        <div class="text-line title" style="width:90%; height:16px;"></div>
+        <div class="text-line title" style="width:70%; height:16px;"></div>
+        <div style="height:6px;"></div>
+        <div class="text-line long"></div>
+        <div class="text-line med"></div>
+        <div class="text-line short"></div>
+        <div style="height:8px;"></div>
+        <div style="display:flex; gap:6px; align-items:center;">
+          <div class="tag-pill">道一經典</div>
+          <div class="tag-pill">活動紀實</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:8px; margin-top:4px;">
+          <div class="text-line" style="width:80px; height:6px;"></div>
+          <span style="font-size:10px; color:#aaa;">— 2025.03.15</span>
+        </div>
+        <div style="margin-top:8px;">
+          <div class="btn-sketch filled" style="font-size:10px; padding:6px 16px;">閱讀全文 →</div>
+        </div>
+      </div>
+    </div>
+    <div class="arrow-note" style="margin-top:6px;">featureArticle: true 的文章才顯示於此</div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ROW 2: Article grid 3-col -->
+  <div class="section">
+    <div style="display:flex; align-items:baseline; justify-content:space-between; margin-bottom:12px;">
+      <div class="section-heading" style="margin-bottom:0;">文章列表 — 每頁 12 篇</div>
+      <div style="font-size:10px; color:#aaa;">共 87 篇 · 第 1 / 8 頁</div>
+    </div>
+
+    <div class="grid-3">
+      <!-- Card × 6 (show 6, rest implied) -->
+      <!-- Card 1 -->
+      <div class="rough" style="overflow:hidden;">
+        <div class="img-placeholder" style="height:140px;"><span class="img-label">縮圖</span></div>
+        <div style="padding:12px; display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; gap:4px;">
+            <div class="tag-pill" style="font-size:9px; padding:1px 6px;">道一經典</div>
+          </div>
+          <div class="text-line title"></div>
+          <div class="text-line long"></div>
+          <div class="text-line med"></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+            <span style="font-size:9px; color:#bbb;">2025.03.10</span>
+            <span style="font-size:9px; color:#aaa; border:1px solid #ddd; padding:2px 6px;">閱讀 →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="rough" style="overflow:hidden;">
+        <div class="img-placeholder" style="height:140px;"><span class="img-label">縮圖</span></div>
+        <div style="padding:12px; display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; gap:4px;">
+            <div class="tag-pill" style="font-size:9px; padding:1px 6px;">活動紀實</div>
+          </div>
+          <div class="text-line title"></div>
+          <div class="text-line long"></div>
+          <div class="text-line short"></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+            <span style="font-size:9px; color:#bbb;">2025.03.08</span>
+            <span style="font-size:9px; color:#aaa; border:1px solid #ddd; padding:2px 6px;">閱讀 →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="rough" style="overflow:hidden;">
+        <div class="img-placeholder" style="height:140px;"><span class="img-label">縮圖</span></div>
+        <div style="padding:12px; display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; gap:4px;">
+            <div class="tag-pill" style="font-size:9px; padding:1px 6px;">社團課程</div>
+          </div>
+          <div class="text-line title"></div>
+          <div class="text-line long"></div>
+          <div class="text-line med"></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+            <span style="font-size:9px; color:#bbb;">2025.03.05</span>
+            <span style="font-size:9px; color:#aaa; border:1px solid #ddd; padding:2px 6px;">閱讀 →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="rough" style="overflow:hidden;">
+        <div class="img-placeholder" style="height:140px;"><span class="img-label">縮圖</span></div>
+        <div style="padding:12px; display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; gap:4px;">
+            <div class="tag-pill" style="font-size:9px; padding:1px 6px;">組織公告</div>
+          </div>
+          <div class="text-line title"></div>
+          <div class="text-line med"></div>
+          <div class="text-line short"></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+            <span style="font-size:9px; color:#bbb;">2025.02.28</span>
+            <span style="font-size:9px; color:#aaa; border:1px solid #ddd; padding:2px 6px;">閱讀 →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 5 -->
+      <div class="rough" style="overflow:hidden;">
+        <div class="img-placeholder" style="height:140px;"><span class="img-label">縮圖</span></div>
+        <div style="padding:12px; display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; gap:4px;">
+            <div class="tag-pill" style="font-size:9px; padding:1px 6px;">道一經典</div>
+          </div>
+          <div class="text-line title"></div>
+          <div class="text-line long"></div>
+          <div class="text-line med"></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+            <span style="font-size:9px; color:#bbb;">2025.02.20</span>
+            <span style="font-size:9px; color:#aaa; border:1px solid #ddd; padding:2px 6px;">閱讀 →</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 6 -->
+      <div class="rough" style="overflow:hidden;">
+        <div class="img-placeholder" style="height:140px;"><span class="img-label">縮圖</span></div>
+        <div style="padding:12px; display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; gap:4px;">
+            <div class="tag-pill" style="font-size:9px; padding:1px 6px;">活動紀實</div>
+          </div>
+          <div class="text-line title"></div>
+          <div class="text-line long"></div>
+          <div class="text-line short"></div>
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-top:4px;">
+            <span style="font-size:9px; color:#bbb;">2025.02.15</span>
+            <span style="font-size:9px; color:#aaa; border:1px solid #ddd; padding:2px 6px;">閱讀 →</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Row 2 implied -->
+    <div style="margin-top:12px; border:1px dashed #ccc; padding:12px; text-align:center; color:#bbb; font-size:11px; letter-spacing:2px;">
+      第 2 排 × 6 張卡片（同樣結構）
+    </div>
+  </div>
+
+  <hr class="divider">
+
+  <!-- ROW 3: Pagination -->
+  <div class="section" style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
+    <div style="font-size:10px; color:#aaa; letter-spacing:1px;">顯示 1–12，共 87 篇</div>
+    <div style="display:flex; align-items:center; gap:2px;">
+      <div class="page-num" style="font-size:14px; color:#aaa;">&lsaquo;</div>
+      <div class="page-num active">1</div>
+      <div class="page-num">2</div>
+      <div class="page-num">3</div>
+      <div class="page-num" style="border:none; color:#aaa;">…</div>
+      <div class="page-num">8</div>
+      <div class="page-num" style="font-size:14px; color:#333;">&rsaquo;</div>
+    </div>
+    <div style="font-size:10px; color:#aaa; letter-spacing:1px;">每頁 12 篇</div>
+  </div>
+
+  <!-- Annotation sticky notes -->
+  <hr class="divider">
+  <div style="display:flex; flex-wrap:wrap; gap:16px; margin-top:8px;">
+    <div class="sticky">
+      <strong>響應式規則</strong><br>
+      Desktop: 3 欄<br>
+      Tablet (768px): 2 欄<br>
+      Mobile (480px): 1 欄
+    </div>
+    <div class="sticky">
+      <strong>精選文章</strong><br>
+      只取第 1 篇<br>
+      featureArticle: true<br>
+      不列入 12 篇計算
+    </div>
+    <div class="sticky">
+      <strong>分類 URL</strong><br>
+      /blog?category=xxx<br>
+      篩選後 reset 到第 1 頁<br>
+      支援瀏覽器返回
+    </div>
+    <div class="sticky">
+      <strong>搜尋行為</strong><br>
+      即時過濾 or Enter 送出<br>
+      無結果顯示空狀態<br>
+      清除鍵 ×
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:32px; font-size:10px; color:#bbb; letter-spacing:3px;">
+    WIREFRAME v1 · 道一關懷協會部落格首頁 · 待確認後進入實作
+  </div>
+</div>
+
+</body>
+</html>
