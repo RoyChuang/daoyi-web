@@ -18,11 +18,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "/",
+    "baseUrl": ".",
     "importHelpers": true,
     "paths": {
       "@/src/*": [
-        "/src/*"
+        "./src/*"
       ],
     },
   },
@@ -30,10 +30,8 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "tailwind.config.jsm",
-    "/src/components/index.ts",
+    "tailwind.config.js",
     "src/components/index.ts",
-    "src/components/CodeBlock/style.js",
     "pages/**/*",
     "src/**/*",
     "src/**/*.ts",

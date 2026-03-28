@@ -1,14 +1,10 @@
 import Link from "next/link";
 import { iArticle, IAuthor } from "../../shared/interfaces";
 import {
-  combineClasses,
-  isDesktopDevice,
   transformImagePaths,
   transformPath,
 } from "../../utils/utils";
 import LinkTo from "../LinkTo";
-import Avatar from "./Avatar";
-import SocialShare from "../SocialShare/SocialShare";
 
 const ArticleMoreFromAuthor = ({
   author,
@@ -19,97 +15,64 @@ const ArticleMoreFromAuthor = ({
   relatedArticles: iArticle[];
   articleGrid?: boolean;
 }) => {
-  const wrapperClasses =
-    "bg-white dark:bg-slate-800 dark:border-none border-slate-100 shadow-lg border md:rounded-[8px] px-[15px] py-[10px] mb-[30px] overflow-hidden";
   return (
     <>
-      {/* <div className={wrapperClasses}>
-        <div className="flex items-center">
-          <Avatar author={author} className="w-[60px] h-[60px] mr-3 text-xl" />
-          <div className="font-semibold">
-            <p className={"text-[20px]  mb-0 mt-0"}>{author.name}</p>
-            <p className="text-xs mt-0 mb-0">{author.designation}</p>
-          </div>
-        </div>
-        <p className="text-[16px] mt-2">{author.bio}</p>
-        {author.social?.length && (
-          <div className="flex items-center flex-wrap mt-3">
-            {author.social.map((each, i) => (
-              <a
-                href={each.link}
-                key={i}
-                target="_blank"
-                className="mr-[15px] text-[32px]"
-                rel="noopener noreferrer"
-              >
-                {each.icon}
-              </a>
-            ))}
-          </div>
-        )}
-      </div> */}
+      {relatedArticles.length ? (
+        <div className="bg-white dark:bg-slate-800 border border-slate-100 dark:border-transparent shadow-md md:rounded-xl mb-[30px] overflow-hidden">
 
-      {/* {isDesktopDevice() && (
-        <div className={wrapperClasses}>
-          <p className="border-b border-gray-300 pb-2 mb-3 font-medium w-full">
-            Share this article
-          </p>
-          <SocialShare />
-        </div>
-      )} */}
+          {/* 標題列 */}
+          <div className="px-5 pt-5 pb-4 border-b border-slate-100 dark:border-slate-700">
+            <h3 className="text-xs font-semibold tracking-widest text-slate-400 uppercase">其他文章</h3>
+          </div>
 
-      {relatedArticles.length && (
-        <div className={wrapperClasses}>
-          <p className="border-b border-gray-300 pb-2 mb-3 font-medium w-full">
-            其他文章
-          </p>
-          <div className={articleGrid ? "flex flex-wrap" : ""}>
+          {/* 文章列表 */}
+          <div className={articleGrid
+            ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-slate-100 dark:bg-slate-700"
+            : "divide-y divide-slate-100 dark:divide-slate-700"
+          }>
             {relatedArticles.slice(0, 3).map((each, i) => (
-              <Link href={transformPath(each.path)} key={i} passHref>
-                <div
-                  className={combineClasses(
-                    "mb-3 cursor-pointer",
-                    articleGrid ? "lg:w-1/3 md:w-1/2 w-full md:pr-2" : "w-full"
-                  )}
-                  key={each.path}
-                >
-                  <div
-                    className="
-                                            rounded-[3px] dark:bg-slate-800
-                                            border border-slate-200 dark:border-slate-900
-                                            flex items-center overflow-hidden
-                                            shadow-lg hover:shadow-md
-                                        "
-                  >
-                    <div className={"object-cover shrink-0"}>
-                      <img
-                        src={transformImagePaths(each.preview.thumbnail)}
-                        className="w-[120px] h-[70px] mr-2 object-cover"
-                        alt={each.preview.articleTitle}
-                      />
-                    </div>
-                    <div className="pr-1 text-[16px] hover:text-blue-500 font-semibold overflow-hidden">
-                      <p className="line-clamp-2 overflow-hidden">
-                        {each.preview.articleTitle}
-                      </p>
-                    </div>
-                  </div>
+              <Link
+                href={transformPath(each.path)}
+                key={i}
+                className={
+                  articleGrid
+                    ? "flex items-center gap-3 p-3 bg-white dark:bg-slate-800 hover:bg-blue-50 dark:hover:bg-slate-700 transition-colors group"
+                    : "flex items-center gap-3 px-5 py-3 hover:bg-slate-50 dark:hover:bg-slate-700/50 transition-colors group"
+                }
+              >
+                {/* 圖片 */}
+                <div className="w-[80px] h-[54px] flex-shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-700">
+                  <img
+                    src={transformImagePaths(each.preview.thumbnail)}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    alt={each.preview.articleTitle}
+                  />
                 </div>
+
+                {/* 標題 */}
+                <p className="text-[13px] font-medium leading-snug line-clamp-2 min-w-0 text-slate-700 dark:text-slate-200 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                  {each.preview.articleTitle}
+                </p>
               </Link>
             ))}
-            
           </div>
-          {relatedArticles.length > 3 ? (
+
+          {/* CTA 按鈕 - 獨立區塊，有明顯分隔 */}
+          {relatedArticles.length > 3 && (
+            <div className="px-5 py-4 border-t border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
               <LinkTo
                 href={"/blog?author=" + author.name}
-                passHref
-                className="text-sm py-3 px-2 text-center dark:bg-slate-900 bg-blue-500 rounded text-white font-bold hover:!text-blue-900 dark:hover:!text-slate-400 transition-all flex justify-center items-center"
+                className="flex items-center justify-center gap-2 w-full py-2.5 rounded-lg border border-blue-200 dark:border-blue-800 text-blue-600 dark:text-blue-400 text-sm font-medium hover:bg-blue-600 hover:text-white hover:border-blue-600 dark:hover:bg-blue-600 dark:hover:border-blue-600 dark:hover:text-white transition-all duration-200"
               >
-                <p>顯示所有文章</p>
+                顯示所有文章
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </LinkTo>
-            ) : null}
+            </div>
+          )}
         </div>
-      )}
+      ) : null}
     </>
   );
 };

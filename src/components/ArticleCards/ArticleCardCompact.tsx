@@ -40,10 +40,9 @@ const ArticleCardCompact = ({ article, path }: IProp) => {
           <Image
             src={transformThumbnailPath(article.thumbnail, 'compact')}
             alt={article.articleTitle}
-            layout="fill"
+            fill
             quality={80}
-            objectFit="cover"
-            objectPosition="center center"
+            style={{ objectFit: 'cover', objectPosition: 'center center' }}
             loader={imgLoader}
             className="group-hover:scale-105 transition-transform duration-300"
           />

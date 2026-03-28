@@ -25,7 +25,7 @@ const SimpleNavbar = ({ openSearch, changeTheme, toggleSideMenu, openSidebar = f
           onClick={() => toggleSideMenu()}>
           <AiOutlineMenu className="dark:text-white text-black text-2xl" />
         </div>
-        <Link href="/" passHref>
+        <Link href="/">
           {
             logo ?
               logo.type === LogoType.IMAGE ?
@@ -36,8 +36,8 @@ const SimpleNavbar = ({ openSearch, changeTheme, toggleSideMenu, openSidebar = f
                     <div className="text-[12px] pl-[2px]">DAOYI Care Association</div>
                   </div>
                 </div> :
-                <a className='text-[22px] font-semibold'>{logo.logo}</a>
-              : <a className='text-[22px] font-semibold'>Logo</a>
+                <span className='text-[22px] font-semibold'>{logo.logo}</span>
+              : <span className='text-[22px] font-semibold'>Logo</span>
           }
         </Link>
       </div>

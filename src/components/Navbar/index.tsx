@@ -44,7 +44,7 @@ const Navbar = () => {
     setIsMobile(getDeviceType() === "tablet" || getDeviceType() === "mobile");
 
     window.onscroll = () => {
-      const st = window.pageYOffset || document.documentElement.scrollTop;
+      const st = window.scrollY || document.documentElement.scrollTop;
       const scrollYDistance = window.scrollY;
       if (scrollYDistance > 0 && st > lastScrollTop) {
         setScrolled(true);

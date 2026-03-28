@@ -1,0 +1,12 @@
+.pre {
+  text-align: left;
+  overflow: auto;
+  font-size: 14px;
+  border-radius: 6px;
+  max-height: 350px;
+
+  :global(.token-line) {
+    line-height: 1.3em;
+    height: 1.3em;
+  }
+}

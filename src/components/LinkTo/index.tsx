@@ -1,16 +1,16 @@
 import Link from "next/link"
 import { combineClasses, transformPath } from "../../utils/utils"
 
-interface iLinkTo { 
-    href: string, 
-    passHref?: boolean, 
-    newTab?: boolean, 
-    children?: any, 
-    external?: boolean, 
-    className?: string 
+interface iLinkTo {
+    href: string,
+    passHref?: boolean,
+    newTab?: boolean,
+    children?: any,
+    external?: boolean,
+    className?: string
 }
 
-const LinkTo = ({ href, passHref = true, newTab = false, external = false, children, className }: iLinkTo) => {
+const LinkTo = ({ href, newTab = false, external = false, children, className }: iLinkTo) => {
     return (
         <>
             {
@@ -18,10 +18,8 @@ const LinkTo = ({ href, passHref = true, newTab = false, external = false, child
                     <a href={transformPath(href)} className={className} target="_blank" rel="noopener noreferrer">
                         {children}
                     </a> :
-                    <Link href={transformPath(href)} passHref={passHref}>
-                        <a className={combineClasses('cursor-pointer hover:text-blue-500', className)}>
-                            {children}
-                        </a>
+                    <Link href={transformPath(href)} className={combineClasses('cursor-pointer hover:text-blue-500', className)}>
+                        {children}
                     </Link>
             }
         </>

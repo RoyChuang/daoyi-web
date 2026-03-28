@@ -120,11 +120,9 @@ const Home = ({ allImages }: HomeProps) => {
           <span className="text-white font-medium text-sm">道一關懐協會 歡迎加入</span>
         </a>
         
-        <Link href="/calendar" passHref>
-          <a className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300">
-            <FontAwesomeIcon icon={faCalendarDays} className="text-white flex-shrink-0" />
-            <span className="text-white font-medium text-sm">查看行事曆</span>
-          </a>
+        <Link href="/calendar" className="inline-flex items-center justify-center gap-2 bg-green-600 hover:bg-green-700 rounded-full px-4 py-2 shadow-md hover:shadow-lg transition-all duration-300">
+          <FontAwesomeIcon icon={faCalendarDays} className="text-white flex-shrink-0" />
+          <span className="text-white font-medium text-sm">查看行事曆</span>
         </Link>
       </div>
 
@@ -153,14 +151,12 @@ const Home = ({ allImages }: HomeProps) => {
             >
               {randomImages.map((image, index) => (
                 <SwiperSlide key={index}>
-                  <Link href={image.blogPath} passHref>
-                    <a className="block w-full h-28 md:h-36 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
-                      <img 
-                        src={image.src} 
-                        alt={`活動照片 ${index + 1}`}
-                        className="w-full h-full object-cover object-[50%_15%] hover:scale-105 transition-transform duration-300"
-                      />
-                    </a>
+                  <Link href={image.blogPath} className="block w-full h-28 md:h-36 rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <img
+                      src={image.src}
+                      alt={`活動照片 ${index + 1}`}
+                      className="w-full h-full object-cover object-[50%_15%] hover:scale-105 transition-transform duration-300"
+                    />
                   </Link>
                 </SwiperSlide>
               ))}
@@ -180,25 +176,23 @@ const Home = ({ allImages }: HomeProps) => {
               <FontAwesomeIcon icon={faUserCircle} className="text-[#334155]" />
               人物分享
             </h2>
-            <Link href="/he-qian-ren" passHref>
-              <a className="block group">
-                <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex">
-                  <div className="w-1/2 h-40 flex-shrink-0 overflow-hidden">
-                    <img 
-                      src="/images/he-qian-ren/index.jpg" 
-                      alt="何紹棠前人" 
-                      className="w-full h-full object-cover object-[50%_15%] group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="p-3 flex flex-col justify-center">
-                    <span className="inline-block bg-blue-500 text-white text-xs px-2 py-0.5 rounded mb-1 w-fit">種籽人物志</span>
-                    <h3 className="text-sm font-bold text-[#334155] group-hover:text-blue-600 transition-colors duration-300 leading-tight">
-                      好學不倦，筆耕不輟 – 何紹棠前人
-                    </h3>
-                    <p className="text-gray-500 text-xs mt-1">2024-12-15 | 編輯室</p>
-                  </div>
+            <Link href="/he-qian-ren" className="block group">
+              <div className="bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 flex">
+                <div className="w-1/2 h-40 flex-shrink-0 overflow-hidden">
+                  <img
+                    src="/images/he-qian-ren/index.jpg"
+                    alt="何紹棠前人"
+                    className="w-full h-full object-cover object-[50%_15%] group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
-              </a>
+                <div className="p-3 flex flex-col justify-center">
+                  <span className="inline-block bg-blue-500 text-white text-xs px-2 py-0.5 rounded mb-1 w-fit">種籽人物志</span>
+                  <h3 className="text-sm font-bold text-[#334155] group-hover:text-blue-600 transition-colors duration-300 leading-tight">
+                    好學不倦，筆耕不輟 – 何紹棠前人
+                  </h3>
+                  <p className="text-gray-500 text-xs mt-1">2024-12-15 | 編輯室</p>
+                </div>
+              </div>
             </Link>
           </div>
 
@@ -210,8 +204,7 @@ const Home = ({ allImages }: HomeProps) => {
             </h2>
             <div className="flex flex-wrap gap-6">
               {books.map((book) => (
-                <Link key={book.id} href={book.href} passHref>
-                  <a className="block group">
+                <Link key={book.id} href={book.href} className="block group">
                     {/* 書本容器 */}
                     <div 
                       className={`
@@ -251,7 +244,6 @@ const Home = ({ allImages }: HomeProps) => {
                         )}
                       </div>
                     </div>
-                  </a>
                 </Link>
               ))}
             </div>
@@ -313,13 +305,11 @@ const Home = ({ allImages }: HomeProps) => {
                 <FontAwesomeIcon icon={faVideo} className="text-[#334155]" />
                 聖樂影音
               </h2>
-              <Link href="/video" passHref>
-                <a className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors group">
-                  更多
-                  <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </a>
+              <Link href="/video" className="inline-flex items-center gap-1 text-blue-600 hover:text-blue-800 text-sm font-medium transition-colors group">
+                更多
+                <svg className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
               </Link>
             </div>
             <Swiper

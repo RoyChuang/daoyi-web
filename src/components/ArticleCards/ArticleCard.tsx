@@ -44,10 +44,9 @@ const ArticleCard = ({ article, path }: IProp) => {
             <Image
               src={transformThumbnailPath(article.thumbnail, 'regular')}
               alt={article.articleTitle}
-              layout="fill"
+              fill
               quality={100}
-              objectFit="cover"
-              objectPosition="center center"
+              style={{ objectFit: 'cover', objectPosition: 'center center' }}
               loader={imgLoader}
             />
           </div>

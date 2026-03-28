@@ -87,11 +87,9 @@ function Activities(props: { detail: any; images: any }) {
       {/* 內容區塊 */}
       <div className="prose prose-lg max-w-none">
         {/* 主要內容 - 使用引言風格 */}
-        <div className="relative bg-gradient-to-br from-slate-50 to-blue-50 rounded-xl p-6 mb-8 border-l-4 border-blue-500 shadow-sm">
-          <div className="absolute -top-3 left-4 bg-blue-500 text-white text-xs px-3 py-1 rounded-full font-medium">
-            📋 活動紀要
-          </div>
-          <p className="text-gray-700 leading-relaxed text-base md:text-lg mt-2 whitespace-pre-line">
+        <div className="bg-slate-50 dark:bg-slate-800/60 rounded-lg p-6 mb-8">
+          <p className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-3">活動紀要</p>
+          <p className="text-gray-700 dark:text-slate-300 leading-relaxed text-base md:text-lg whitespace-pre-line">
             {mainContent}
           </p>
         </div>
@@ -101,9 +99,7 @@ function Activities(props: { detail: any; images: any }) {
       {/* 圖片相簿區塊 */}
       {galleryImages.length > 0 && (
         <div className="mt-10">
-          <h3 className="flex items-center gap-2 text-gray-800 font-bold text-xl mb-4">
-            📸 活動照片
-          </h3>
+          <h3 className="text-xs font-semibold tracking-widest text-slate-400 uppercase mb-4">活動照片</h3>
           <div className={`grid gap-3 ${
             galleryImages.length === 1 ? 'grid-cols-1' :
             galleryImages.length === 2 ? 'grid-cols-2' :

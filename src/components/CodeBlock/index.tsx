@@ -2,7 +2,7 @@
 import Highlight, { defaultProps } from "prism-react-renderer";
 import theme from "prism-react-renderer/themes/nightOwl";
 import { combineClasses } from "../../utils/utils";
-import { Pre } from './style';
+import classes from './style.module.scss';
 
 const CodeBlock = ({ code, className }: { code: string, className?: string }) => {
     return (
@@ -10,7 +10,7 @@ const CodeBlock = ({ code, className }: { code: string, className?: string }) =>
             <div className="shadow-lg">
                 <Highlight {...defaultProps} theme={theme} code={code} language="tsx">
                     {({ className, style, tokens, getLineProps, getTokenProps }) => (
-                        <Pre className={className} style={style}>
+                        <pre className={combineClasses(classes.pre, className)} style={style}>
                             {tokens.map((line, i) => (
                                 <div {...getLineProps({ line, key: i })} key={Math.random()}>
                                     {line.map((token, key) => (
@@ -18,7 +18,7 @@ const CodeBlock = ({ code, className }: { code: string, className?: string }) =>
                                     ))}
                                 </div>
                             ))}
-                        </Pre>
+                        </pre>
                     )}
                 </Highlight>
             </div>

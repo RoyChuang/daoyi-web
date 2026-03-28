@@ -5,8 +5,7 @@ const nextConfig = {
   trailingSlash: true,
   // productionBrowserSourceMaps: true,
   images: {
-    loader: "akamai",
-    path: "",
+    unoptimized: true,
   }
 };
 
