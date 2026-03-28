@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { DEFAULT_SEO } from '../BLOG_CONSTANTS/_BLOG_SETUP';
 import { NextSeo } from 'next-seo';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCompactDisc, faImages } from "@fortawesome/free-solid-svg-icons";
+import { faCompactDisc, faImages, faScroll } from "@fortawesome/free-solid-svg-icons";
 import { TEMPLE_PHOTOS } from '../BLOG_CONSTANTS/_TEMPLE_PHOTOS';
 import { getCloudinaryUrl } from '../src/utils/cloudinary';
 import VideoThumbnail from '../src/components/VideoThumbnail';
@@ -169,7 +169,60 @@ const HeQianRenPage = () => {
                                 title="同心同德整體成就 何前人慈悲勉勵 下"
                                 onClick={() => openVideoModal("DMqDAijSJZM")}
                             />
+                            <VideoThumbnail
+                                videoId="N3WwzLW2wcw"
+                                title="3月15日何前人成道十五周年追思会纪念视频"
+                                onClick={() => openVideoModal("N3WwzLW2wcw")}
+                            />
                         </div>
+                    </div>
+                </div>
+
+                {/* 事蹟介紹區塊 */}
+                <div className='my-8 p-6 bg-amber-50 rounded-xl'>
+                    <h3 className='text-2xl font-bold text-[#334155] mb-4 flex items-center gap-3'>
+                        <FontAwesomeIcon icon={faScroll} className="text-amber-700" />
+                        事蹟介紹
+                    </h3>
+                    <p className='text-gray-600 mb-6'>
+                        點擊下方圖冊，可全螢幕縮放閱讀何前人一生事蹟記錄。
+                    </p>
+                    <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4'>
+                        {[
+                            { id: 'a01', title: '君子謀道也' },
+                            { id: 'a02', title: '學而君子乎' },
+                            { id: 'a03', title: '君子三變乎' },
+                            { id: 'a04', title: '365天的重量（上）' },
+                            { id: 'a05', title: '365天的重量（下）' },
+                            { id: 'b03', title: '道一淵源' },
+                            { id: 'b04', title: '海外開荒（一）' },
+                            { id: 'b05', title: '海外開荒（二）' },
+                            { id: 'b06', title: '海外開荒（三）' },
+                            { id: 'b07', title: '海外開荒（四）' },
+                        ].map((book) => {
+                            const imageId = `daoyi-web/books/${book.id}/page_001`;
+                            const href = `/gleanings-viewer?img=${encodeURIComponent(imageId)}&title=${encodeURIComponent(book.title)}`;
+                            return (
+                                <a
+                                    key={book.id}
+                                    href={href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="group block bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-amber-100"
+                                >
+                                    <div className="aspect-[3/4] overflow-hidden bg-gray-100">
+                                        <img
+                                            src={`https://res.cloudinary.com/dklwgtmj2/image/upload/c_fill,g_north,w_300,h_400,f_auto,q_auto/${imageId}`}
+                                            alt={book.title}
+                                            className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-300"
+                                        />
+                                    </div>
+                                    <div className="p-3">
+                                        <p className="text-sm font-semibold text-[#334155] text-center leading-tight">{book.title}</p>
+                                    </div>
+                                </a>
+                            );
+                        })}
                     </div>
                 </div>
 

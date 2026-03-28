@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(wc -l d:/Code/daoyi-web/pages/*.tsx d:/Code/daoyi-web/src/components/*.tsx)",
+      "WebFetch(domain:youtu.be)",
+      "WebFetch(domain:www.youtube.com)",
+      "Bash(pip show:*)",
+      "Bash(pip install:*)",
+      "Bash(pip3 install:*)",
+      "Bash(python -m pip install gdown -q)",
+      "Bash(python -m gdown --folder \"https://drive.google.com/drive/folders/1B6glhoWjUJMhZRaPGyFcsOiqZH6sZb6Z\" --output \"d:/Code/daoyi-web/public/pdf/\" -V)",
+      "Bash(python -m gdown --folder \"https://drive.google.com/drive/folders/1B6glhoWjUJMhZRaPGyFcsOiqZH6sZb6Z\" --output \"d:/Code/daoyi-web/public/pdf/\")",
+      "Bash(cat d:/Code/daoyi-web/.env*)",
+      "Bash(python -m pip install pymupdf -q)",
+      "Bash(python -c \"import fitz; print\\(''pymupdf ok, version:'', fitz.__version__\\)\")",
+      "Bash(python -m pip install cloudinary -q)",
+      "Bash(python scripts/pdf_to_cloudinary.py)",
+      "Bash(python -m pip install Pillow -q)",
+      "Bash(python -c \":*)"
+    ]
+  }
+}

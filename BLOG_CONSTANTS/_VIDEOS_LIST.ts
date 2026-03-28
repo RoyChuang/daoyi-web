@@ -207,6 +207,12 @@ export const VIDEOS: Video[] = [
     description: "感恩道親誠心設壇了愿修行",
     featured: true,
   },
+  {
+    id: "N3WwzLW2wcw",
+    title: "3月15日何前人成道十五周年追思会纪念视频",
+    description: "3月15日何前人成道十五周年追思会纪念视频",
+    featured: true,
+  },
 
   // 新增影片範例：
   // {
