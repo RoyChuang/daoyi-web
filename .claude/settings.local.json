@@ -16,7 +16,21 @@
       "Bash(python -m pip install cloudinary -q)",
       "Bash(python scripts/pdf_to_cloudinary.py)",
       "Bash(python -m pip install Pillow -q)",
-      "Bash(python -c \":*)"
+      "Bash(python -c \":*)",
+      "Bash(find /d/Code/daoyi-web/pages -name \"*.tsx\" -exec basename {})",
+      "Bash(npm run:*)",
+      "Bash(grep -r passHref /d/Code/daoyi-web/pages /d/Code/daoyi-web/src --include=*.tsx)",
+      "Bash(grep -r console. /d/Code/daoyi-web/src /d/Code/daoyi-web/pages --include=*.tsx --include=*.ts)",
+      "Bash(npm audit:*)",
+      "Bash(ls:*)",
+      "Bash(grep -r 'import React' /d/Code/daoyi-web/src /d/Code/daoyi-web/pages --include=*.tsx --include=*.ts)",
+      "Bash(npm info:*)",
+      "Bash(npx tsc:*)",
+      "Bash(curl -s http://localhost:3001)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(python3 \"C:\\\\Users\\\\Roy\\\\.claude\\\\skills\\\\ui-ux-pro-max\\\\scripts\\\\search.py\" \"buddhist organization blog editorial content chinese\" --design-system -p \"道一關懷協會\" -f markdown)"
     ]
   }
 }
